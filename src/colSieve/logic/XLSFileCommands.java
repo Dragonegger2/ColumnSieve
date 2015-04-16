@@ -34,9 +34,20 @@ public class XLSFileCommands {
             HSSFRow myHeader = mySheet.getRow(0);
             HSSFRow templateHeader = templateSheet.getRow(0);
 
+            //Blank excel objects to store data when necessary
+            HSSFRow currentRow;
+            HSSFCell currentCell;
+
+            //Blank string to hold currentCell value
+            String currentCellVal;
+
             //Determine the number of header cells
             int lastCol = myHeader.getLastCellNum();
             int lastTemplateCol = templateHeader.getLastCellNum();
+
+            //Determine the total number of rows in each file
+            int lastRow = mySheet.getLastRowNum();
+            int lastTemplateRow = templateSheet.getLastRowNum();
 
             //Get file names for use with return strings
             String inFileName = input;
@@ -71,6 +82,7 @@ public class XLSFileCommands {
 
                 //Create storage for bad column index / value pairs
                 LinkedHashMap<Integer,String> compareHeaderVal = new LinkedHashMap<Integer,String>();
+                LinkedHashMap<Integer,String> unknownHeaderVal = new LinkedHashMap<Integer,String>();
 
                 //Loop through the header maps to determine if the
                 //column values are equal
@@ -84,6 +96,22 @@ public class XLSFileCommands {
 
                 //If the bad column storage map is not empty...
                 if(compareHeaderVal.size() != 0){
+                    //Check that the template file does not contain alternate definitions by looping through
+                    //each column, then through each row, checking the value at each cell.
+                    for(int l = 0; l < compareHeaderVal.size(); l++){
+                        for(int j = 0; j < lastTemplateCol; j++){
+                            for(int k = 0; k <= lastTemplateRow; k++) {
+                                currentRow = templateSheet.getRow(k);
+                                currentCell = currentRow.getCell(j);
+                                currentCellVal = currentCell.getStringCellValue();
+                                if (!currentCellVal.equals(compareHeaderVal.get(l))) {
+                                    unknownHeaderVal.put(j, compareHeaderVal.get(l));
+                                }
+                            }
+                        }
+                    }
+
+
                     //Set the method compareResult
                     compareResult = "1";
                     System.out.println("> The following columns from the input file \"" + inFileName + "\" are incorrectly mapped as determined by \"" + templateFileName + "\": \n");
@@ -96,9 +124,7 @@ public class XLSFileCommands {
                 } else {
                     //Add string stating that file is correctly mapped to the compareResult
                     compareResult = "0";
-                    System.out.println("\t> All columns from input file \"" + inFileName + "\" are in the correct location as determined by template file \"" + templateFileName + "\".");
-                    System.out.println("\t> Return code: " + this.compareResult);
-                    System.out.println();
+                    System.out.println("\t> All columns from input file \"" + inFileName + "\" are in the correct location as determined by template file \"" + templateFileName + "\".\n");
                 }
             } else if(lastTemplateCol < lastCol){
                 if(runMode) {

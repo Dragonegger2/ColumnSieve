@@ -96,9 +96,7 @@ public class XLSXFileCommands {
                 } else {
                     //Add string stating that file is correctly mapped to the compareResult
                     compareResult = "0";
-                    System.out.println("\t> All columns from input file \"" + inFileName + "\" are in the correct location as determined by template file \"" + templateFileName + "\".");
-                    System.out.println("\t> Return code: " + this.compareResult);
-                    System.out.println();
+                    System.out.println("\t> All columns from input file \"" + inFileName + "\" are in the correct location as determined by template file \"" + templateFileName + "\".\n");
                 }
             } else if(lastTemplateCol < lastCol){
                 if(runMode) {
