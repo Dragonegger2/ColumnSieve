@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="colSieve.GUI">
+  <grid id="27dc6" binding="wrapper" layout-manager="FormLayout">
+    <rowspec value="top:263px:noGrow"/>
+    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="center:486px:noGrow"/>
+    <colspec value="fill:d:grow"/>
+    <constraints>
+      <xy x="20" y="20" width="1060" height="759"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <grid id="788dd" binding="paneTop" layout-manager="FormLayout">
+        <rowspec value="center:264px:noGrow"/>
+        <colspec value="fill:245px:noGrow"/>
+        <colspec value="fill:10px:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:12px:noGrow"/>
+        <colspec value="fill:492px:noGrow"/>
+        <colspec value="fill:10px:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="left:4dlu:noGrow"/>
+        <colspec value="fill:max(d;4px):noGrow"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <forms top="20" left="0" bottom="0" right="0" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="c5b69" binding="paneFiletype" layout-manager="FormLayout">
+            <rowspec value="center:d:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:d:grow"/>
+            <rowspec value="center:9px:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <colspec value="fill:253px:noGrow"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="b6eab" class="javax.swing.JLabel" binding="lblFiletype">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="0" bottom="0" right="20" defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="28"/>
+                  <horizontalAlignment value="4"/>
+                  <preferredSize width="240" height="36"/>
+                  <text value="Filetype"/>
+                </properties>
+              </component>
+              <component id="40db" class="javax.swing.JRadioButton" binding="rdoXLS">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="10" bottom="0" right="0"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="20"/>
+                  <selected value="true"/>
+                  <text value="Excel 97/2003 (.XLS)"/>
+                </properties>
+              </component>
+              <component id="e1f5" class="javax.swing.JRadioButton" binding="rdoXLSX">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="10" bottom="0" right="0"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="20"/>
+                  <text value="Excel (.XLSX)"/>
+                </properties>
+              </component>
+              <component id="52bdd" class="javax.swing.JRadioButton" binding="rdoCSV">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="10" bottom="0" right="0"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="20"/>
+                  <text value="Comma Separated (.CSV)"/>
+                </properties>
+              </component>
+              <component id="10420" class="javax.swing.JRadioButton" binding="rdoTXT">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="10" bottom="0" right="0"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="20"/>
+                  <text value="Tab Delimited (.TXT)"/>
+                </properties>
+              </component>
+              <component id="4c04f" class="javax.swing.JSeparator">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="20" bottom="0" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties/>
+              </component>
+            </children>
+          </grid>
+          <grid id="4b04a" binding="panePath" layout-manager="FormLayout">
+            <rowspec value="center:d:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:d:grow"/>
+            <rowspec value="top:7dlu:noGrow"/>
+            <rowspec value="center:max(d;4px):noGrow"/>
+            <colspec value="fill:493px:noGrow"/>
+            <constraints>
+              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="ad4a" class="javax.swing.JLabel" binding="lblPaths">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="10" bottom="0" right="0" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="28"/>
+                  <horizontalAlignment value="2"/>
+                  <text value="File Paths"/>
+                </properties>
+              </component>
+              <grid id="da8e8" binding="panePathComponent" layout-manager="FormLayout">
+                <rowspec value="center:34px:noGrow"/>
+                <rowspec value="top:17dlu:noGrow"/>
+                <rowspec value="center:32px:noGrow"/>
+                <rowspec value="top:19dlu:noGrow"/>
+                <rowspec value="center:34px:noGrow"/>
+                <colspec value="fill:99px:noGrow"/>
+                <colspec value="left:4dlu:noGrow"/>
+                <colspec value="fill:d:grow"/>
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-vert="false"/>
+                </constraints>
+                <properties/>
+                <border type="none"/>
+                <children>
+                  <component id="e33ff" class="javax.swing.JLabel" binding="lblTemplate">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <forms top="0" left="10" bottom="0" right="0"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="20"/>
+                      <horizontalAlignment value="4"/>
+                      <text value="TEMPLATE"/>
+                    </properties>
+                  </component>
+                  <component id="5d102" class="javax.swing.JTextField" binding="txtTemplate">
+                    <constraints>
+                      <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri"/>
+                    </properties>
+                  </component>
+                  <component id="6bf74" class="javax.swing.JLabel" binding="lblInput">
+                    <constraints>
+                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <forms top="0" left="10" bottom="0" right="0"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="20"/>
+                      <horizontalAlignment value="4"/>
+                      <text value="INPUT"/>
+                    </properties>
+                  </component>
+                  <component id="2ef1f" class="javax.swing.JTextField" binding="txtInput">
+                    <constraints>
+                      <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri"/>
+                    </properties>
+                  </component>
+                  <component id="925f4" class="javax.swing.JLabel" binding="lblOutput">
+                    <constraints>
+                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                      <forms top="0" left="10" bottom="0" right="0"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri" size="20"/>
+                      <horizontalAlignment value="4"/>
+                      <text value="OUTPUT"/>
+                    </properties>
+                  </component>
+                  <component id="4b003" class="javax.swing.JTextField" binding="txtOutput">
+                    <constraints>
+                      <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                        <preferred-size width="150" height="-1"/>
+                      </grid>
+                      <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Calibri"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <component id="8eaf6" class="javax.swing.JSeparator">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties/>
+              </component>
+            </children>
+          </grid>
+          <grid id="cfd1c" binding="paneOptions" layout-manager="FormLayout">
+            <rowspec value="center:36px:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:d:grow"/>
+            <rowspec value="top:12dlu:noGrow"/>
+            <rowspec value="center:34px:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:34px:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:34px:noGrow"/>
+            <rowspec value="top:4dlu:noGrow"/>
+            <rowspec value="center:34px:noGrow"/>
+            <colspec value="fill:261px:noGrow"/>
+            <constraints>
+              <grid row="0" column="8" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="2a765" class="javax.swing.JLabel" binding="lblOptions">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="10" bottom="0" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <font name="Calibri" size="28"/>
+                  <text value="File Options"/>
+                </properties>
+              </component>
+              <component id="7d7aa" class="javax.swing.JButton" binding="btnCompare">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <maximumSize width="200" height="37"/>
+                  <minimumSize width="200" height="37"/>
+                  <opaque value="true"/>
+                  <preferredSize width="200" height="37"/>
+                  <text value="Compare File Headers"/>
+                </properties>
+              </component>
+              <component id="b8f20" class="javax.swing.JButton" binding="btnMap">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <maximumSize width="200" height="37"/>
+                  <minimumSize width="200" height="37"/>
+                  <preferredSize width="200" height="37"/>
+                  <text value="Map Input Column Data"/>
+                </properties>
+              </component>
+              <component id="d8a82" class="javax.swing.JButton" binding="btn03">
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <maximumSize width="200" height="37"/>
+                  <minimumSize width="200" height="37"/>
+                  <preferredSize width="200" height="37"/>
+                  <text value="Additional Command 01"/>
+                </properties>
+              </component>
+              <component id="7617b" class="javax.swing.JButton" binding="btn04">
+                <constraints>
+                  <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+                  <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties>
+                  <maximumSize width="200" height="37"/>
+                  <minimumSize width="200" height="37"/>
+                  <preferredSize width="200" height="37"/>
+                  <text value="Additional Command 02"/>
+                </properties>
+              </component>
+              <component id="14f43" class="javax.swing.JSeparator">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <forms top="0" left="0" bottom="0" right="20" defaultalign-horz="false" defaultalign-vert="false"/>
+                </constraints>
+                <properties/>
+              </component>
+            </children>
+          </grid>
+          <component id="28ef3" class="javax.swing.JSeparator">
+            <constraints>
+              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms top="5" left="0" bottom="30" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <orientation value="1"/>
+            </properties>
+          </component>
+          <component id="22ea5" class="javax.swing.JSeparator">
+            <constraints>
+              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <forms top="5" left="0" bottom="30" right="0" defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <orientation value="1"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+      <grid id="1c9dc" binding="paneBottom" layout-manager="FormLayout">
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="center:max(d;4px):noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:grow"/>
+        <colspec value="fill:1025px:grow"/>
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <forms defaultalign-horz="false" defaultalign-vert="false"/>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <component id="40d34" class="javax.swing.JTextArea" binding="txtConsole">
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <preferred-size width="150" height="50"/>
+              </grid>
+              <forms top="20" left="20" bottom="20" right="20" defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties>
+              <background color="-14473945"/>
+              <caretColor color="-2433312"/>
+              <disabledTextColor color="-6739946"/>
+              <editable value="false"/>
+              <enabled value="true"/>
+              <foreground color="-2433312"/>
+              <inheritsPopupMenu value="false"/>
+              <text value="Waiting for input..."/>
+            </properties>
+          </component>
+          <component id="21b92" class="javax.swing.JLabel" binding="lblConsole">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+              <forms top="0" left="40" bottom="0" right="0"/>
+            </constraints>
+            <properties>
+              <font name="Calibri" size="28"/>
+              <text value="Console"/>
+            </properties>
+          </component>
+          <component id="eab9d" class="javax.swing.JSeparator">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <forms top="0" left="20" bottom="0" right="20" defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties/>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>
