@@ -1,0 +1,12 @@
+src/`data/`fake_data/inFile.xls
+src/`data/`fake_data/inFile.xlsx
+src/`data/`fake_data/inFile_BAD.xls
+src/`data/`fake_data/inFile_BAD.xlsx
+src/`data/`fake_data/templateFile.xls
+src/`data/`fake_data/templateFile.xlsx
+src/`data/`output/outFile.xls
+src/`data/`output/outFile.xlsx
+src/`data/inFile_BAD.xls
+src/`data/inFile_BAD.xlsx
+src/`data/templateFile.xls
+src/`data/templateFile.xlsx
