@@ -1,6 +1,6 @@
  
 
-Global Printing ColumnSieve Tool
+ColumnSieve Tool
 
 Goal:
 Create a utility that allows for us to map improperly ordered data files to the correct, expected column layout, then generate a new document for our use. The utility must provide command line functionality, as well as a user interface, as this tool will be used in-line with existing and future automation procedures.
