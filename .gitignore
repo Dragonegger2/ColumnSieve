@@ -10,3 +10,5 @@ src/`data/inFile_BAD.xls
 src/`data/inFile_BAD.xlsx
 src/`data/templateFile.xls
 src/`data/templateFile.xlsx
+*.xls
+*.xlsx
