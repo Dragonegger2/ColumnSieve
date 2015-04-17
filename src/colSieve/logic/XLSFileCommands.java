@@ -38,9 +38,6 @@ public class XLSFileCommands {
             HSSFRow currentRow;
             HSSFCell currentCell;
 
-            //Blank string to hold currentCell value
-            String currentCellVal;
-
             //Determine the number of header cells
             int lastCol = myHeader.getLastCellNum();
             int lastTemplateCol = templateHeader.getLastCellNum();
@@ -87,31 +84,42 @@ public class XLSFileCommands {
                 //Loop through the header maps to determine if the
                 //column values are equal
                 for(int i = 0; i < lastCol; i++){
+                    Boolean unknownBool = false;
                     //If the header values do not match...
                     if(!myHeaderVal.get(i).equals(templateHeaderVal.get(i))){
-                        //Add the incorrect header value to bad column storage
-                        compareHeaderVal.put(i,myHeaderVal.get(i));
+                        //Loop through the entire current template column for
+                        //additional data
+                        for(int j = 1; j <= lastTemplateRow; j++){
+                            //Get cell(i) from the correct row
+                            currentRow = templateSheet.getRow(j);
+                            currentCell = currentRow.getCell(i);
+                            //If current cell is empty, break from the column loop
+                            if(currentCell == null){
+                                break;
+                            }
+                            //If the headers still do not match, it is unknown
+                            if(!myHeaderVal.get(i).equals(currentCell.getStringCellValue())){
+                                unknownBool = true;
+                            //Otherwise, update the header storage to
+                            //reflect the different name
+                            } else {
+                                myHeaderVal.put(i,currentCell.getStringCellValue());
+                                unknownBool = false;
+                                break;
+                            }
+                        }
+
+                        //if the unknown bool is true following the loop,
+                        //insert the current myHeaderVal into the unknown map
+                        if(unknownBool){
+                            compareHeaderVal.put(i,myHeaderVal.get(i));
+                            unknownHeaderVal.put(i,myHeaderVal.get(i));
+                        }
                     }
                 }
 
                 //If the bad column storage map is not empty...
                 if(compareHeaderVal.size() != 0){
-                    //Check that the template file does not contain alternate definitions by looping through
-                    //each column, then through each row, checking the value at each cell.
-                    for(int l = 0; l < compareHeaderVal.size(); l++){
-                        for(int j = 0; j < lastTemplateCol; j++){
-                            for(int k = 0; k <= lastTemplateRow; k++) {
-                                currentRow = templateSheet.getRow(k);
-                                currentCell = currentRow.getCell(j);
-                                currentCellVal = currentCell.getStringCellValue();
-                                if (!currentCellVal.equals(compareHeaderVal.get(l))) {
-                                    unknownHeaderVal.put(j, compareHeaderVal.get(l));
-                                }
-                            }
-                        }
-                    }
-
-
                     //Set the method compareResult
                     compareResult = "1";
                     System.out.println("> The following columns from the input file \"" + inFileName + "\" are incorrectly mapped as determined by \"" + templateFileName + "\": \n");
@@ -147,7 +155,7 @@ public class XLSFileCommands {
             //Close both Excel files
             inFile.close();
             templateFile.close();
-        //end Try block
+            //end Try block
         } catch(FileNotFoundException e){
             if(runMode) {
                 System.out.println("! One or more of the files have not been found.");
@@ -190,17 +198,17 @@ public class XLSFileCommands {
             String templateFileName = template;
             String outFileName = output;
 
-                while(inFileName.contains("\\")){
-                    inFileName = inFileName.substring(inFileName.indexOf("\\")+1);
-                }
+            while(inFileName.contains("\\")){
+                inFileName = inFileName.substring(inFileName.indexOf("\\")+1);
+            }
 
-                while(templateFileName.contains("\\")){
-                    templateFileName = templateFileName.substring(templateFileName.indexOf("\\")+1);
-                }
+            while(templateFileName.contains("\\")){
+                templateFileName = templateFileName.substring(templateFileName.indexOf("\\")+1);
+            }
 
-                while(outFileName.contains("\\")){
-                    outFileName = outFileName.substring(outFileName.indexOf("\\")+1);
-                }
+            while(outFileName.contains("\\")){
+                outFileName = outFileName.substring(outFileName.indexOf("\\")+1);
+            }
 
             String outPath = output.substring(0,(output.length()-outFileName.length()));
 
@@ -209,151 +217,153 @@ public class XLSFileCommands {
             //Output workbook
             Workbook outBook = new HSSFWorkbook();
 
-                //Check to ensure that the output file type matches the input file type
-                if(!outFileName.toLowerCase().substring(outFileName.indexOf(".")).equals(inFileName.toLowerCase().substring(inFileName.indexOf(".")))){
+            //Check to ensure that the output file type matches the input file type
+            String outXTN = outFileName.substring(outFileName.indexOf(".XLS")).toLowerCase();
+            String inXTN = inFileName.substring(inFileName.indexOf(".xls")).toLowerCase();
+            if(!(outFileName.substring(outFileName.indexOf(".XLS")).toLowerCase()).equals(inFileName.substring(inFileName.indexOf(".xls")).toLowerCase())){
 
-                    //If the program is running in command line mode, the program will terminate
-                    if(!runMode) {
-                        System.out.println("! The output file type does not match the input file type.");
-                        System.out.println("! Please ensure that all your file types match before trying again.");
-                        System.out.println("! Application terminated abnormally.\n");
-                        System.exit(-1);
+                //If the program is running in command line mode, the program will terminate
+                if(!runMode) {
+                    System.out.println("! The output file type does not match the input file type.");
+                    System.out.println("! Please ensure that all your file types match before trying again.");
+                    System.out.println("! Application terminated abnormally.\n");
+                    System.exit(-1);
                     //If the program is running in operator mode, the program will return to the main
-                    }else{
-                        System.out.println("! The output file type does not match the input file type.");
-                        System.out.println("! Please ensure that all your file types match before trying again.\n");
+                }else{
+                    System.out.println("! The output file type does not match the input file type.");
+                    System.out.println("! Please ensure that all your file types match before trying again.\n");
+                }
+            } else {
+
+                //Create file objects to confirm output path / file existence
+                File myPath = new File(outPath);
+                File myFile = new File(output);
+
+                //Make sure output directory exists
+                //If it does not, create it
+                if (!myPath.exists()) {
+                    System.out.println("\t! Output directory \"" + outPath + "\" has not been found.");
+                    new File(outPath).mkdirs();
+                    System.out.println("\t> Directory \"" + outPath + "\" has been successfully created.\n");
+                }
+
+                //Make sure the output file creates
+                //If it does not, create it
+                if (!myFile.exists()) {
+                    System.out.println("\t! Output file \"" + outFileName + "\" has not been found.");
+                    myFile.createNewFile();
+                    System.out.println("\t> File \"" + output + "\" has been successfully created.\n");
+                }
+
+                FileOutputStream outFile = new FileOutputStream(output);
+                Sheet outSheet = outBook.createSheet(inputSheet);
+                Row outHeader = outSheet.createRow(0);
+
+                //Empty Excel objects
+                Cell headerValue;
+                Row outRow;
+                Cell outCell;
+
+                if (compareHeader(input, inputSheet, template, runMode).contains("1")) {
+                    //Set the output sheet to contain the correct number of rows
+                    for (int j = 1; j <= numRows; j++) {
+                        outSheet.createRow(j);
                     }
-                } else {
 
-                    //Create file objects to confirm output path / file existence
-                    File myPath = new File(outPath);
-                    File myFile = new File(output);
+                    //Loop through inFile header values
+                    for (int i = 0; i < numColumns; i++) {
+                        //Get cell information
+                        HSSFCell myHeaderCell = myHeader.getCell(i);
+                        String cellVal = myHeaderCell.getStringCellValue();
+                        HSSFCell templateCell = templateHeader.getCell(i);
+                        String templateCellVal = templateCell.getStringCellValue();
 
-                    //Make sure output directory exists
-                    //If it does not, create it
-                    if (!myPath.exists()) {
-                        System.out.println("\t! Output directory \"" + outPath + "\" has not been found.");
-                        new File(outPath).mkdirs();
-                        System.out.println("\t> Directory \"" + outPath + "\" has been successfully created.\n");
-                    }
+                        //If the input header equals the template header
+                        if (cellVal.equals(templateCellVal)) {
+                            //Write header to file
+                            headerValue = outHeader.createCell(i);
+                            headerValue.setCellValue(cellVal);
 
-                    //Make sure the output file creates
-                    //If it does not, create it
-                    if (!myFile.exists()) {
-                        System.out.println("\t! Output file \"" + outFileName + "\" has not been found.");
-                        myFile.createNewFile();
-                        System.out.println("\t> File \"" + output + "\" has been successfully created.\n");
-                    }
-
-                    FileOutputStream outFile = new FileOutputStream(output);
-                    Sheet outSheet = outBook.createSheet(inputSheet);
-                    Row outHeader = outSheet.createRow(0);
-
-                    //Empty Excel objects
-                    Cell headerValue;
-                    Row outRow;
-                    Cell outCell;
-
-                    if (compareHeader(input, inputSheet, template, runMode).contains("1")) {
-                        //Set the output sheet to contain the correct number of rows
-                        for (int j = 1; j <= numRows; j++) {
-                            outSheet.createRow(j);
-                        }
-
-                        //Loop through inFile header values
-                        for (int i = 0; i < numColumns; i++) {
-                            //Get cell information
-                            HSSFCell myHeaderCell = myHeader.getCell(i);
-                            String cellVal = myHeaderCell.getStringCellValue();
-                            HSSFCell templateCell = templateHeader.getCell(i);
-                            String templateCellVal = templateCell.getStringCellValue();
-
-                            //If the input header equals the template header
-                            if (cellVal.equals(templateCellVal)) {
-                                //Write header to file
-                                headerValue = outHeader.createCell(i);
-                                headerValue.setCellValue(cellVal);
-
-                                //Loop through all the input rows
-                                for (int j = 1; j <= numRows; j++) {
-                                    //Get the row data from the input file
-                                    Row currentRow = mySheet.getRow(j);
-                                    //Get the current cell from the row data
-                                    Cell currentCell = currentRow.getCell(i);
-                                    //Check to make sure current cell is not null
-                                    if (currentCell != null) {
-                                        //Set the current cell to type: STRING
-                                        currentCell.setCellType(Cell.CELL_TYPE_STRING);
-                                        //Get the current row from the output file
-                                        outRow = outSheet.getRow(j);
-                                        //Create a new cell in the output sheet (col index I)
-                                        outCell = outRow.createCell(i);
-                                        //Set the outCell value to the current cell's string value
-                                        outCell.setCellValue(currentCell.getStringCellValue());
-                                        //If current cell is empty, print a cell with no value
-                                    } else {
-                                        outRow = outSheet.getRow(j);
-                                        outCell = outRow.createCell(i);
-                                        outCell.setCellValue("");
-                                    }
+                            //Loop through all the input rows
+                            for (int j = 1; j <= numRows; j++) {
+                                //Get the row data from the input file
+                                Row currentRow = mySheet.getRow(j);
+                                //Get the current cell from the row data
+                                Cell currentCell = currentRow.getCell(i);
+                                //Check to make sure current cell is not null
+                                if (currentCell != null) {
+                                    //Set the current cell to type: STRING
+                                    currentCell.setCellType(Cell.CELL_TYPE_STRING);
+                                    //Get the current row from the output file
+                                    outRow = outSheet.getRow(j);
+                                    //Create a new cell in the output sheet (col index I)
+                                    outCell = outRow.createCell(i);
+                                    //Set the outCell value to the current cell's string value
+                                    outCell.setCellValue(currentCell.getStringCellValue());
+                                    //If current cell is empty, print a cell with no value
+                                } else {
+                                    outRow = outSheet.getRow(j);
+                                    outCell = outRow.createCell(i);
+                                    outCell.setCellValue("");
                                 }
+                            }
 
-                                //If the input header does not equal the template header
-                            } else {
-                                for (Cell currentCell : myHeader) {
-                                    if (currentCell.getStringCellValue().equals(templateCellVal)) {
-                                        //Store the correct column index
-                                        int inCol = currentCell.getColumnIndex();
-                                        int outCol = templateCell.getColumnIndex();
+                            //If the input header does not equal the template header
+                        } else {
+                            for (Cell currentCell : myHeader) {
+                                if (currentCell.getStringCellValue().equals(templateCellVal)) {
+                                    //Store the correct column index
+                                    int inCol = currentCell.getColumnIndex();
+                                    int outCol = templateCell.getColumnIndex();
 
-                                        //Write header to file
-                                        headerValue = outHeader.createCell(outCol);
-                                        headerValue.setCellValue(templateCellVal);
+                                    //Write header to file
+                                    headerValue = outHeader.createCell(outCol);
+                                    headerValue.setCellValue(templateCellVal);
 
-                                        //Loop through all the input rows
-                                        for (int j = 1; j <= numRows; j++) {
-                                            //Get the row data from the input file
-                                            Row currentRow = mySheet.getRow(j);
-                                            //Get the current cell from the row data
-                                            currentCell = currentRow.getCell(inCol);
-                                            //Check to make sure current cell is not null
-                                            if (currentCell != null) {
-                                                //Set the current cell to type: STRING
-                                                currentCell.setCellType(Cell.CELL_TYPE_STRING);
-                                                //Get the current row from the output file
-                                                outRow = outSheet.getRow(j);
-                                                //Create a new cell in the output sheet (col index I)
-                                                outCell = outRow.createCell(i);
-                                                //Set the outCell value to the current cell's string value
-                                                outCell.setCellValue(currentCell.getStringCellValue());
-                                                //If current cell is empty, print a cell with no value
-                                            } else {
-                                                outRow = outSheet.getRow(j);
-                                                outCell = outRow.createCell(i);
-                                                outCell.setCellValue("");
-                                            }
+                                    //Loop through all the input rows
+                                    for (int j = 1; j <= numRows; j++) {
+                                        //Get the row data from the input file
+                                        Row currentRow = mySheet.getRow(j);
+                                        //Get the current cell from the row data
+                                        currentCell = currentRow.getCell(inCol);
+                                        //Check to make sure current cell is not null
+                                        if (currentCell != null) {
+                                            //Set the current cell to type: STRING
+                                            currentCell.setCellType(Cell.CELL_TYPE_STRING);
+                                            //Get the current row from the output file
+                                            outRow = outSheet.getRow(j);
+                                            //Create a new cell in the output sheet (col index I)
+                                            outCell = outRow.createCell(i);
+                                            //Set the outCell value to the current cell's string value
+                                            outCell.setCellValue(currentCell.getStringCellValue());
+                                            //If current cell is empty, print a cell with no value
+                                        } else {
+                                            outRow = outSheet.getRow(j);
+                                            outCell = outRow.createCell(i);
+                                            outCell.setCellValue("");
                                         }
                                     }
                                 }
                             }
                         }
-
-                        //Write output file
-                        try {
-                            outBook.write(outFile);
-                            System.out.println("> A new file has been created at the location: " + output + "\n");
-                        } catch (Throwable e) {
-                            System.out.println("! The system encountered an error while trying to create the output file: " + output);
-                            System.out.println("! Application terminated abnormally");
-                            System.exit(-1);
-                        }
-
-                        //Close file streams
-                        inFile.close();
-                        templateFile.close();
-                        outFile.close();
                     }
+
+                    //Write output file
+                    try {
+                        outBook.write(outFile);
+                        System.out.println("> A new file has been created at the location: " + output + "\n");
+                    } catch (Throwable e) {
+                        System.out.println("! The system encountered an error while trying to create the output file: " + output);
+                        System.out.println("! Application terminated abnormally");
+                        System.exit(-1);
+                    }
+
+                    //Close file streams
+                    inFile.close();
+                    templateFile.close();
+                    outFile.close();
                 }
+            }
         } catch(FileNotFoundException e){
             System.out.println("! One of the expected files has not been found. Please ensure you have entered the correct path to your" +
                     " input file, as well as your template file.");
