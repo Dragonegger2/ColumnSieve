@@ -7,7 +7,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eff5a39f-e168-4d6a-a1e2-1a07c17693e0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/logic/XLSFileCommands.class" afterPath="$PROJECT_DIR$/production/colSieve/logic/XLSFileCommands.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -42,8 +41,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/colSieve/main/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2414" max-vertical-offset="2754">
-              <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1887" max-vertical-offset="2754">
+              <caret line="114" column="70" selection-start-line="114" selection-start-column="70" selection-end-line="114" selection-end-column="70" />
               <folding />
             </state>
           </provider>
@@ -52,7 +51,7 @@
       <file leaf-file-name="ColSieve.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/colSieve/logic/ColSieve.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="901" max-vertical-offset="1275">
+            <state vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="1275">
               <caret line="236" column="0" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
               <folding>
                 <element signature="method#setRunFlag#0;class#ColSieve#0" expanded="false" />
@@ -87,13 +86,11 @@
       <file leaf-file-name="XLSFileCommands.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.1875" vertical-offset="0" max-vertical-offset="697">
-              <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.8161765" vertical-offset="6781" max-vertical-offset="7616">
+              <caret line="425" column="79" selection-start-line="425" selection-start-column="79" selection-end-line="425" selection-end-column="79" />
               <folding>
-                <element signature="e#0#22120#0" expanded="true" />
+                <element signature="e#0#22801#0" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -102,8 +99,8 @@
       <file leaf-file-name="XLSXFileCommands.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1717" max-vertical-offset="2261">
-              <caret line="98" column="185" selection-start-line="98" selection-start-column="185" selection-end-line="98" selection-end-column="185" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding>
                 <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
               </folding>
@@ -603,12 +600,18 @@
       <option name="project" value="LOCAL" />
       <updated>1429301332639</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="XLSFileCommands -&gt; Support for additional .XLS fields added; successfully mapped test data / test row data">
+      <created>1429646730032</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1429646730032</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1929" y="-199" width="1938" height="1098" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.08502674" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -625,7 +628,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3913502" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14973262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14973262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-967" y="-69" width="617" height="948" />
@@ -656,11 +659,12 @@
     <MESSAGE value="XLSFileCommands -&gt; compareHeader function -&gt; implementing 'unknown' header value support" />
     <MESSAGE value="XLSFileCommands -&gt; updated compareHeader functionality to support multiple template field names; checks the header row first before checking any other additional data stored in later rows" />
     <MESSAGE value="XLSFileCommands -&gt; working on mapping fields which are contained in extended field data" />
-    <option name="LAST_COMMIT_MESSAGE" value="XLSFileCommands -&gt; working on mapping fields which are contained in extended field data" />
+    <MESSAGE value="XLSFileCommands -&gt; Support for additional .XLS fields added; successfully mapped test data / test row data" />
+    <option name="LAST_COMMIT_MESSAGE" value="XLSFileCommands -&gt; Support for additional .XLS fields added; successfully mapped test data / test row data" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="197" />
+      <option name="time" value="199" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -682,10 +686,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="6375">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -705,10 +707,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3723">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -718,10 +718,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3179">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -741,10 +739,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="3179">
           <caret line="142" column="38" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -764,10 +760,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4522">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -787,10 +781,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4522">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -810,10 +802,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4321" max-vertical-offset="5236">
           <caret line="373" column="54" selection-start-line="373" selection-start-column="54" selection-end-line="373" selection-end-column="54" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -833,10 +823,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3128">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -856,10 +844,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3179">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -879,10 +865,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="527">
           <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -892,10 +876,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -905,10 +887,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -918,10 +898,8 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
           <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1099,10 +1077,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFRow.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.35167465" vertical-offset="380" max-vertical-offset="6103">
+          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1276" max-vertical-offset="2261">
-          <caret line="98" column="185" selection-start-line="98" selection-start-column="185" selection-end-line="98" selection-end-column="185" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2261">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
           <folding>
             <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
           </folding>
@@ -1111,15 +1096,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2414" max-vertical-offset="2907">
-          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1394" max-vertical-offset="2754">
+          <caret line="114" column="70" selection-start-line="114" selection-start-column="70" selection-end-line="114" selection-end-column="70" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/logic/ColSieve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="49" max-vertical-offset="1428">
+        <state vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="1275">
           <caret line="236" column="0" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
           <folding>
             <element signature="method#setRunFlag#0;class#ColSieve#0" expanded="false" />
@@ -1150,22 +1135,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFRow.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35167465" vertical-offset="380" max-vertical-offset="6103">
-          <caret line="54" column="20" selection-start-line="54" selection-start-column="20" selection-end-line="54" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1875" vertical-offset="0" max-vertical-offset="697">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.8161765" vertical-offset="6781" max-vertical-offset="7616">
+          <caret line="425" column="79" selection-start-line="425" selection-start-column="79" selection-end-line="425" selection-end-column="79" />
           <folding>
-            <element signature="e#0#22120#0" expanded="true" />
+            <element signature="e#0#22801#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
         </state>
       </provider>

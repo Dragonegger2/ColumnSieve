@@ -148,7 +148,6 @@ public class XLSFileCommands {
                                     if (currentCell != null && compareVal.equals(currentCell.getStringCellValue())) {
                                         unknownBool = false;
                                         myHeaderVal.put(currentCell.getColumnIndex(), compareVal);
-                                        break;
                                     }
                                     //If the value is already known, break from the current value
                                     if (!unknownBool) {
@@ -166,7 +165,8 @@ public class XLSFileCommands {
                     System.out.println();
 
                     if(unknownHeaderVal.size()!=0){
-                        System.out.println("> The tool has located the following unknown fields:\n");
+                        compareResult = "-1";
+                        System.out.println("> The tool has detected the following unknown fields:\n");
                         for(int i = 0; i < lastCol; i++){
                             if(unknownHeaderVal.get(i)!=null) {
                                 System.out.println("\t> Column Value: " + unknownHeaderVal.get(i));
@@ -314,8 +314,9 @@ public class XLSFileCommands {
                 Cell headerValue;
                 Row outRow;
                 Cell outCell;
+                compareHeader(input, inputSheet, template, runMode);
 
-                if (compareHeader(input, inputSheet, template, runMode).contains("1")) {
+                if (compareResult.equals("1")) {
                     //Set the output sheet to contain the correct number of rows
                     for (int j = 1; j <= numRows; j++) {
                         outSheet.createRow(j);
@@ -414,6 +415,16 @@ public class XLSFileCommands {
                     inFile.close();
                     templateFile.close();
                     outFile.close();
+                } else if(compareResult.equals("-1")){
+                    //Create a function in ColSieve for capturing this input /
+                    //writing these lines to console. Create functions in File
+                    //Command objects for each option.
+                    System.out.println("> How would you like to proceed?");
+                    System.out.println(">");
+                    System.out.println(">\t 1. Abort");
+                    System.out.println(">\t 2. Add additional field definition");
+                    System.out.println(">\t 3. Create a new template file\n>");
+                    System.out.print("\t>");
                 }
             }
         } catch(FileNotFoundException e){
