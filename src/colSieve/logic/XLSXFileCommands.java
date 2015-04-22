@@ -137,7 +137,7 @@ public class XLSXFileCommands {
         return compareResult;
     }
 
-    public void mapColumnData(String input, String inputSheet, String template, String output, Boolean runMode){
+    public void mapColumnData(String input, String inputSheet, String template, String output, Boolean runMode, ColSieve userInput){
         try{
             //Create input streams
             FileInputStream inFile = new FileInputStream(input);
@@ -318,5 +318,17 @@ public class XLSXFileCommands {
             System.out.println("! Application terminated abnormally");
             System.exit(-1);
         }
+    }
+
+    public void addDefinition(){
+
+    }
+
+    public void deleteColumn(){
+
+    }
+
+    public void createTemplate(String newName, ColSieve userInput) throws IOException{
+
     }
 }

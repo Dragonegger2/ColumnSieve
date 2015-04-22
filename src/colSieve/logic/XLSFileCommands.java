@@ -28,13 +28,13 @@ public class XLSFileCommands {
 
     private String compareResult = "";
     
-    public String compareHeader(String input, String inputSheet, String template, Boolean runMode){
+    public String compareHeader(ColSieve userInput){
         try{
             //Excel file input stream information
-            FileInputStream inFile = new FileInputStream(input);
+            FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
             HSSFWorkbook myBook = new HSSFWorkbook(inFile);
-            HSSFSheet mySheet = myBook.getSheet(inputSheet);
-            FileInputStream templateFile = new FileInputStream(template);
+            HSSFSheet mySheet = myBook.getSheet(userInput.getConsoleInSheet());
+            FileInputStream templateFile = new FileInputStream(userInput.getConsoleTemplateFile());
             HSSFWorkbook templateBook = new HSSFWorkbook(templateFile);
             HSSFSheet templateSheet = templateBook.getSheet("Sheet1");
 
@@ -54,8 +54,8 @@ public class XLSFileCommands {
             int lastTemplateRow = templateSheet.getLastRowNum();
 
             //Get file names for use with return strings
-            String inFileName = input;
-            String templateFileName = template;
+            String inFileName = userInput.getConsoleInFile();
+            String templateFileName = userInput.getConsoleTemplateFile();
 
             while(inFileName.contains("/")){
                 inFileName = inFileName.substring(inFileName.indexOf("/")+1);
@@ -156,6 +156,7 @@ public class XLSFileCommands {
                                 }
                             }
                             //If a value is unknown, enter it into the unknownHeaderVal list.
+                            //and remove it from the myHeaderVal list
                             if (unknownBool) {
                                 unknownHeaderVal.put(j, compareVal);
                             }
@@ -173,6 +174,12 @@ public class XLSFileCommands {
                             }
                         }
                         System.out.println();
+                        if(!userInput.getRunMode()) {
+                            System.out.println("! The input file contains unknown fields.");
+                            System.out.println("! All fields must be known before attempting to map a file via the command line.");
+                            System.out.println("! Application terminated abnormally.\n");
+                            System.exit(-1);
+                        }
                     }
                 } else {
                     //Add string stating that file is correctly mapped to the compareResult
@@ -180,7 +187,7 @@ public class XLSFileCommands {
                     System.out.println("\t> All columns from input file \"" + inFileName + "\" are in the correct location as determined by template file \"" + templateFileName + "\".\n");
                 }
             } else if(lastTemplateCol < lastCol){
-                if(runMode) {
+                if(userInput.getRunMode()) {
                     System.out.println("! The selected input file contains more than the expected number of columns.\n");
                 }else {
                     System.out.println("! The selected input file contains more than the expected number of columns.");
@@ -188,7 +195,7 @@ public class XLSFileCommands {
                     System.exit(-1);
                 }
             } else if(lastTemplateCol > lastCol){
-                if(runMode) {
+                if(userInput.getRunMode()) {
                     System.out.println("! The selected input file contains less than the expected number of columns.\n");
                 }else {
                     System.out.println("! The selected input file contains more than the expected number of columns.");
@@ -202,7 +209,7 @@ public class XLSFileCommands {
             templateFile.close();
             //end Try block
         } catch(FileNotFoundException e){
-            if(runMode) {
+            if(userInput.getRunMode()) {
                 System.out.println("! One or more of the files have not been found.");
                 System.out.println("! Please double check your file locations before trying again!\n");
             }else{
@@ -211,20 +218,23 @@ public class XLSFileCommands {
                 System.exit(-1);
             }
         } catch(IOException e){
-            System.out.println("! One or more of the files have not been found.");
+            System.out.println("! Java has encountered an IO exception.");
             System.out.println("! Application terminated abnormally.\n");
             System.exit(-1);
         }
         return compareResult;
     }
 
-    public void mapColumnData(String input, String inputSheet, String template, String output, Boolean runMode){
+    public void mapColumnData(ColSieve userInput){
         try{
+            //Compare header values
+            compareHeader(userInput);
+
             //Create input streams
-            FileInputStream inFile = new FileInputStream(input);
+            FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
             HSSFWorkbook myBook = new HSSFWorkbook(inFile);
-            HSSFSheet mySheet = myBook.getSheet(inputSheet);
-            FileInputStream templateFile = new FileInputStream(template);
+            HSSFSheet mySheet = myBook.getSheet(userInput.getConsoleInSheet());
+            FileInputStream templateFile = new FileInputStream(userInput.getConsoleTemplateFile());
             HSSFWorkbook templateBook = new HSSFWorkbook(templateFile);
             HSSFSheet templateSheet = templateBook.getSheet("Sheet1");
 
@@ -239,9 +249,9 @@ public class XLSFileCommands {
             int numRows = mySheet.getLastRowNum();
 
             //Get file names for use with return strings
-            String inFileName = input;
-            String templateFileName = template;
-            String outFileName = output;
+            String inFileName = userInput.getConsoleInFile();
+            String templateFileName = userInput.getConsoleTemplateFile();
+            String outFileName = userInput.getConsoleOutFile();
 
             while(inFileName.contains("\\")){
                 inFileName = inFileName.substring(inFileName.indexOf("\\")+1);
@@ -255,20 +265,12 @@ public class XLSFileCommands {
                 outFileName = outFileName.substring(outFileName.indexOf("\\")+1);
             }
 
-            String outPath = output.substring(0,(output.length()-outFileName.length()));
+            String outPath = userInput.getConsoleOutFile().substring(0, (userInput.getConsoleOutFile().length()-outFileName.length()));
 
 
-
-            //Output workbook
-            Workbook outBook = new HSSFWorkbook();
-
-            //Check to ensure that the output file type matches the input file type
-            outFileName = outFileName.toLowerCase();
-            inFileName = inFileName.toLowerCase();
             if(!(outFileName.substring(outFileName.indexOf(".xls")).equals(inFileName.substring(inFileName.indexOf(".xls"))))){
-
                 //If the program is running in command line mode, the program will terminate
-                if(!runMode) {
+                if(!userInput.getRunMode()) {
                     System.out.println("! The output file type does not match the input file type.");
                     System.out.println("! Please ensure that all your file types match before trying again.");
                     System.out.println("! Application terminated abnormally.\n");
@@ -279,44 +281,38 @@ public class XLSFileCommands {
                     System.out.println("! Please ensure that all your file types match before trying again.\n");
                 }
             } else {
-
-                //Create file objects to confirm output path / file existence
-                File myPath = new File(outPath);
-                File myFile = new File(output);
-
-                //Make sure output directory exists
-                //If it does not, create it
-                if (!myPath.exists()) {
-                    System.out.println("\t! Output directory \"" + outPath + "\" has not been found.");
-                    new File(outPath).mkdirs();
-                    System.out.println("\t> Directory \"" + outPath + "\" has been successfully created.\n");
-                }
-
-                //Make sure the output file creates
-                //If it does not, create it
-                if (!myFile.exists()) {
-                    System.out.println("\t! Output file \"" + outFileName + "\" has not been found.");
-                    myFile.createNewFile();
-                    System.out.println("\t> File \"" + output + "\" has been successfully created.\n");
-                }
-
-                FileOutputStream outFile = new FileOutputStream(output);
-                Sheet outSheet = outBook.createSheet(inputSheet);
-                Row outHeader = outSheet.createRow(0);
-
-                //create all the empty cells necessary to create the
-                //output header row
-                /*for(int i = 0; i < numColumns; i++){
-                    outHeader.createCell(i);
-                }*/
-
-                //Empty Excel objects
-                Cell headerValue;
-                Row outRow;
-                Cell outCell;
-                compareHeader(input, inputSheet, template, runMode);
-
                 if (compareResult.equals("1")) {
+                    //Create file objects to confirm output path / file existence
+                    File myPath = new File(outPath);
+                    File myFile = new File(userInput.getConsoleOutFile());
+
+                    //Make sure output directory exists
+                    //If it does not, create it
+                    if (!myPath.exists()) {
+                        System.out.println("\t! Output directory \"" + outPath + "\" has not been found.");
+                        new File(outPath).mkdirs();
+                        System.out.println("\t> Directory \"" + outPath + "\" has been successfully created.\n");
+                    }
+
+                    //Make sure the output file creates
+                    //If it does not, create it
+                    if (!myFile.exists()) {
+                        System.out.println("\t! Output file \"" + outFileName + "\" has not been found.");
+                        myFile.createNewFile();
+                        System.out.println("\t> File \"" + userInput.getConsoleOutFile() + "\" has been successfully created.\n");
+                    }
+
+                    //Output workbook
+                    Workbook outBook = new HSSFWorkbook();
+                    FileOutputStream outFile = new FileOutputStream(userInput.getConsoleOutFile());
+                    Sheet outSheet = outBook.createSheet(userInput.getConsoleInSheet());
+                    Row outHeader = outSheet.createRow(0);
+
+                    //Empty Excel objects
+                    Cell headerValue;
+                    Row outRow;
+                    Cell outCell;
+
                     //Set the output sheet to contain the correct number of rows
                     for (int j = 1; j <= numRows; j++) {
                         outSheet.createRow(j);
@@ -359,7 +355,6 @@ public class XLSFileCommands {
                                     outCell.setCellValue("");
                                 }
                             }
-
                             //If the input header does not equal the template header
                         } else {
                             for (int k = 0; k < myHeaderVal.size(); k++) {
@@ -404,9 +399,9 @@ public class XLSFileCommands {
                     //Write output file
                     try {
                         outBook.write(outFile);
-                        System.out.println("> A new file has been created at the location: " + output + "\n");
+                        System.out.println("> A new file has been created at the location: " + userInput.getConsoleOutFile() + "\n");
                     } catch (Throwable e) {
-                        System.out.println("! The system encountered an error while trying to create the output file: " + output);
+                        System.out.println("! The system encountered an error while trying to create the output file: " + userInput.getConsoleOutFile());
                         System.out.println("! Application terminated abnormally");
                         System.exit(-1);
                     }
@@ -415,16 +410,8 @@ public class XLSFileCommands {
                     inFile.close();
                     templateFile.close();
                     outFile.close();
-                } else if(compareResult.equals("-1")){
-                    //Create a function in ColSieve for capturing this input /
-                    //writing these lines to console. Create functions in File
-                    //Command objects for each option.
-                    System.out.println("> How would you like to proceed?");
-                    System.out.println(">");
-                    System.out.println(">\t 1. Abort");
-                    System.out.println(">\t 2. Add additional field definition");
-                    System.out.println(">\t 3. Create a new template file\n>");
-                    System.out.print("\t>");
+                } else if(compareResult.equals("-1") && userInput.getRunMode()){
+                    userInput.unknownField();
                 }
             }
         } catch(FileNotFoundException e){
@@ -433,10 +420,84 @@ public class XLSFileCommands {
             System.out.println("! Application terminated abnormally");
             System.exit(-1);
         } catch(IOException e){
-            System.out.println("\n! A general IO Exception has occurred while trying to process the list: " + input);
+            System.out.println("\n! A general IO Exception has occurred while trying to process the list: " + userInput.getConsoleInFile());
             System.out.println("! Application terminated abnormally");
             System.exit(-1);
         }
+    }
+
+    public void addDefinition(){
+
+    }
+
+    public void deleteColumn(){
+
+    }
+
+    public void createTemplate(String newName, ColSieve userInput) throws IOException{
+        //Empty existing myHeaderVal data
+        myHeaderVal = new LinkedHashMap<Integer, String>();
+
+        //Set path variables
+        String input = userInput.getConsoleInFile();
+        String sheet = userInput.getConsoleInSheet();
+
+        //Get the output file name
+        String outName = newName;
+        while(outName.contains("\\")){
+            outName = outName.substring(outName.indexOf("\\")+1);
+        }
+
+        //Path variable to confirm output directory exists
+        String newPath = newName.substring(0, (newName.length()-outName.length()));
+
+        //Excel file input stream information
+        FileInputStream inFile = new FileInputStream(input);
+        HSSFWorkbook myBook = new HSSFWorkbook(inFile);
+        HSSFSheet mySheet = myBook.getSheet(sheet);
+        HSSFRow myRow = mySheet.getRow(0);
+        HSSFCell myCell;
+        int lastCol = myRow.getLastCellNum();
+
+        //Get all the header cell values
+        for(int i = 0; i < lastCol; i++){
+            myCell = myRow.getCell(i);
+            myHeaderVal.put(i,myCell.getStringCellValue());
+        }
+
+        //Validate that the output directory / file
+        //exists. If they do not, create them
+        File myPath = new File(newPath);
+        File myFile = new File(newName);
+
+        if (!myPath.exists()) {
+            System.out.println("\t! Output directory \"" + newPath + "\" has not been found.");
+            new File(newPath).mkdirs();
+            System.out.println("\t> Directory \"" + newPath + "\" has been successfully created.\n");
+        }
+
+        if (!myFile.exists()) {
+            System.out.println("\t! Output file \"" + newName + "\" has not been found.");
+            myFile.createNewFile();
+            System.out.println("\t> File \"" + newName + "\" has been successfully created.\n");
+        }
+
+        //Output workbook
+        Workbook outBook = new HSSFWorkbook();
+        FileOutputStream outFile = new FileOutputStream(newName);
+        Sheet outSheet = outBook.createSheet(sheet);
+        Row outRow = outSheet.createRow(0);
+        Cell outCell;
+
+        for(int i = 0; i < myHeaderVal.size(); i++){
+            outCell = outRow.createCell(i);
+            outCell.setCellValue(myHeaderVal.get(i));
+        }
+
+        outBook.write(outFile);
+
+        outFile.close();
+        inFile.close();
     }
 
 

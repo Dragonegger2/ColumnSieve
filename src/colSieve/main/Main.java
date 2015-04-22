@@ -24,9 +24,6 @@ public class Main {
             System.out.println("\n>> Welcome to the Column Sieve tool!");
             System.out.println();
 
-            //Buffered reader for input
-            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
             //Initialize ColSieve object / runFlag
             ColSieve me = new ColSieve();
             me.setRunFlag("TRUE");
@@ -54,7 +51,10 @@ public class Main {
                         if(cmdFileType.toLowerCase().equals(".xls")){                   // <---- XLS Files
                             try {
                                 XLSFileCommands fileCommand = new XLSFileCommands();
-                                fileCommand.compareHeader(args[0], args[1], args[2], me.getRunMode());
+                                me.setConsoleInFile(args[0]);
+                                me.setConsoleInSheet(args[1]);
+                                me.setConsoleTemplateFile(args[2]);
+                                fileCommand.compareHeader(me);
                             }catch(POIXMLException e){
                                 System.out.println("! One or more of the files supplied was not in the expected file type.");
                                 System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
@@ -103,10 +103,14 @@ public class Main {
                         //Create the correct File Command object, then call function
                         if(cmdFileType.toLowerCase().equals(".xls")){                   // <---- XLS Files
                             XLSFileCommands fileCommand = new XLSFileCommands();
-                            fileCommand.mapColumnData(args[0], args[1], args[2], args[3], me.getRunMode());
+                            me.setConsoleInFile(args[0]);
+                            me.setConsoleInSheet(args[1]);
+                            me.setConsoleTemplateFile(args[2]);
+                            me.setConsoleOutFile(args[3]);
+                            fileCommand.mapColumnData(me);
                         } else if(cmdFileType.toLowerCase().equals("xlsx")){            // <---- XLSX Files
                             XLSXFileCommands fileCommand = new XLSXFileCommands();
-                            fileCommand.mapColumnData(args[0], args[1], args[2], args[3], me.getRunMode());
+                            fileCommand.mapColumnData(args[0], args[1], args[2], args[3], me.getRunMode(), me);
                         } else if(cmdFileType.toLowerCase().equals(".csv")){
                             //Initialize CSV file command object
                         } else if(cmdFileType.toLowerCase().equals(".txt")){
@@ -144,22 +148,17 @@ public class Main {
                     me.setConsoleInSheet("NaN");
                     me.setConsoleTemplateFile("NaN");
                     me.setConsoleOutFile("NaN");
-                    me.run(me, br);
+                    me.run(me);
                 }
             }
 
             //Redundant call to setRunFlag
             //Ensures that the program will not run again, for any reason
             me.setRunFlag("FALSE");
-            br.close();
             System.exit(0);
         } catch (UnsupportedFileFormatException e) {
             System.out.println("! You have entered an unsupported file type.");
             System.out.println("! Please refer to the /help section for information regarding supported file types.");
-            System.out.println("! Application terminated abnormally.");
-            System.exit(-1);
-        } catch (IOException e) {
-            System.out.println("! Error capturing file command.");
             System.out.println("! Application terminated abnormally.");
             System.exit(-1);
         }

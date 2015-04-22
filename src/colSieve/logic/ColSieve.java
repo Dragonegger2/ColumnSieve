@@ -16,11 +16,20 @@ import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
 
 public class ColSieve {
+
+    //BufferedReader for user input
+    private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+    //Empty File Command objects
+    private XLSFileCommands xlsFileCommands;
+    private XLSXFileCommands xlsxFileCommands;
 
     //Boolean variable used to terminate the program
     private Boolean runFlag, runMode;
@@ -247,13 +256,12 @@ public class ColSieve {
         return this.helpCommand;
     }
 
-    public void run(ColSieve me, BufferedReader br) {
+    public void run(ColSieve me) {
         /* ***
         Called from main to initialize the tool
-        @PARAM - <COLSIEVE> <BUFFEREDREADER>
+        @PARAM - <COLSIEVE>
             -> @1 - A new UserInput object which contains information pertaining
                     to the current file.
-            -> @2 - BufferedReader which will capture user input from console.
         @RETURN -
 
         @EXIT -
@@ -275,44 +283,44 @@ public class ColSieve {
         //Try block to set the command variable
         try {
             consoleFileCommand = br.readLine();
+
+            //Logic to initialize the proper command object
+            if (consoleFileCommand.equals("1")) {
+                System.out.println();
+                System.out.println("> You have selected: Compare Data Layout");
+                consoleFileCommand = "compareHeader";
+                compareDataLayout();
+            } else if (consoleFileCommand.equals("2")) {
+                System.out.println();
+                System.out.println("> You have selected: Sieve Columns");
+                consoleFileCommand = "mapColumnData";
+                sieveColumns();
+            } else if (consoleFileCommand.toLowerCase().equals("help")) {
+                System.out.println();
+                help();
+            } else if (consoleFileCommand.toLowerCase().equals("exit")) {
+                System.out.println();
+                System.out.println("> Goodbye!");
+                br.close();
+                me.setRunFlag("FALSE");
+            } else {
+                System.out.println();
+                System.out.println("> Please select an item from the list provided.");
+                System.out.println();
+                run(me);
+            }
         } catch (IOException e) {
             System.out.println("! Java has encountered an IO exception.");
             System.out.println("! Application terminated abnormally.");
             System.exit(-1);
         }
-
-        //Logic to initialize the proper command object
-        if (consoleFileCommand.equals("1")) {
-            System.out.println();
-            System.out.println("> You have selected: Compare Data Layout");
-            consoleFileCommand = "compareHeader";
-            compareDataLayout(br);
-        } else if (consoleFileCommand.equals("2")) {
-            System.out.println();
-            System.out.println("> You have selected: Sieve Columns");
-            consoleFileCommand = "mapColumnData";
-            sieveColumns(br);
-        } else if (consoleFileCommand.toLowerCase().equals("help")) {
-            System.out.println();
-            help(br);
-        } else if (consoleFileCommand.toLowerCase().equals("exit")) {
-            System.out.println();
-            System.out.println("> Goodbye!");
-            me.setRunFlag("FALSE");
-        } else {
-            System.out.println();
-            System.out.println("> Please select an item from the list provided.");
-            System.out.println();
-            run(me,br);
-        }
     }
 
-    public void help(BufferedReader br){
+    public void help(){
         /* ***
         Called from UserInput.run(<ColSieve> <BufferedReader>) in order to initialize
         the help module.
-        @PARAM - <BUFFEREDREADER>
-            -> @1 - BufferedReader which will capture user input from console.
+        @PARAM -
         @RETURN -
 
         @EXIT -
@@ -365,15 +373,14 @@ public class ColSieve {
             System.out.println("\n\t> Please select one of the menu items.\n");
 
             //Bounce back into help
-            help(br);
+            help();
         }
     }
 
-    public void compareDataLayout(BufferedReader br){
+    public void compareDataLayout(){
         /* ***
         Prompts the user to enter the necessary data for a call to FileCommands.compareHeader()
-        @PARAM - <BUFFEREDREADER>
-            -> @1 - BufferedReader which will capture user input from console
+        @PARAM -
         @RETURN -
 
         @EXIT -
@@ -391,7 +398,7 @@ public class ColSieve {
             //Catch empty sheet variable
             if(consoleInSheet.equals("")){
                 System.out.println("\t\t! No value for <inputSheetName> detected.");
-                System.out.println("\t\t> File will use default: \"Sheet1\".");
+                System.out.println("\t\t\t> File will use default: \"Sheet1\".");
                 consoleInSheet = "Sheet1";
             }
             System.out.print("\t> Enter <templateFile>: ");
@@ -399,7 +406,7 @@ public class ColSieve {
             System.out.println();
 
             //Call fileType() in order to proceed with the process
-            fileType(br);
+            fileType();
         } catch (IOException e){
             System.out.println("! Java has encountered an IO exception.");
             System.out.println("! Application terminated abnormally.");
@@ -407,11 +414,10 @@ public class ColSieve {
         }
     }
 
-    public void sieveColumns(BufferedReader br){
+    public void sieveColumns(){
         /* ***
         Prompts the user to enter the necessary data for a call to FileCommands.mapColumnData()
-        @PARAM - <BUFFEREDREADER>
-            -> @1 - BufferedReader which will capture user input from console
+        @PARAM -
         @RETURN -
 
         @EXIT -
@@ -429,7 +435,7 @@ public class ColSieve {
             //Catch empty sheet variable
             if(consoleInSheet.equals("")){
                 System.out.println("\t\t! No value for <inputSheetName> detected.");
-                System.out.println("\t\t> File will use default: \"Sheet1\".");
+                System.out.println("\t\t\t> File will use default: \"Sheet1\".");
                 consoleInSheet = "Sheet1";
             }
             System.out.print("\t> Enter <templateFile>: ");
@@ -442,13 +448,13 @@ public class ColSieve {
                 System.out.println("\t\t> File will default to output location: ");
                 Date currentDate = new Date();
                 DateFormat format = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss");
-                System.out.println("\t> C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".XLS");
-                consoleOutFile = "C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".XLS";
+                System.out.println("\t\t\t> C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xls");
+                consoleOutFile = "C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xls";
             }
             System.out.println();
 
             //Call fileType() in order to proceed with the process
-            fileType(br);
+            fileType();
         } catch (IOException e){
             System.out.println("! Java has encountered an IO exception.");
             System.out.println("! Application terminated abnormally.");
@@ -456,14 +462,13 @@ public class ColSieve {
         }
     }
 
-    public void fileType(BufferedReader br) {
+    public void fileType() {
         /* ***
-        Called from UserInput.compareDataLayout(<BufferedReader>) or
-        UserInput.sieveColumns(<BufferedReader>) in order to determine the
+        Called from ColSieve.compareDataLayout() or
+        ColSieve.sieveColumns() in order to determine the
         file type the system should be using.
         the help module.
-        @PARAM - <BUFFEREDREADER>
-            -> @1 - BufferedReader which will capture user input from console.
+        @PARAM -
         @RETURN -
 
         @EXIT -
@@ -493,53 +498,52 @@ public class ColSieve {
         //Logic to initialize the proper file type
         if (consoleFileType.equals("1")) {
             this.consoleFileType = "XLS";
-            execute(this.consoleFileType, br);
+            execute(this.consoleFileType);
         } else if (consoleFileType.equals("2")) {
             this.consoleFileType = "XLSX";
-            execute(this.consoleFileType, br);
+            execute(this.consoleFileType);
         } else if (consoleFileType.equals("3")) {
             this.consoleFileType = "CSV";
-            execute(this.consoleFileType, br);
+            execute(this.consoleFileType);
         } else if (consoleFileType.equals("4")) {
             this.consoleFileType = "TXT";
-            execute(this.consoleFileType, br);
+            execute(this.consoleFileType);
         } else {
             System.out.println();
             System.out.println("> Please select an item from the list provided.");
             System.out.println();
-            fileType(br);
+            fileType();
         }
     }
 
-    public void execute(String fileType, BufferedReader br) {
+    public void execute(String fileType) {
         /* ***
-        Called from UserInput.fileType(<BufferedReader>) to create the correct
+        Called from ColSieve.fileType() to create the correct
         FileCommand object and call for the data list.
-        @PARAM - <STRING> <BUFFEREDREADER>
+        @PARAM - <STRING>
             -> @1 - String which represents file type.
-            -> @2 - BufferedReader which will capture user input from console.
         @RETURN -
 
         @EXIT -
-            -> @1 - If an unsupported file type, call UserInput.fileType(<BufferedReader>)
+            -> @1 - If an unsupported file type, call ColSieve.fileType()
             -> @2 - Return to main
         @THROWS -
-            -> @1 - POIXMLException / OfficeXmlFileException; calls UserInput.run(<BufferedReader>)
+            -> @1 - POIXMLException / OfficeXmlFileException; calls ColSieve.run()
         *** */
 
         try {
             //XLS Files
             if (fileType.equals("XLS")) {
                 System.out.println();
-                XLSFileCommands xlsFileCommands = new XLSFileCommands();
+                xlsFileCommands = new XLSFileCommands();
                 System.out.println("\t> new XLSFileCommands object created");
                 System.out.println();
 
                 //Determine the proper file command
                 if (this.consoleFileCommand.equals("compareHeader")) {
-                    xlsFileCommands.compareHeader(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.runMode);
+                    xlsFileCommands.compareHeader(this);
                 } else if (this.consoleFileCommand.equals("mapColumnData")) {
-                    xlsFileCommands.mapColumnData(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.consoleOutFile, this.runMode);
+                    xlsFileCommands.mapColumnData(this);
                 } else {
                     System.out.println("! An unknown error has occurred.");
                     System.out.println("! Application terminated abnormally.");
@@ -548,7 +552,7 @@ public class ColSieve {
                 //XLSX Files
             } else if (fileType.equals("XLSX")) {
                 System.out.println();
-                XLSXFileCommands xlsxFileCommands = new XLSXFileCommands();
+                xlsxFileCommands = new XLSXFileCommands();
                 System.out.println("\t> new XLSXFileCommands object created");
                 System.out.println();
 
@@ -556,7 +560,7 @@ public class ColSieve {
                 if (this.consoleFileCommand.equals("compareHeader")) {
                     xlsxFileCommands.compareHeader(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.runMode);
                 } else if (this.consoleFileCommand.equals("mapColumnData")) {
-                    xlsxFileCommands.mapColumnData(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.consoleOutFile, this.runMode);
+                    xlsxFileCommands.mapColumnData(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.consoleOutFile, this.runMode, this);
                 } else {
                     System.out.println("! An unknown error has occurred.");
                     System.out.println("! Application terminated abnormally.");
@@ -566,22 +570,108 @@ public class ColSieve {
                 System.out.println();
                 System.out.println("> Support for CSV files has not yet been implemented. Check back later!");
                 System.out.println();
-                fileType(br);
+                fileType();
                 //TXT Files
             } else if (fileType.equals("TXT")) {
                 System.out.println();
                 System.out.println("> Support for TXT files has not yet been implemented. Check back later!");
                 System.out.println();
-                fileType(br);
+                fileType();
             }
         }catch(POIXMLException e){
             System.out.println("! One or more of the files supplied was not in the expected file type.");
             System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.\n");
-            run(this,br);
+            run(this);
         }catch(OfficeXmlFileException e){
             System.out.println("! One or more of the files supplied was not in the expected file type.");
             System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.\n");
-            run(this,br);
+            run(this);
+        }
+    }
+
+    public void unknownField(){
+        /* ***
+        Called from a File Command object when an
+        unknown field description has been detected
+        @PARAM -
+        @RETURN -
+
+        @EXIT -
+
+        @THROWS -
+            -> @1 - IOException
+        *** */
+        try {
+            System.out.println("> How would you like to proceed?");
+            System.out.println(">");
+            System.out.println(">\t 1. Abort");
+            System.out.println(">\t 2. Add additional field definition(s)");
+            System.out.println(">\t 3. Delete unknown field(s)");
+            System.out.println(">\t 4. Create a new template file\n>");
+            System.out.print("\t> ");
+            String unknownCommand = br.readLine();
+
+            if(unknownCommand.equals("1")){
+                System.out.println("\n> You have opted to abort the current attempt to sieve the input columns.\n");
+            }else if(unknownCommand.equals("2")){
+                System.out.println("\n> You have opted to add the unknown field(s) to the template file.\n");
+                if(consoleFileType.equals("XLS")){
+                    xlsFileCommands.addDefinition();
+                }else if(consoleFileType.equals("XLSX")){
+                    xlsxFileCommands.addDefinition();
+                }
+            }else if(unknownCommand.equals("3")){
+                System.out.println("\n> You have opted to delete the unknown field(s).\n");
+                if(consoleFileType.equals("XLS")){
+                    xlsFileCommands.deleteColumn();
+                }else if(consoleFileType.equals("XLSX")){
+                    xlsxFileCommands.deleteColumn();
+                }
+            }else if(unknownCommand.equals("4")){
+                System.out.println("\n> You have opted to create a new template file containing the unknown field(s).\n");
+                newTemplateInfo();
+            }else{
+                System.out.println("\n> Please select an item from the list.\n");
+                unknownField();
+            }
+
+        }catch(IOException e){
+            System.out.println("! Java has encountered an IO exception.");
+            System.out.println("! Application terminated abnormally.\n");
+            System.exit(-1);
+        }
+    }
+
+    public void newTemplateInfo(){
+        try {
+            System.out.print("\t> Please enter a new file name: ");
+            String newTemplateName = br.readLine();
+
+            if (consoleFileType.equals("XLS")) {
+                if(newTemplateName.equals("")){
+                    System.out.println("\t\t! No value for <newTemplateFile> detected.");
+                    System.out.println("\t\t> File name will default to: ");
+                    Date currentDate = new Date();
+                    DateFormat format = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss");
+                    System.out.println("\t\t\t> Column_Sieve_NEW_TEMPLATE_" + format.format(currentDate) + ".xls");
+                    newTemplateName = "Column_Sieve_NEW_TEMPLATE_" + format.format(currentDate) + ".xls";
+                }
+                xlsFileCommands.createTemplate(newTemplateName,this);
+            } else if (consoleFileType.equals("XLSX")) {
+                if(newTemplateName.equals("")){
+                    System.out.println("\t\t! No value for <newTemplateFile> detected.");
+                    System.out.println("\t\t> File name will default to: ");
+                    Date currentDate = new Date();
+                    DateFormat format = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss");
+                    System.out.println("\t\t\t> Column_Sieve_NEW_TEMPLATE_" + format.format(currentDate) + ".XLSX");
+                    newTemplateName = "Column_Sieve_NEW_TEMPLATE_" + format.format(currentDate) + ".XLSX";
+                }
+                xlsxFileCommands.createTemplate(newTemplateName,this);
+            }
+        }catch(IOException e){
+            System.out.println("! Java has encountered an IO exception.");
+            System.out.println("! Application terminated abnormally.\n");
+            System.exit(-1);
         }
     }
 
