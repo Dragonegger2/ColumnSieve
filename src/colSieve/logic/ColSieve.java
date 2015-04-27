@@ -539,15 +539,7 @@ public class ColSieve {
                 System.out.println("\t> new XLSFileCommands object created");
                 System.out.println();
 
-                //Determine the proper file command
-                if (this.consoleFileCommand.equals("compareHeader")) {
-                    xlsFileCommands.compareHeader(this);
-                } else if (this.consoleFileCommand.equals("mapColumnData")) {
-                    xlsFileCommands.mapColumnData(this);
-                } else {
-                    System.out.println("! An unknown error has occurred.");
-                    System.out.println("! Application terminated abnormally.");
-                }
+                xlsFileCommands.setHeaderRows(this);
 
                 //XLSX Files
             } else if (fileType.equals("XLSX")) {
@@ -607,7 +599,8 @@ public class ColSieve {
             System.out.println(">\t 1. Abort");
             System.out.println(">\t 2. Add additional field definition(s)");
             System.out.println(">\t 3. Delete unknown field(s)");
-            System.out.println(">\t 4. Create a new template file\n>");
+            System.out.println(">\t 4. Create a new template file");
+            System.out.println(">\t 5. Move field(s) to end of file and continue");
             System.out.print("\t> ");
             String unknownCommand = br.readLine();
 
@@ -616,26 +609,37 @@ public class ColSieve {
             }else if(unknownCommand.equals("2")){
                 System.out.println("\n> You have opted to add the unknown field(s) to the template file.\n");
                 if(consoleFileType.equals("XLS")){
-                    xlsFileCommands.addDefinition();
+                    xlsFileCommands.addDefinition(this);
                 }else if(consoleFileType.equals("XLSX")){
-                    xlsxFileCommands.addDefinition();
+                    xlsxFileCommands.addDefinition(this);
                 }
             }else if(unknownCommand.equals("3")){
                 System.out.println("\n> You have opted to delete the unknown field(s).\n");
                 if(consoleFileType.equals("XLS")){
-                    xlsFileCommands.deleteColumn();
+                    xlsFileCommands.deleteColumn(this);
                 }else if(consoleFileType.equals("XLSX")){
-                    xlsxFileCommands.deleteColumn();
+                    xlsxFileCommands.deleteColumn(this);
                 }
             }else if(unknownCommand.equals("4")){
                 System.out.println("\n> You have opted to create a new template file containing the unknown field(s).\n");
                 newTemplateInfo();
+            }else if(unknownCommand.equals("5")){
+                System.out.println("\n> You have opted to move all field(s) to the end of the current input file.\n");
+                if(consoleFileType.equals("XLS")){
+                    xlsFileCommands.mapUnknownColumnToEOF(this);
+                }else if(consoleFileType.equals("XLSX")){
+                    xlsxFileCommands.mapUnknownColumnToEOF(this);
+                }
             }else{
                 System.out.println("\n> Please select an item from the list.\n");
                 unknownField();
             }
 
         }catch(IOException e){
+            System.out.println("! Java has encountered an IO exception.");
+            System.out.println("! Application terminated abnormally.\n");
+            System.exit(-1);
+        }catch(InterruptedException e){
             System.out.println("! Java has encountered an IO exception.");
             System.out.println("! Application terminated abnormally.\n");
             System.exit(-1);
@@ -673,6 +677,21 @@ public class ColSieve {
             System.out.println("! Application terminated abnormally.\n");
             System.exit(-1);
         }
+    }
+
+    public Integer defineNewField(){
+        String in;
+        Integer newIndex = 0;
+
+        try {
+            in = br.readLine();
+            newIndex = Integer.parseInt(in);
+        }catch(IOException e){
+            System.out.println("! Java has encountered an IO exception.");
+            System.out.println("! Application terminated abnormally.\n");
+            System.exit(-1);
+        }
+        return newIndex;
     }
 
 }

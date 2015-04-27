@@ -14,200 +14,113 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import java.awt.*;
 import java.io.*;
 import java.util.LinkedHashMap;
+import java.util.concurrent.TimeUnit;
 
 public class XLSFileCommands {
     //Declare storage maps for header values
     private LinkedHashMap<Integer,String> myHeaderVal = new LinkedHashMap<Integer,String>();
+    private LinkedHashMap<Integer,String> inputHeaderVal = new LinkedHashMap<Integer,String>();
     private LinkedHashMap<Integer, String> templateHeaderVal = new LinkedHashMap<Integer,String>();
+    private LinkedHashMap<Integer, String> unknownHeaderVal = new LinkedHashMap<Integer,String>();
+    private LinkedHashMap<Integer, String> badHeaderVal;
+    private LinkedHashMap<Integer, String> outHeaderVal;
 
-    //Create storage for bad column index / value pairs
-    private LinkedHashMap<Integer,String> compareHeaderVal = new LinkedHashMap<Integer,String>();
-    private LinkedHashMap<Integer,String> unknownHeaderVal = new LinkedHashMap<Integer,String>();
+    //Blank excel objects to store data when necessary
+    private HSSFSheet mySheet, templateSheet;
+    private HSSFRow currentRow, myHeader, templateHeader;
+    private HSSFCell myCell, myHeaderCell, templateCell;
+    private Cell headerValue, outCell, currentCell;
+    private Row outRow;
 
+    //Miscellaneous variables
     private String compareResult = "";
-    
-    public String compareHeader(ColSieve userInput){
-        try{
+    private String unknownCommand = "";
+    private String cellVal = "";
+    private String templateCellVal = "";
+    private String inFileName, templateFileName, outFileName;
+    private int lastCol, lastRow, lastTemplateCol, lastTemplateRow;
+
+    public void setHeaderRows(ColSieve userInput){
+        try {
             //Excel file input stream information
             FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
             HSSFWorkbook myBook = new HSSFWorkbook(inFile);
-            HSSFSheet mySheet = myBook.getSheet(userInput.getConsoleInSheet());
+            mySheet = myBook.getSheet(userInput.getConsoleInSheet());
             FileInputStream templateFile = new FileInputStream(userInput.getConsoleTemplateFile());
             HSSFWorkbook templateBook = new HSSFWorkbook(templateFile);
-            HSSFSheet templateSheet = templateBook.getSheet("Sheet1");
+            templateSheet = templateBook.getSheet("Sheet1");
 
             //Store excel header information
-            HSSFRow myHeader = mySheet.getRow(0);
-            HSSFRow templateHeader = templateSheet.getRow(0);
-
-            //Blank excel objects to store data when necessary
-            HSSFRow currentRow;
-            HSSFCell currentCell;
+            myHeader = mySheet.getRow(0);
+            templateHeader = templateSheet.getRow(0);
 
             //Determine the number of header cells
-            int lastCol = myHeader.getLastCellNum();
-            int lastTemplateCol = templateHeader.getLastCellNum();
+            lastCol = myHeader.getLastCellNum();
+            lastTemplateCol = templateHeader.getLastCellNum();
 
-            //Determine the total number of rows in each file
-            int lastTemplateRow = templateSheet.getLastRowNum();
+            //Determine the total number of rows in the template file
+            lastTemplateRow = templateSheet.getLastRowNum();
 
             //Get file names for use with return strings
-            String inFileName = userInput.getConsoleInFile();
-            String templateFileName = userInput.getConsoleTemplateFile();
+            inFileName = userInput.getConsoleInFile();
+            templateFileName = userInput.getConsoleTemplateFile();
 
-            while(inFileName.contains("/")){
-                inFileName = inFileName.substring(inFileName.indexOf("/")+1);
+            while (inFileName.contains("/") || inFileName.contains("\\")) {
+                if(inFileName.indexOf("\\") == -1) {
+                    inFileName = inFileName.substring(inFileName.indexOf("/") + 1);
+                }else if(inFileName.indexOf("/") == -1){
+                    inFileName = inFileName.substring(inFileName.indexOf("\\") + 1);
+                }
             }
 
-            while(templateFileName.contains("/")){
-                templateFileName = templateFileName.substring(templateFileName.indexOf("/")+1);
+            while (templateFileName.contains("/") || templateFileName.contains("\\")) {
+                if(templateFileName.indexOf("\\") == -1) {
+                    templateFileName = templateFileName.substring(templateFileName.indexOf("/") + 1);
+                }else if(templateFileName.indexOf("/") == -1){
+                    templateFileName = templateFileName.substring(templateFileName.indexOf("\\") + 1);
+                }
             }
 
-            //If the header rows contain the same number of entries...
-            if(lastCol == lastTemplateCol) {
-                //Loop through inFile header values
-                for (int i = 0; i < lastCol; i++) {
-                    //Get cell information
-                    HSSFCell myCell = myHeader.getCell(i);
-                    String cellVal = myCell.getStringCellValue();
-                    HSSFCell templateCell = templateHeader.getCell(i);
-                    String templateCellVal = templateCell.getStringCellValue();
-
-                    //Add current cell to header maps
+            //Loop through inFile header values
+            for (int i = 0; i < lastCol; i++) {
+                //Get cell information
+                myCell = myHeader.getCell(i);
+                if (myCell != null) {
+                    cellVal = myCell.getStringCellValue();
                     myHeaderVal.put(i, cellVal);
-                    templateHeaderVal.put(i, templateCellVal);
-                }
-
-                //Loop through the header maps to determine if the
-                //column values are equal
-                for(int i = 0; i < lastCol; i++){
-                    //If the header values do not match...
-                    if(!myHeaderVal.get(i).equals(templateHeaderVal.get(i))){
-                        //For each column in the file
-                        for(int k = 0; k < lastTemplateCol; k++) {
-                            //Loop through the entire current template column for
-                            //additional data
-                            for (int j = 1; j <= lastTemplateRow; j++) {
-                                //Get cell(i) from the correct row
-                                currentRow = templateSheet.getRow(j);
-                                currentCell = currentRow.getCell(k);
-                                //If current cell is empty, break from the column loop
-                                if (currentCell == null) {
-                                    break;
-                                }
-                                //If the headers match, it is a known value
-                                if (currentCell.getStringCellValue().equals(myHeaderVal.get(i))) {
-                                    myHeaderVal.put(i, currentCell.getStringCellValue());
-                                    break;
-                                }
-                            }
-                            //Put the updated myHeaderVal into the compareHeaderVal list
-                            compareHeaderVal.put(i, myHeaderVal.get(i));
-                        }
-                    }
-                }
-
-                //If the bad column storage map is not empty...
-                if(compareHeaderVal.size() != 0){
-                    Boolean unknownBool;
-                    String compareVal;
-                    //Set compareResult and display all improperly mapped fields
-                    compareResult = "1";
-                    System.out.println("> The following columns from the input file \"" + inFileName + "\" are incorrectly mapped as determined by \"" + templateFileName + "\": \n");
-                    for(int i = 0; i < lastCol; i++){
-                        if(compareHeaderVal.get(i)!=null) {
-                            System.out.println("\t> Column Index: " + i + "; Column Value: " + compareHeaderVal.get(i));
-                        }
-                    }
-
-                    //for all columns in template
-                    for(int j = 0; j < lastTemplateCol; j++){
-                        if(compareHeaderVal.get(j)!=null) {
-                            compareVal = compareHeaderVal.get(j);
-                            //Initialize unknownBool to true; the tool will always assume
-                            //a value in the compareHeaderVal map is unknown UNTIL a match is
-                            //found. Value will only insert into unknownHeaderVal
-                            //if the unknownBool is true.
-
-                            //What this means:
-                            //Value is in list -> unknownBool = false;
-                            //Value not in list -> unknownBool = true;
-                            unknownBool = true;
-
-                            //for every row in the template file
-                            for (int k = 0; k <= lastTemplateRow; k++) {
-                                //Get the current row
-                                currentRow = templateSheet.getRow(k);
-                                //for all cells in the row
-                                for (int l = 0; l < lastTemplateCol; l++) {
-                                    currentCell = currentRow.getCell(l);
-                                    //if the current cell equals the compareHeaderVal entry,
-                                    //the item is not unknown; break from loop
-                                    if (currentCell != null && compareVal.equals(currentCell.getStringCellValue())) {
-                                        unknownBool = false;
-                                        myHeaderVal.put(currentCell.getColumnIndex(), compareVal);
-                                    }
-                                    //If the value is already known, break from the current value
-                                    if (!unknownBool) {
-                                        break;
-                                    }
-                                }
-                            }
-                            //If a value is unknown, enter it into the unknownHeaderVal list.
-                            //and remove it from the myHeaderVal list
-                            if (unknownBool) {
-                                unknownHeaderVal.put(j, compareVal);
-                            }
-                        }
-                    }
-
-                    System.out.println();
-
-                    if(unknownHeaderVal.size()!=0){
-                        compareResult = "-1";
-                        System.out.println("> The tool has detected the following unknown fields:\n");
-                        for(int i = 0; i < lastCol; i++){
-                            if(unknownHeaderVal.get(i)!=null) {
-                                System.out.println("\t> Column Value: " + unknownHeaderVal.get(i));
-                            }
-                        }
-                        System.out.println();
-                        if(!userInput.getRunMode()) {
-                            System.out.println("! The input file contains unknown fields.");
-                            System.out.println("! All fields must be known before attempting to map a file via the command line.");
-                            System.out.println("! Application terminated abnormally.\n");
-                            System.exit(-1);
-                        }
-                    }
+                    inputHeaderVal.put(i, cellVal);
                 } else {
-                    //Add string stating that file is correctly mapped to the compareResult
-                    compareResult = "0";
-                    System.out.println("\t> All columns from input file \"" + inFileName + "\" are in the correct location as determined by template file \"" + templateFileName + "\".\n");
+                    myHeaderVal.put(i, null);
                 }
-            } else if(lastTemplateCol < lastCol){
-                if(userInput.getRunMode()) {
-                    System.out.println("! The selected input file contains more than the expected number of columns.\n");
-                }else {
-                    System.out.println("! The selected input file contains more than the expected number of columns.");
-                    System.out.println("! Application terminated abnormally.\n");
-                    System.exit(-1);
-                }
-            } else if(lastTemplateCol > lastCol){
-                if(userInput.getRunMode()) {
-                    System.out.println("! The selected input file contains less than the expected number of columns.\n");
-                }else {
-                    System.out.println("! The selected input file contains more than the expected number of columns.");
-                    System.out.println("! Application terminated abnormally.\n");
-                    System.exit(-1);
+                templateCell = templateHeader.getCell(i);
+                if (templateCell != null) {
+                    templateCellVal = templateCell.getStringCellValue();
+                    templateHeaderVal.put(i, templateCellVal);
+                } else {
+                    templateHeaderVal.put(i, null);
                 }
             }
-
-            //Close both Excel files
             inFile.close();
             templateFile.close();
-            //end Try block
+
+            //initialize the outHeaderVal hash map
+            outHeaderVal = new LinkedHashMap<Integer, String>();
+
+            //for each item in the headerVal
+            for(int i = 0; i < myHeaderVal.size(); i++){
+                //set each outHeaderVal entry to null
+                outHeaderVal.put(i, myHeaderVal.get(i));
+            }
+
+            //Get the current console command to determine the next step
+            if(userInput.getConsoleFileCommand().equals("compareHeader")){
+                compareHeader(userInput);
+            }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
+                mapColumnData(userInput);
+            }
         } catch(FileNotFoundException e){
             if(userInput.getRunMode()) {
                 System.out.println("! One or more of the files have not been found.");
@@ -222,66 +135,211 @@ public class XLSFileCommands {
             System.out.println("! Application terminated abnormally.\n");
             System.exit(-1);
         }
+    }
+
+    public String compareHeader(ColSieve userInput){
+        //initialize the badHeaderVal list
+        badHeaderVal  = new LinkedHashMap<Integer,String>();
+
+        //a boolean for determining whether or not an input field is known.
+        //the program will assume any field is unknown UNTIL it encounters a
+        //match in the template file.
+        Boolean unknownBool;
+
+        //make a deep copy of the outHeaderVal into the myHeaderVal list
+        for(int i = 0; i < myHeaderVal.size(); i++){
+            myHeaderVal.put(i, outHeaderVal.get(i));
+        }
+
+        //for every item in the headerVal...
+        for(int i = 0; i < myHeaderVal.size(); i++){
+            //Reset the unknownBool to true
+            unknownBool = true;
+
+            //if the current item in the headerVal equals the current item in the templateVal...
+            if(myHeaderVal.get(i).equals(templateHeaderVal.get(i))){
+                //then the current headerVal item is in the correct index
+                outHeaderVal.put(i, myHeaderVal.get(i));
+            }else{
+                //if the current headerVal item is contained in the templateVal AT ALL...
+                if(templateHeaderVal.containsValue(myHeaderVal.get(i))){
+                    //for every column in the templateVal...
+                    for(int j = 0; j < templateHeaderVal.size(); j++){
+                        //if the current templateVal item equals the current headerVal item...
+                        if(templateHeaderVal.get(j).equals(myHeaderVal.get(i))){
+                            //put the current headerVal item into the outVal list at the index it was
+                            //located within templateVal
+                            outHeaderVal.put(j, myHeaderVal.get(i));
+
+                            //if the headerVal item was found in a column where it was not expected...
+                            if(j!=i){
+                                //put it in the badHeaderVal list
+                                badHeaderVal.put(j, myHeaderVal.get(i));
+                            }
+
+                            //break from the second column loop
+                            break;
+                        }
+                    }
+                }else{
+                    //for every column in the template file
+                    for(int j = 0; j < templateHeaderVal.size(); j++){
+                        //and for every row that is not the header...
+                        for(int k = 1; k <= lastTemplateRow; k++){
+                            //get the current template row
+                            currentRow = templateSheet.getRow(k);
+                            //then get the cell from the current column
+                            currentCell = currentRow.getCell(j);
+                            //if the current cell is not null, and the current
+                            //templateVal item equals the current headerVal item
+                            if(currentCell != null && currentCell.getStringCellValue().equals(myHeaderVal.get(i))){
+                                //put the current headerVal item into outVal at the current
+                                //templateVal index
+                                outHeaderVal.put(j, myHeaderVal.get(i));
+
+                                //Update the templateHeaderVal text to include the extended definition
+                                templateHeaderVal.put(j, myHeaderVal.get(i));
+
+                                //if the headerVal item was found in a column where it was not expected...
+                                if(j!=i) {
+                                    //put it in the badHeaderVal list
+                                    badHeaderVal.put(j, myHeaderVal.get(i));
+                                }
+
+                                //set the unknownBool to false, as a match was found
+                                unknownBool = false;
+                                //break from the row loop
+                                break;
+                            }else if(currentCell == null){
+                                //if the currentCell is null, break from the row loop
+                                break;
+                            }
+                        }
+                        //at the completion of a column, check to see that
+                        //the headerVal item is still unknown; if it is not,
+                        //break from the column loop, because it is known
+                        if(!unknownBool){
+                            break;
+                        }
+                    }
+                    //after the program has looped through the entire template file,
+                    //if the current headerVal is still unknown, put it in the
+                    //unknownHeaderVal list
+                    if(unknownBool){
+                        unknownHeaderVal.put(i, myHeaderVal.get(i));
+                    }
+                }
+            }
+        }
+
+        //if the badHeaderVal has items in it
+        if(badHeaderVal.size()!=0) {
+            //set the compareResult to 1
+            compareResult = "1";
+            System.out.println("> The tool has determined the following fields are improperly mapped:\n");
+            //for everything in the badHeaderVal list...
+            for (int i = 0; i < lastCol; i++) {
+                //if the current value is not null
+                if(badHeaderVal.get(i)!=null) {
+                    //print to the console
+                    System.out.println("\t> Column Value: " + badHeaderVal.get(i));
+                }
+            }
+            System.out.println();
+        }else if(badHeaderVal.size()==0){
+            //if there is nothing in the badHeaderVal, all fields are in the correct column
+            compareResult = "0";
+            System.out.println("> The tool has determined that all fields have been properly mapped.\n");
+        }
+
+        //if the unknownHeaderVal has items in it
+        if(unknownHeaderVal.size()!=0) {
+            //set the compareResult to -1
+            compareResult = "-1";
+            System.out.println("> The tool has detected the following unknown field(s):\n");
+            //for everything in the unknownHeaderVal list...
+            for (int i = 0; i < lastCol; i++) {
+                //if the current value is not null
+                if(unknownHeaderVal.get(i)!=null) {
+                    //print to the console
+                    System.out.println("\t> Column Value: " + unknownHeaderVal.get(i));
+                }
+                //if the current templateVal is not null
+                if(templateHeaderVal.get(i)!=null) {
+                    //check to make sure the current templateVal is equal to the current outVal
+                    if (!templateHeaderVal.get(i).equals(outHeaderVal.get(i))) {
+                        templateHeaderVal.put(i, null);
+                        outHeaderVal.put(i, null);
+                    }
+                } else{
+                    outHeaderVal.put(i, null);
+                }
+            }
+            System.out.println();
+        }
+
+
+
         return compareResult;
     }
 
     public void mapColumnData(ColSieve userInput){
         try{
-            //Compare header values
-            compareHeader(userInput);
-
-            //Create input streams
-            FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
-            HSSFWorkbook myBook = new HSSFWorkbook(inFile);
-            HSSFSheet mySheet = myBook.getSheet(userInput.getConsoleInSheet());
-            FileInputStream templateFile = new FileInputStream(userInput.getConsoleTemplateFile());
-            HSSFWorkbook templateBook = new HSSFWorkbook(templateFile);
-            HSSFSheet templateSheet = templateBook.getSheet("Sheet1");
-
-            //Store excel header information
-            HSSFRow myHeader = mySheet.getRow(0);
-            HSSFRow templateHeader = templateSheet.getRow(0);
-
-            //determine number of columns
-            int numColumns = myHeader.getLastCellNum();
-
-            //determine number of rows
-            int numRows = mySheet.getLastRowNum();
-
-            //Get file names for use with return strings
-            String inFileName = userInput.getConsoleInFile();
-            String templateFileName = userInput.getConsoleTemplateFile();
-            String outFileName = userInput.getConsoleOutFile();
-
-            while(inFileName.contains("\\")){
-                inFileName = inFileName.substring(inFileName.indexOf("\\")+1);
+            //if the headers have not been compared
+            if(unknownCommand.equals("")) {
+                //Compare header values
+                compareHeader(userInput);
             }
 
-            while(templateFileName.contains("\\")){
-                templateFileName = templateFileName.substring(templateFileName.indexOf("\\")+1);
-            }
+            //if the compare result returns -1, an unknown column was found;
+            //call the unknownField function to determine how to proceed
+            if(compareResult.equals("-1") && userInput.getRunMode() && unknownCommand.equals("")){
+                userInput.unknownField();
+            }else {
 
-            while(outFileName.contains("\\")){
-                outFileName = outFileName.substring(outFileName.indexOf("\\")+1);
-            }
+                FileInputStream inputFile = new FileInputStream(userInput.getConsoleInFile());
+                HSSFWorkbook inputBook = new HSSFWorkbook(inputFile);
+                mySheet = inputBook.getSheet(userInput.getConsoleInSheet());
+                FileInputStream templateFile = new FileInputStream(userInput.getConsoleTemplateFile());
+                HSSFWorkbook templateBook = new HSSFWorkbook(templateFile);
+                templateSheet = templateBook.getSheet("Sheet1");
 
-            String outPath = userInput.getConsoleOutFile().substring(0, (userInput.getConsoleOutFile().length()-outFileName.length()));
+                //Store excel header information
+                templateHeader = templateSheet.getRow(0);
 
+                //determine number of columns
+                lastCol = myHeader.getLastCellNum();
 
-            if(!(outFileName.substring(outFileName.indexOf(".xls")).equals(inFileName.substring(inFileName.indexOf(".xls"))))){
-                //If the program is running in command line mode, the program will terminate
-                if(!userInput.getRunMode()) {
-                    System.out.println("! The output file type does not match the input file type.");
-                    System.out.println("! Please ensure that all your file types match before trying again.");
-                    System.out.println("! Application terminated abnormally.\n");
-                    System.exit(-1);
-                    //If the program is running in operator mode, the program will return to the main
-                }else{
-                    System.out.println("! The output file type does not match the input file type.");
-                    System.out.println("! Please ensure that all your file types match before trying again.\n");
+                //determine number of rows
+                lastRow = mySheet.getLastRowNum();
+
+                outFileName = userInput.getConsoleOutFile();
+
+                while (outFileName.contains("\\") || outFileName.contains("/")) {
+                    if (outFileName.indexOf("\\") != -1) {
+                        outFileName = outFileName.substring(outFileName.indexOf("\\") + 1);
+                    } else if (outFileName.indexOf("/") != -1) {
+                        outFileName = outFileName.substring(outFileName.indexOf("/") + 1);
+                    }
+
                 }
-            } else {
-                if (compareResult.equals("1")) {
+
+                String outPath = userInput.getConsoleOutFile().substring(0, (userInput.getConsoleOutFile().length() - outFileName.length()));
+
+
+                if (!(outFileName.substring(outFileName.indexOf(".xls")).equals(inFileName.substring(inFileName.indexOf(".xls"))))) {
+                    //If the program is running in command line mode, the program will terminate
+                    if (!userInput.getRunMode()) {
+                        System.out.println("! The output file type does not match the input file type.");
+                        System.out.println("! Please ensure that all your file types match before trying again.");
+                        System.out.println("! Application terminated abnormally.\n");
+                        System.exit(-1);
+                        //If the program is running in operator mode, the program will return to the main
+                    } else {
+                        System.out.println("! The output file type does not match the input file type.");
+                        System.out.println("! Please ensure that all your file types match before trying again.\n");
+                    }
+                } else {
                     //Create file objects to confirm output path / file existence
                     File myPath = new File(outPath);
                     File myFile = new File(userInput.getConsoleOutFile());
@@ -308,23 +366,17 @@ public class XLSFileCommands {
                     Sheet outSheet = outBook.createSheet(userInput.getConsoleInSheet());
                     Row outHeader = outSheet.createRow(0);
 
-                    //Empty Excel objects
-                    Cell headerValue;
-                    Row outRow;
-                    Cell outCell;
-
                     //Set the output sheet to contain the correct number of rows
-                    for (int j = 1; j <= numRows; j++) {
+                    for (int j = 1; j <= lastRow; j++) {
                         outSheet.createRow(j);
                     }
 
                     //Loop through inFile header values
-                    for (int i = 0; i < numColumns; i++) {
-                        //Get cell information
-                        HSSFCell myHeaderCell = myHeader.getCell(i);
+                    for (int i = 0; i < lastCol; i++) {
+                        ///Get cell information
+                        myHeaderCell = myHeader.getCell(i);
                         String cellVal = myHeaderCell.getStringCellValue();
-                        HSSFCell templateCell = templateHeader.getCell(i);
-                        String templateCellVal = myHeaderVal.get(i);
+                        String templateCellVal = templateHeaderVal.get(i);
 
                         //If the input header equals the template header
                         if (cellVal.equals(templateCellVal)) {
@@ -333,7 +385,7 @@ public class XLSFileCommands {
                             headerValue.setCellValue(cellVal);
 
                             //Loop through all the input rows
-                            for (int j = 1; j <= numRows; j++) {
+                            for (int j = 1; j <= lastRow; j++) {
                                 //Get the row data from the input file
                                 Row currentRow = mySheet.getRow(j);
                                 //Get the current cell from the row data
@@ -358,18 +410,18 @@ public class XLSFileCommands {
                             //If the input header does not equal the template header
                         } else {
                             for (int k = 0; k < myHeaderVal.size(); k++) {
-                                Cell currentCell = myHeader.getCell(k);
+                                currentCell = myHeader.getCell(k);
                                 if (currentCell.getStringCellValue().equals(templateCellVal)) {
                                     //Store the correct column index
-                                    int inCol = currentCell.getColumnIndex();
-                                    int outCol = templateCell.getColumnIndex();
+                                    int inCol = k;
+                                    int outCol = i;
 
                                     //Write header to file
                                     headerValue = outHeader.createCell(outCol);
                                     headerValue.setCellValue(currentCell.getStringCellValue());
 
                                     //Loop through all the input rows
-                                    for (int j = 1; j <= numRows; j++) {
+                                    for (int j = 1; j <= lastRow; j++) {
                                         //Get the row data from the input file
                                         Row currentRow = mySheet.getRow(j);
                                         //Get the current cell from the row data
@@ -407,11 +459,8 @@ public class XLSFileCommands {
                     }
 
                     //Close file streams
-                    inFile.close();
                     templateFile.close();
                     outFile.close();
-                } else if(compareResult.equals("-1") && userInput.getRunMode()){
-                    userInput.unknownField();
                 }
             }
         } catch(FileNotFoundException e){
@@ -426,11 +475,150 @@ public class XLSFileCommands {
         }
     }
 
-    public void addDefinition(){
+    public void mapUnknownColumnToEOF(ColSieve userInput){
+        //make sure that all null-values in the template are at the end of the list
+        for(int i = 0; i < templateHeaderVal.size(); i++){
+            //if the current templateHeaderVal is null...
+            if(templateHeaderVal.get(i)==null){
+                //get the index of the next record
+                int nextRecord = i+1;
+                //loop through the templateHeaderVal
+                for(int k = i; k < templateHeaderVal.size(); k++){
+                    //set the current templateHeaderVal to the next templateHeaderVal
+                    templateHeaderVal.put(k, templateHeaderVal.get(nextRecord));
+                    //get the index of the next record
+                    nextRecord++;
+                }
+            }
+        }
 
+        //For every non-null cell in the unknownHeaderVal
+        for(int i = 0; i < unknownHeaderVal.size(); i++){
+            //and for every entry in the templateHeaderVal
+            for(int j = 0; j < templateHeaderVal.size(); j++){
+                //if the templateHeaderVal is null, it needs replaced...
+                if(templateHeaderVal.get(j) == null){
+                    //loop through all the values in unknownHeader (nulls included)
+                    for(int k = 0; k < templateHeaderVal.size(); k++){
+                        //if the current, unknownHeaderVal is not null...
+                        if(unknownHeaderVal.get(k)!=null){
+                            //replace the current, null templateHeaderVal
+                            templateHeaderVal.put(j, unknownHeaderVal.get(k));
+                            //insert the unknownHeaderVal at the end of the outHeaderVal
+                            outHeaderVal.put(j, unknownHeaderVal.get(k));
+                            //null the current unknownHeaderVal
+                            unknownHeaderVal.put(k, null);
+                            //break from the current iteration through the unknownHeaderVal
+                            break;
+                        }
+                    }
+                    //break from the current iteration through templateHeaderVal
+                    break;
+                }
+            }
+        }
+        //set unknownHeaderVal to a new linked hash map; this removes all entries from the list
+        unknownHeaderVal = new LinkedHashMap<Integer, String>();
+        //set the unknownCommand; this prevents the tool from trying to compare the columns again
+        unknownCommand = "moveToEOF";
+        //send updated information back to mapColumnData
+        mapColumnData(userInput);
     }
 
-    public void deleteColumn(){
+    public void addDefinition(ColSieve userInput) throws IOException, InterruptedException{
+        //hash map to store indexes of the new definitions
+        LinkedHashMap<Integer, String> newDefinitionVal = new LinkedHashMap<Integer,String>();
+
+        System.out.println("> Please wait while the tool opens your template file...\n");
+        Desktop.getDesktop().open(new File(userInput.getConsoleTemplateFile()));
+        System.out.println("> For each of the unknown items, please make a note of which column index you would like to add the definition to.\n");
+        System.out.println("> PLEASE NOTE: Columns and Rows in the Excel file are zero-indexed.");
+        System.out.println("> For example, cell A1 would be located at [0, 0] in a zero-indexed grid.\n");
+
+        //get Windows task list information to make sure excel has not yet closed
+        String line, pidInfo = "";
+        Process p;
+        p = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\"+"tasklist.exe");
+        BufferedReader processes;
+        processes = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+        //loop through all the tasks in the task list
+        while((line = processes.readLine()) != null){
+            pidInfo += line;
+        }
+
+        //while the Excel file is open, pause the program
+        System.out.print("\t> Process will resume when the template file has been closed..");
+        while(pidInfo.contains("EXCEL.EXE")){
+            System.out.print("..");
+            //if excel is still open, sleep, otherwise break
+            if(pidInfo.contains("EXCEL.EXE")) {
+                TimeUnit.SECONDS.sleep(3);
+            }else{
+                break;
+            }
+            //get the task list
+            p = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\"+"tasklist.exe");
+            processes = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+            //reset the pidInfo
+            pidInfo = "";
+            while((line = processes.readLine()) != null){
+                pidInfo += line;
+            }
+        }
+
+        System.out.println("\n");
+
+        //loop through all the unknownHeader values
+        for(int i = 0; i < templateHeaderVal.size(); i++){
+            //make sure the current entry is not null
+            if(unknownHeaderVal.get(i) != null) {
+                System.out.print("\t> Please enter the column index for field definition [" + unknownHeaderVal.get(i) + "]: ");
+                //put the new index / definition into the newDefinitionVal list
+                newDefinitionVal.put(userInput.defineNewField(), unknownHeaderVal.get(i));
+            }
+        }
+
+        System.out.println();
+        processes.close();
+    }
+
+    public void deleteColumn(ColSieve userInput){
+        //make sure that all null-values in the template are at the end of the list
+        for(int i = 0; i < templateHeaderVal.size(); i++){
+            //if the current templateHeaderVal is null...
+            if(templateHeaderVal.get(i)==null){
+                //get the index of the next record
+                int nextRecord = i+1;
+                //loop through the templateHeaderVal
+                for(int k = i; k < templateHeaderVal.size(); k++){
+                    //set the current templateHeaderVal to the next templateHeaderVal
+                    templateHeaderVal.put(k, templateHeaderVal.get(nextRecord));
+                    //get the index of the next record
+                    nextRecord++;
+                }
+            }
+        }
+
+        //for every entry in the templateHeaderVal
+        for(int j = 0; j < templateHeaderVal.size(); j++){
+            //if the templateHeaderVal is null, it needs removed...
+            if(templateHeaderVal.get(j) == null){
+                //remove the current templateHeader
+                templateHeaderVal.remove(j);
+                //remove the current outHeaderVal
+                outHeaderVal.remove(j);
+                //break from the current iteration through templateHeaderVal
+                break;
+            }
+        }
+        //set unknownHeaderVal to a new linked hash map; this removes all entries from the list
+        unknownHeaderVal = new LinkedHashMap<Integer, String>();
+        //set the unknownCommand; this prevents the tool from trying to compare the columns again
+        unknownCommand = "delete";
+        //send updated information back to mapColumnData
+        mapColumnData(userInput);
 
     }
 
@@ -495,10 +683,7 @@ public class XLSFileCommands {
         }
 
         outBook.write(outFile);
-
         outFile.close();
         inFile.close();
     }
-
-
 }

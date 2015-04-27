@@ -320,11 +320,15 @@ public class XLSXFileCommands {
         }
     }
 
-    public void addDefinition(){
+    public void mapUnknownColumnToEOF(ColSieve userInput){
 
     }
 
-    public void deleteColumn(){
+    public void addDefinition(ColSieve userInput){
+
+    }
+
+    public void deleteColumn(ColSieve userInput){
 
     }
 

@@ -54,7 +54,8 @@ public class Main {
                                 me.setConsoleInFile(args[0]);
                                 me.setConsoleInSheet(args[1]);
                                 me.setConsoleTemplateFile(args[2]);
-                                fileCommand.compareHeader(me);
+                                me.setConsoleFileCommand("compareHeader");
+                                fileCommand.setHeaderRows(me);
                             }catch(POIXMLException e){
                                 System.out.println("! One or more of the files supplied was not in the expected file type.");
                                 System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
@@ -107,7 +108,8 @@ public class Main {
                             me.setConsoleInSheet(args[1]);
                             me.setConsoleTemplateFile(args[2]);
                             me.setConsoleOutFile(args[3]);
-                            fileCommand.mapColumnData(me);
+                            me.setConsoleFileCommand("mapColumnData");
+                            fileCommand.setHeaderRows(me);
                         } else if(cmdFileType.toLowerCase().equals("xlsx")){            // <---- XLSX Files
                             XLSXFileCommands fileCommand = new XLSXFileCommands();
                             fileCommand.mapColumnData(args[0], args[1], args[2], args[3], me.getRunMode(), me);
