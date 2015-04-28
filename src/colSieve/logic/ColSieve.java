@@ -679,7 +679,7 @@ public class ColSieve {
         }
     }
 
-    public Integer defineNewField(){
+    public Integer newFieldDefinition(){
         String in;
         Integer newIndex = 0;
 

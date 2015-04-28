@@ -9,10 +9,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 
 import java.awt.*;
 import java.io.*;
@@ -529,11 +526,11 @@ public class XLSFileCommands {
         //hash map to store indexes of the new definitions
         LinkedHashMap<Integer, String> newDefinitionVal = new LinkedHashMap<Integer,String>();
 
-        System.out.println("> Please wait while the tool opens your template file...\n");
+        System.out.println("\t> Please wait while the tool opens your template file...\n");
         Desktop.getDesktop().open(new File(userInput.getConsoleTemplateFile()));
-        System.out.println("> For each of the unknown items, please make a note of which column index you would like to add the definition to.\n");
-        System.out.println("> PLEASE NOTE: Columns and Rows in the Excel file are zero-indexed.");
-        System.out.println("> For example, cell A1 would be located at [0, 0] in a zero-indexed grid.\n");
+        System.out.println("\t> For each of the unknown items, please make a note of which column index you would like to add the definition to.\n");
+        System.out.println("\t> PLEASE NOTE: Columns and Rows in the Excel file are zero-indexed.");
+        System.out.println("\t> For example, cell A1 would be located at [0, 0] in a zero-indexed grid.\n");
 
         //get Windows task list information to make sure excel has not yet closed
         String line, pidInfo = "";
@@ -541,6 +538,9 @@ public class XLSFileCommands {
         p = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\"+"tasklist.exe");
         BufferedReader processes;
         processes = new BufferedReader(new InputStreamReader(p.getInputStream()));
+
+        //miscellaneous variables
+        int newLastRow;
 
         //loop through all the tasks in the task list
         while((line = processes.readLine()) != null){
@@ -568,6 +568,9 @@ public class XLSFileCommands {
             }
         }
 
+        //close the task list and input stream reader
+        processes.close();
+        p.destroy();
         System.out.println("\n");
 
         //loop through all the unknownHeader values
@@ -576,12 +579,67 @@ public class XLSFileCommands {
             if(unknownHeaderVal.get(i) != null) {
                 System.out.print("\t> Please enter the column index for field definition [" + unknownHeaderVal.get(i) + "]: ");
                 //put the new index / definition into the newDefinitionVal list
-                newDefinitionVal.put(userInput.defineNewField(), unknownHeaderVal.get(i));
+                newDefinitionVal.put(userInput.newFieldDefinition(), unknownHeaderVal.get(i));
             }
         }
 
-        System.out.println();
-        processes.close();
+        //Re-open the template file
+        FileInputStream currentTemplate = new FileInputStream(userInput.getConsoleTemplateFile());
+        Workbook templateBook = new HSSFWorkbook(currentTemplate);
+        Sheet newTemplateSheet = templateBook.getSheet(userInput.getConsoleInSheet());
+        Row newTemplateRow;
+        Cell newTemplateCell;
+
+        //set lastNewRow equal to the number of rows in the template
+        newLastRow = lastTemplateRow;
+
+        //for every newDefinitionVal
+        for(int i = 0; i < lastTemplateCol; i++){
+            //check to see if the current iteration is equal to a newDefinitionVal key
+            if(newDefinitionVal.containsKey(i)){
+                //using the newColIndex, cycle through every templateRow until you reach
+                //a null value, which indicates the end of the column
+                for(int j = 0; j <=newLastRow; j++){
+                    newTemplateRow = newTemplateSheet.getRow(j);
+                    newTemplateCell = newTemplateRow.getCell(i);
+                    //if the currentCell is null, set it to the new key / value
+                    if(newTemplateCell == null){
+                        //add a new cell to the correct column
+                        newTemplateCell = newTemplateRow.createCell(i);
+                        //set the cell type to string
+                        newTemplateCell.setCellType(Cell.CELL_TYPE_STRING);
+                        //set the cell value
+                        newTemplateCell.setCellValue(newDefinitionVal.get(i));
+                        //break from the loop
+                        break;
+                    }else if(newTemplateCell != null && j == newLastRow){
+                        //if the last row is not a null value, the template needs a new row
+                        newLastRow++;
+
+                        //add a new row
+                        newTemplateRow = newTemplateSheet.createRow(newLastRow);
+                        //add a new cell to the correct column
+                        newTemplateCell = newTemplateRow.createCell(i);
+                        //set the cell type to string
+                        newTemplateCell.setCellType(Cell.CELL_TYPE_STRING);
+                        //set the cell value
+                        newTemplateCell.setCellValue(newDefinitionVal.get(i));
+                    }
+                }
+            }
+        }
+
+        //close the input stream
+        currentTemplate.close();
+
+        //FileOutputStream to update the template file
+        FileOutputStream newTemplate = new FileOutputStream(userInput.getConsoleTemplateFile());
+        //Write the file
+        templateBook.write(newTemplate);
+        //Close the file
+        newTemplate.close();
+
+        System.out.println("\t> The tool has successfully added the definitions to the template file.\n");
     }
 
     public void deleteColumn(ColSieve userInput){
