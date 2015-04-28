@@ -50,73 +50,86 @@ public class XLSFileCommands {
             HSSFWorkbook templateBook = new HSSFWorkbook(templateFile);
             templateSheet = templateBook.getSheet("Sheet1");
 
-            //Store excel header information
-            myHeader = mySheet.getRow(0);
-            templateHeader = templateSheet.getRow(0);
-
-            //Determine the number of header cells
-            lastCol = myHeader.getLastCellNum();
-            lastTemplateCol = templateHeader.getLastCellNum();
-
-            //Determine the total number of rows in the template file
-            lastTemplateRow = templateSheet.getLastRowNum();
-
-            //Get file names for use with return strings
-            inFileName = userInput.getConsoleInFile();
-            templateFileName = userInput.getConsoleTemplateFile();
-
-            while (inFileName.contains("/") || inFileName.contains("\\")) {
-                if(inFileName.indexOf("\\") == -1) {
-                    inFileName = inFileName.substring(inFileName.indexOf("/") + 1);
-                }else if(inFileName.indexOf("/") == -1){
-                    inFileName = inFileName.substring(inFileName.indexOf("\\") + 1);
+            //check to make sure that the sheet exists in the workbook
+            if(mySheet == null){
+                System.out.println("\t! The tool has not found sheet \"" + userInput.getConsoleInSheet() + "\".");
+                System.out.println("\t! Please ensure you have entered the correct sheet name before proceeding.\n");
+                //depending upon what the command is, call the correct input
+                if(userInput.getConsoleFileCommand().equals("compareHeader")){
+                    userInput.compareDataLayout();
+                }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
+                    userInput.sieveColumns();
                 }
-            }
+            } else {
 
-            while (templateFileName.contains("/") || templateFileName.contains("\\")) {
-                if(templateFileName.indexOf("\\") == -1) {
-                    templateFileName = templateFileName.substring(templateFileName.indexOf("/") + 1);
-                }else if(templateFileName.indexOf("/") == -1){
-                    templateFileName = templateFileName.substring(templateFileName.indexOf("\\") + 1);
+                //Store excel header information
+                myHeader = mySheet.getRow(0);
+                templateHeader = templateSheet.getRow(0);
+
+                //Determine the number of header cells
+                lastCol = myHeader.getLastCellNum();
+                lastTemplateCol = templateHeader.getLastCellNum();
+
+                //Determine the total number of rows in the template file
+                lastTemplateRow = templateSheet.getLastRowNum();
+
+                //Get file names for use with return strings
+                inFileName = userInput.getConsoleInFile();
+                templateFileName = userInput.getConsoleTemplateFile();
+
+                while (inFileName.contains("/") || inFileName.contains("\\")) {
+                    if (inFileName.indexOf("\\") == -1) {
+                        inFileName = inFileName.substring(inFileName.indexOf("/") + 1);
+                    } else if (inFileName.indexOf("/") == -1) {
+                        inFileName = inFileName.substring(inFileName.indexOf("\\") + 1);
+                    }
                 }
-            }
 
-            //Loop through inFile header values
-            for (int i = 0; i < lastCol; i++) {
-                //Get cell information
-                myCell = myHeader.getCell(i);
-                if (myCell != null) {
-                    cellVal = myCell.getStringCellValue();
-                    myHeaderVal.put(i, cellVal);
-                    inputHeaderVal.put(i, cellVal);
-                } else {
-                    myHeaderVal.put(i, null);
+                while (templateFileName.contains("/") || templateFileName.contains("\\")) {
+                    if (templateFileName.indexOf("\\") == -1) {
+                        templateFileName = templateFileName.substring(templateFileName.indexOf("/") + 1);
+                    } else if (templateFileName.indexOf("/") == -1) {
+                        templateFileName = templateFileName.substring(templateFileName.indexOf("\\") + 1);
+                    }
                 }
-                templateCell = templateHeader.getCell(i);
-                if (templateCell != null) {
-                    templateCellVal = templateCell.getStringCellValue();
-                    templateHeaderVal.put(i, templateCellVal);
-                } else {
-                    templateHeaderVal.put(i, null);
+
+                //Loop through inFile header values
+                for (int i = 0; i < lastCol; i++) {
+                    //Get cell information
+                    myCell = myHeader.getCell(i);
+                    if (myCell != null) {
+                        cellVal = myCell.getStringCellValue();
+                        myHeaderVal.put(i, cellVal);
+                        inputHeaderVal.put(i, cellVal);
+                    } else {
+                        myHeaderVal.put(i, null);
+                    }
+                    templateCell = templateHeader.getCell(i);
+                    if (templateCell != null) {
+                        templateCellVal = templateCell.getStringCellValue();
+                        templateHeaderVal.put(i, templateCellVal);
+                    } else {
+                        templateHeaderVal.put(i, null);
+                    }
                 }
-            }
-            inFile.close();
-            templateFile.close();
+                inFile.close();
+                templateFile.close();
 
-            //initialize the outHeaderVal hash map
-            outHeaderVal = new LinkedHashMap<Integer, String>();
+                //initialize the outHeaderVal hash map
+                outHeaderVal = new LinkedHashMap<Integer, String>();
 
-            //for each item in the headerVal
-            for(int i = 0; i < myHeaderVal.size(); i++){
-                //set each outHeaderVal entry to null
-                outHeaderVal.put(i, myHeaderVal.get(i));
-            }
+                //for each item in the headerVal
+                for(int i = 0; i < myHeaderVal.size(); i++){
+                    //set each outHeaderVal entry to null
+                    outHeaderVal.put(i, myHeaderVal.get(i));
+                }
 
-            //Get the current console command to determine the next step
-            if(userInput.getConsoleFileCommand().equals("compareHeader")){
-                compareHeader(userInput);
-            }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
-                mapColumnData(userInput);
+                //Get the current console command to determine the next step
+                if(userInput.getConsoleFileCommand().equals("compareHeader")){
+                    compareHeader(userInput);
+                }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
+                    mapColumnData(userInput);
+                }
             }
         } catch(FileNotFoundException e){
             if(userInput.getRunMode()) {
@@ -553,7 +566,7 @@ public class XLSFileCommands {
             System.out.print("..");
             //if excel is still open, sleep, otherwise break
             if(pidInfo.contains("EXCEL.EXE")) {
-                TimeUnit.SECONDS.sleep(3);
+                TimeUnit.SECONDS.sleep(2);
             }else{
                 break;
             }
@@ -624,6 +637,8 @@ public class XLSFileCommands {
                         newTemplateCell.setCellType(Cell.CELL_TYPE_STRING);
                         //set the cell value
                         newTemplateCell.setCellValue(newDefinitionVal.get(i));
+                        //as you re-assigned the newLastRow value, break from the loop
+                        break;
                     }
                 }
             }
@@ -639,7 +654,7 @@ public class XLSFileCommands {
         //Close the file
         newTemplate.close();
 
-        System.out.println("\t> The tool has successfully added the definitions to the template file.\n");
+        System.out.println("\n\t> The tool has successfully added the definitions to the template file.\n");
     }
 
     public void deleteColumn(ColSieve userInput){
