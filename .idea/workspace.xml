@@ -6,20 +6,7 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eff5a39f-e168-4d6a-a1e2-1a07c17693e0" name="Default" comment="XLSFileCommands -&gt; &#10;&#10;Error handling for unknown sheet name">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/colSieve/ColumnSieve.form" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/colSieve/ColumnSieve.java" />
-      <change type="DELETED" beforePath="C:\Users\ctangney\data\WORKING\~CODE\columnSieve\src\colSieve\GUI.form" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\ctangney\data\WORKING\~CODE\columnSieve\src\colSieve\GUI.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/logic/ColSieve.class" afterPath="$PROJECT_DIR$/production/colSieve/logic/ColSieve.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/GUI.class" afterPath="$PROJECT_DIR$/production/colSieve/GUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/main/Main.class" afterPath="$PROJECT_DIR$/production/colSieve/main/Main.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/logic/XLSFileCommands.class" afterPath="$PROJECT_DIR$/production/colSieve/logic/XLSFileCommands.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/columnSieve.jar" afterPath="$PROJECT_DIR$/out/columnSieve.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/ColSieve.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/ColSieve.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/run.bat" afterPath="$PROJECT_DIR$/out/run.bat" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
+    <list default="true" id="eff5a39f-e168-4d6a-a1e2-1a07c17693e0" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="`columnShift.iws" />
@@ -692,7 +679,13 @@
       <option name="project" value="LOCAL" />
       <updated>1430244413993</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="GUI -&gt; &#10;&#10;Re-worked the GUI; still working on setting up all panels">
+      <created>1430340409695</created>
+      <option name="number" value="00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1430340409695</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -780,7 +773,8 @@
     <MESSAGE value="XLSFileCommands -&gt; &#10;&#10;optimized the compareHeader / mapColumnData functions; added a setHeader function which runs before anything else; included support for moving unknown fields to EoF; included support for removing unknown fields" />
     <MESSAGE value="XLSFileCommands -&gt; &#10;&#10;Template file can now be successfully expanded" />
     <MESSAGE value="XLSFileCommands -&gt; &#10;&#10;Error handling for unknown sheet name" />
-    <option name="LAST_COMMIT_MESSAGE" value="XLSFileCommands -&gt; &#10;&#10;Error handling for unknown sheet name" />
+    <MESSAGE value="GUI -&gt; &#10;&#10;Re-worked the GUI; still working on setting up all panels" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI -&gt; &#10;&#10;Re-worked the GUI; still working on setting up all panels" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
