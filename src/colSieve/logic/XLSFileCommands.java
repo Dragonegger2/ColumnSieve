@@ -40,7 +40,10 @@ public class XLSFileCommands {
     private String inFileName, templateFileName, outFileName;
     private int lastCol, lastRow, lastTemplateCol, lastTemplateRow;
 
-    public void setHeaderRows(ColSieve userInput){
+    public String setHeaderRows(ColSieve userInput){
+        //return string
+        String result = "";
+
         try {
             //Excel file input stream information
             FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
@@ -52,14 +55,9 @@ public class XLSFileCommands {
 
             //check to make sure that the sheet exists in the workbook
             if(mySheet == null){
-                System.out.println("\t! The tool has not found sheet \"" + userInput.getConsoleInSheet() + "\".");
-                System.out.println("\t! Please ensure you have entered the correct sheet name before proceeding.\n");
-                //depending upon what the command is, call the correct input
-                if(userInput.getConsoleFileCommand().equals("compareHeader")){
-                    userInput.compareDataLayout();
-                }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
-                    userInput.sieveColumns();
-                }
+                result += "\t! The tool has not found sheet \"" + userInput.getConsoleInSheet() + "\".\n";
+                result += "\t! Please ensure you have entered the correct sheet name before proceeding.\n";
+                result += ("\t! The process has terminated abnormally.\n\n");
             } else {
 
                 //Store excel header information
@@ -126,28 +124,30 @@ public class XLSFileCommands {
 
                 //Get the current console command to determine the next step
                 if(userInput.getConsoleFileCommand().equals("compareHeader")){
-                    compareHeader(userInput);
+                    result = compareHeader(userInput, result);
                 }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
-                    mapColumnData(userInput);
+                    mapColumnData(userInput, result);
                 }
             }
         } catch(FileNotFoundException e){
             if(userInput.getRunMode()) {
-                System.out.println("! One or more of the files have not been found.");
-                System.out.println("! Please double check your file locations before trying again!\n");
+                result += "! One or more of the files have not been found.\n";
+                result += "! Please double check your file locations before trying again!\n\n";
             }else{
-                System.out.println("! One or more of the files have not been found.");
-                System.out.println("! Application terminated abnormally.\n");
+                result += "! One or more of the files have not been found.\n";
+                result += "! Application terminated abnormally.\n\n";
                 System.exit(-1);
             }
         } catch(IOException e){
-            System.out.println("! Java has encountered an IO exception.");
-            System.out.println("! Application terminated abnormally.\n");
+            result += "! Java has encountered an IO exception.\n";
+            result += "! Application terminated abnormally.\n\n";
             System.exit(-1);
         }
+
+        return result;
     }
 
-    public String compareHeader(ColSieve userInput){
+    public String compareHeader(ColSieve userInput, String result){
         //initialize the badHeaderVal list
         badHeaderVal  = new LinkedHashMap<Integer,String>();
 
@@ -246,33 +246,33 @@ public class XLSFileCommands {
         if(badHeaderVal.size()!=0) {
             //set the compareResult to 1
             compareResult = "1";
-            System.out.println("> The tool has determined the following fields are improperly mapped:\n");
+            result += ("> The tool has determined the following fields are improperly mapped:\n\n");
             //for everything in the badHeaderVal list...
             for (int i = 0; i < lastCol; i++) {
                 //if the current value is not null
                 if(badHeaderVal.get(i)!=null) {
                     //print to the console
-                    System.out.println("\t> Column Value: " + badHeaderVal.get(i));
+                    result += ("\t> Column Value: " + badHeaderVal.get(i) + "\n");
                 }
             }
             System.out.println();
         }else if(badHeaderVal.size()==0){
             //if there is nothing in the badHeaderVal, all fields are in the correct column
             compareResult = "0";
-            System.out.println("> The tool has determined that all fields have been properly mapped.\n");
+            result += "> The tool has determined that all fields have been properly mapped.\n\n";
         }
 
         //if the unknownHeaderVal has items in it
         if(unknownHeaderVal.size()!=0) {
             //set the compareResult to -1
             compareResult = "-1";
-            System.out.println("> The tool has detected the following unknown field(s):\n");
+            result += "> The tool has detected the following unknown field(s):\n\n";
             //for everything in the unknownHeaderVal list...
             for (int i = 0; i < lastCol; i++) {
                 //if the current value is not null
                 if(unknownHeaderVal.get(i)!=null) {
                     //print to the console
-                    System.out.println("\t> Column Value: " + unknownHeaderVal.get(i));
+                    result += "\t> Column Value: " + unknownHeaderVal.get(i) + "\n";
                 }
                 //if the current templateVal is not null
                 if(templateHeaderVal.get(i)!=null) {
@@ -287,18 +287,15 @@ public class XLSFileCommands {
             }
             System.out.println();
         }
-
-
-
-        return compareResult;
+        return result;
     }
 
-    public void mapColumnData(ColSieve userInput){
+    public void mapColumnData(ColSieve userInput, String result){
         try{
             //if the headers have not been compared
             if(unknownCommand.equals("")) {
                 //Compare header values
-                compareHeader(userInput);
+                compareHeader(userInput, result);
             }
 
             //if the compare result returns -1, an unknown column was found;
@@ -486,6 +483,9 @@ public class XLSFileCommands {
     }
 
     public void mapUnknownColumnToEOF(ColSieve userInput){
+        //new result string
+        String result = "";
+
         //make sure that all null-values in the template are at the end of the list
         for(int i = 0; i < templateHeaderVal.size(); i++){
             //if the current templateHeaderVal is null...
@@ -532,7 +532,7 @@ public class XLSFileCommands {
         //set the unknownCommand; this prevents the tool from trying to compare the columns again
         unknownCommand = "moveToEOF";
         //send updated information back to mapColumnData
-        mapColumnData(userInput);
+        mapColumnData(userInput, result);
     }
 
     public void addDefinition(ColSieve userInput) throws IOException, InterruptedException{
@@ -658,6 +658,9 @@ public class XLSFileCommands {
     }
 
     public void deleteColumn(ColSieve userInput){
+        //new result string
+        String result = "";
+
         //make sure that all null-values in the template are at the end of the list
         for(int i = 0; i < templateHeaderVal.size(); i++){
             //if the current templateHeaderVal is null...
@@ -691,7 +694,7 @@ public class XLSFileCommands {
         //set the unknownCommand; this prevents the tool from trying to compare the columns again
         unknownCommand = "delete";
         //send updated information back to mapColumnData
-        mapColumnData(userInput);
+        mapColumnData(userInput, result);
 
     }
 

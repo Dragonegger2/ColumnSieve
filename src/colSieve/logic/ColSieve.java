@@ -11,6 +11,7 @@ Published: 2015
 
 package colSieve.logic;
 
+import colSieve.ColumnSieve;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
 
@@ -20,7 +21,6 @@ import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.LinkedHashMap;
 
 public class ColSieve {
 
@@ -541,6 +541,72 @@ public class ColSieve {
 
                 xlsFileCommands.setHeaderRows(this);
 
+                //XLSX Files
+            } else if (fileType.equals("XLSX")) {
+                System.out.println();
+                xlsxFileCommands = new XLSXFileCommands();
+                System.out.println("\t> new XLSXFileCommands object created");
+                System.out.println();
+
+                //Determine the proper file command
+                if (this.consoleFileCommand.equals("compareHeader")) {
+                    xlsxFileCommands.compareHeader(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.runMode);
+                } else if (this.consoleFileCommand.equals("mapColumnData")) {
+                    xlsxFileCommands.mapColumnData(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.consoleOutFile, this.runMode, this);
+                } else {
+                    System.out.println("! An unknown error has occurred.");
+                    System.out.println("! Application terminated abnormally.");
+                }
+                //CSV Files
+            } else if (fileType.equals("CSV")) {
+                System.out.println();
+                System.out.println("> Support for CSV files has not yet been implemented. Check back later!");
+                System.out.println();
+                fileType();
+                //TXT Files
+            } else if (fileType.equals("TXT")) {
+                System.out.println();
+                System.out.println("> Support for TXT files has not yet been implemented. Check back later!");
+                System.out.println();
+                fileType();
+            }
+        }catch(POIXMLException e){
+            System.out.println("! One or more of the files supplied was not in the expected file type.");
+            System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.\n");
+            run(this);
+        }catch(OfficeXmlFileException e){
+            System.out.println("! One or more of the files supplied was not in the expected file type.");
+            System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.\n");
+            run(this);
+        }
+    }
+
+    public void execute(String fileType, ColumnSieve gui) {
+        /* ***
+        Called from ColSieve.GUI to create the correct
+        FileCommand object and call for the data list.
+        @PARAM - <STRING>
+            -> @1 - String which represents file type.
+            -> @2 - GUI to output data to
+        @RETURN -
+
+        @EXIT -
+            -> @1 - If an unsupported file type, call ColSieve.fileType()
+            -> @2 - Return to main
+        @THROWS -
+            -> @1 - POIXMLException / OfficeXmlFileException; calls ColSieve.run()
+        *** */
+
+        String resultString;
+
+        try {
+            //XLS Files
+            if (fileType.equals("XLS")) {
+                System.out.println();
+                xlsFileCommands = new XLSFileCommands();
+                gui.setConsole("\n\t> new XLSFileCommands object created\n\n");
+                resultString = xlsFileCommands.setHeaderRows(this) + "\n\n> Waiting for input...\n";
+                gui.setConsole(resultString);
                 //XLSX Files
             } else if (fileType.equals("XLSX")) {
                 System.out.println();
