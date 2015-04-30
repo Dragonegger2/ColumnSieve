@@ -40,6 +40,7 @@ public class ColSieve {
     private String consoleInFile;
     private String consoleInSheet;
     private String consoleTemplateFile;
+    private String consoleTemplateSheet;
     private String consoleOutFile;
     private String helpCommand;
 
@@ -104,15 +105,24 @@ public class ColSieve {
         this.consoleInFile = val;
     }
 
-    public void setConsoleInSheet(String val){
+    public void setConsoleInSheet(){
         /* ***
         Sets the input file sheet name captured from console.
-        @PARAM - <STRING>
-            -> @1 - Input file sheet name
+        @PARAM -
+
         @RETURN -
         *** */
-
-        this.consoleInSheet = val;
+        try {
+            if (consoleFileType.equals("XLS")) {
+                xlsFileCommands = new XLSFileCommands();
+                consoleInSheet = xlsFileCommands.getInputSheetName(this);
+            } else if (consoleFileType.equals("XLSX")) {
+                xlsxFileCommands = new XLSXFileCommands();
+                consoleInSheet = xlsxFileCommands.getInputSheetName(this);
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void setConsoleTemplateFile(String val){
@@ -124,6 +134,26 @@ public class ColSieve {
         *** */
 
         this.consoleTemplateFile = val;
+    }
+
+    public void setConsoleTemplateSheet(){
+        /* ***
+        Sets the input file sheet name captured from console.
+        @PARAM - <STRING>
+            -> @1 - Input file sheet name
+        @RETURN -
+        *** */
+        try {
+            if (consoleFileType.equals("XLS")) {
+                xlsFileCommands = new XLSFileCommands();
+                consoleTemplateSheet = xlsFileCommands.getTemplateSheetName(this);
+            } else if (consoleFileType.equals("XLSX")) {
+                xlsxFileCommands = new XLSXFileCommands();
+                consoleTemplateSheet = xlsxFileCommands.getTemplateSheetName(this);
+            }
+        }catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void setConsoleOutFile(String val){
@@ -230,6 +260,18 @@ public class ColSieve {
         *** */
 
         return this.consoleTemplateFile;
+    }
+
+    public String getConsoleTemplateSheet() {
+        /* ***
+        Accessor for private consoleInSheet string
+        @PARAM -
+
+        @RETURN - <STRING>
+            -> @1 - this.consoleInSheet
+        *** */
+
+        return this.consoleTemplateSheet;
     }
 
     public String getConsoleOutFile() {
@@ -758,6 +800,22 @@ public class ColSieve {
             System.exit(-1);
         }
         return newIndex;
+    }
+
+    public Boolean checkSheets(){
+        Boolean result = false;
+        try {
+            if (consoleFileType.equals("XLS")) {
+                xlsFileCommands = new XLSFileCommands();
+                result = xlsFileCommands.sheetExists(this);
+            } else if (consoleFileType.equals("XLSX")) {
+                xlsxFileCommands = new XLSXFileCommands();
+                result = xlsxFileCommands.sheetExists(this);
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return result;
     }
 
 }

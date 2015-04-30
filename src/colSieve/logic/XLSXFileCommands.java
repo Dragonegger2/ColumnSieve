@@ -20,6 +20,14 @@ import java.util.LinkedHashMap;
 public class XLSXFileCommands {
     private String compareResult = "";
 
+    public Boolean sheetExists(ColSieve userInput){
+        //returns true if both sheets exist
+        //returns false if either sheet is missing
+        Boolean result;
+        result = true;
+        return result;
+    }
+
     public String compareHeader(String input, String inputSheet, String template, Boolean runMode){
         try{
             //Excel file input stream information
@@ -135,6 +143,18 @@ public class XLSXFileCommands {
             System.exit(-1);
         }
         return compareResult;
+    }
+
+    public String getInputSheetName(ColSieve userInput){
+        String result = "";
+        XSSFWorkbook inputBook = new XSSFWorkbook();
+        return result;
+    }
+
+    public String getTemplateSheetName(ColSieve userInput){
+        String result = "";
+        XSSFWorkbook inputBook = new XSSFWorkbook();
+        return result;
     }
 
     public void mapColumnData(String input, String inputSheet, String template, String output, Boolean runMode, ColSieve userInput){

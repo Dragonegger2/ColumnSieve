@@ -51,7 +51,7 @@ public class XLSFileCommands {
             mySheet = myBook.getSheet(userInput.getConsoleInSheet());
             FileInputStream templateFile = new FileInputStream(userInput.getConsoleTemplateFile());
             HSSFWorkbook templateBook = new HSSFWorkbook(templateFile);
-            templateSheet = templateBook.getSheet("Sheet1");
+            templateSheet = templateBook.getSheet(userInput.getConsoleTemplateSheet());
 
             //check to make sure that the sheet exists in the workbook
             if(mySheet == null){
@@ -144,6 +144,33 @@ public class XLSFileCommands {
             System.exit(-1);
         }
 
+        return result;
+    }
+
+    public Boolean sheetExists(ColSieve userInput) throws IOException{
+        //returns true if both sheets exist
+        //returns false if either sheet is missing
+        Boolean result;
+        //assume the sheet does not exist
+        result = false;
+
+        //Open both of the Excel workbooks
+        FileInputStream input = new FileInputStream(userInput.getConsoleInFile());
+        FileInputStream template = new FileInputStream(userInput.getConsoleTemplateFile());
+        HSSFWorkbook inBook = new HSSFWorkbook(input);
+        HSSFWorkbook templateBook = new HSSFWorkbook(template);
+
+        //set the sheets
+        mySheet = inBook.getSheet(userInput.getConsoleInSheet());
+        templateSheet = templateBook.getSheet(userInput.getConsoleTemplateSheet());
+
+        //if both of the sheets are not null, they exist
+        if(mySheet != null && templateSheet != null){
+            result = true;
+        }
+
+        input.close();
+        template.close();
         return result;
     }
 
@@ -287,6 +314,24 @@ public class XLSFileCommands {
             }
             System.out.println();
         }
+        return result;
+    }
+
+    public String getInputSheetName(ColSieve userInput) throws IOException{
+        String result = "";
+        FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
+        HSSFWorkbook inputBook = new HSSFWorkbook(inFile);
+        result += inputBook.getSheetName(0);
+        inFile.close();
+        return result;
+    }
+
+    public String getTemplateSheetName(ColSieve userInput) throws IOException{
+        String result = "";
+        FileInputStream inFile = new FileInputStream(userInput.getConsoleTemplateFile());
+        HSSFWorkbook templateBook = new HSSFWorkbook(inFile);
+        result += templateBook.getSheetName(0);
+        inFile.close();
         return result;
     }
 
@@ -762,4 +807,5 @@ public class XLSFileCommands {
         outFile.close();
         inFile.close();
     }
+
 }

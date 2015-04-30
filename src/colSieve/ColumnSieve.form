@@ -8,7 +8,9 @@
     <constraints>
       <xy x="20" y="20" width="1094" height="842"/>
     </constraints>
-    <properties/>
+    <properties>
+      <autoscrolls value="true"/>
+    </properties>
     <border type="none"/>
     <children>
       <grid id="72957" binding="pnlTop" layout-manager="FormLayout">
@@ -30,7 +32,9 @@
               </grid>
               <forms top="0" left="0" bottom="15" right="0" defaultalign-vert="false"/>
             </constraints>
-            <properties/>
+            <properties>
+              <autoscrolls value="true"/>
+            </properties>
             <border type="none"/>
             <children>
               <grid id="dea64" binding="pnlHome" layout-manager="FormLayout">
@@ -66,28 +70,27 @@
                 </children>
               </grid>
               <grid id="4605" binding="pnlCompare" layout-manager="FormLayout">
-                <rowspec value="center:42px:noGrow"/>
-                <rowspec value="top:5dlu:noGrow"/>
-                <rowspec value="center:88px:noGrow"/>
+                <rowspec value="center:59px:noGrow"/>
+                <rowspec value="center:p:noGrow"/>
                 <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:151px:noGrow"/>
+                <rowspec value="center:p:noGrow"/>
                 <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:150px:noGrow"/>
+                <rowspec value="center:p:noGrow"/>
                 <rowspec value="top:4dlu:noGrow"/>
-                <rowspec value="center:max(d;4px):noGrow"/>
+                <rowspec value="center:max(p;4px):noGrow"/>
                 <colspec value="fill:d:grow"/>
                 <constraints>
                   <tabbedpane title="Compare Columns"/>
                 </constraints>
                 <properties>
-                  <autoscrolls value="true"/>
+                  <autoscrolls value="false"/>
                 </properties>
                 <border type="none"/>
                 <children>
                   <component id="a8b52" class="javax.swing.JLabel" binding="lblCompare">
                     <constraints>
                       <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
-                      <forms top="20" left="10" bottom="0" right="0" defaultalign-vert="false"/>
+                      <forms top="20" left="10" bottom="10" right="0" defaultalign-vert="false"/>
                     </constraints>
                     <properties>
                       <font size="20"/>
@@ -99,7 +102,7 @@
                     <rowspec value="center:43px:noGrow"/>
                     <colspec value="fill:d:grow"/>
                     <constraints>
-                      <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
                       <forms top="0" left="10" bottom="0" right="10" defaultalign-vert="false"/>
                     </constraints>
                     <properties/>
@@ -114,7 +117,7 @@
                           <text value="Please select from one of the supported file types:"/>
                         </properties>
                       </component>
-                      <grid id="84dd4" binding="pnlFileTypeGroup" layout-manager="FormLayout">
+                      <grid id="84dd4" binding="pnlCompareFileTypeGroup" layout-manager="FormLayout">
                         <rowspec value="center:23px:grow"/>
                         <colspec value="fill:d:grow"/>
                         <colspec value="left:4dlu:noGrow"/>
@@ -132,8 +135,8 @@
                         <children>
                           <component id="9ed5e" class="javax.swing.JRadioButton" binding="rdoCompareXLS">
                             <constraints>
-                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                              <forms/>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms defaultalign-horz="false"/>
                             </constraints>
                             <properties>
                               <text value="Excel 97/2003 (XLS)"/>
@@ -141,28 +144,31 @@
                           </component>
                           <component id="aefc0" class="javax.swing.JRadioButton" binding="rdoCompareXLSX">
                             <constraints>
-                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                              <forms/>
+                              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms defaultalign-horz="false"/>
                             </constraints>
                             <properties>
+                              <enabled value="false"/>
                               <text value="Excel (XLSX)"/>
                             </properties>
                           </component>
                           <component id="c4889" class="javax.swing.JRadioButton" binding="rdoCompareCSV">
                             <constraints>
-                              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                              <forms/>
+                              <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms defaultalign-horz="false"/>
                             </constraints>
                             <properties>
+                              <enabled value="false"/>
                               <text value="Comma Separated (CSV)"/>
                             </properties>
                           </component>
                           <component id="fdea" class="javax.swing.JRadioButton" binding="rdoCompareTXT">
                             <constraints>
-                              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                              <forms/>
+                              <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms defaultalign-horz="false"/>
                             </constraints>
                             <properties>
+                              <enabled value="false"/>
                               <text value="Tab Delimited (TXT)"/>
                             </properties>
                           </component>
@@ -173,16 +179,14 @@
                   <grid id="eb1c1" binding="pnlCompareInputFile" layout-manager="FormLayout">
                     <rowspec value="center:43px:noGrow"/>
                     <rowspec value="top:4dlu:noGrow"/>
-                    <rowspec value="center:34px:noGrow"/>
-                    <rowspec value="top:4dlu:noGrow"/>
-                    <rowspec value="top:35px:noGrow"/>
+                    <rowspec value="center:73px:noGrow"/>
                     <colspec value="fill:233px:noGrow"/>
-                    <colspec value="fill:691px:noGrow"/>
+                    <colspec value="fill:691px:grow"/>
                     <colspec value="left:4dlu:noGrow"/>
                     <colspec value="fill:90px:noGrow"/>
                     <constraints>
-                      <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
-                      <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
+                      <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <forms top="10" left="10" bottom="10" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
                     </constraints>
                     <properties/>
                     <border type="none"/>
@@ -194,7 +198,9 @@
                           </grid>
                           <forms defaultalign-horz="false" defaultalign-vert="false"/>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <text value=""/>
+                        </properties>
                       </component>
                       <component id="c42c5" class="javax.swing.JButton" binding="btnCompareInputBrowse">
                         <constraints>
@@ -214,26 +220,6 @@
                           <text value="Please enter full path to input file:"/>
                         </properties>
                       </component>
-                      <component id="b7b7d" class="javax.swing.JTextField" binding="txtCompareInputSheet">
-                        <constraints>
-                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                          <forms defaultalign-horz="false"/>
-                        </constraints>
-                        <properties>
-                          <autoscrolls value="true"/>
-                        </properties>
-                      </component>
-                      <component id="8d88b" class="javax.swing.JLabel" binding="lblCompareInputSheet">
-                        <constraints>
-                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                          <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Please enter input sheet name:"/>
-                        </properties>
-                      </component>
                       <component id="a6df9" class="javax.swing.JLabel" binding="lblCompareInputProperties">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
@@ -249,15 +235,13 @@
                   <grid id="da854" binding="pnlCompareTemplateFile" layout-manager="FormLayout">
                     <rowspec value="center:43px:noGrow"/>
                     <rowspec value="top:4dlu:noGrow"/>
-                    <rowspec value="center:34px:noGrow"/>
-                    <rowspec value="top:4dlu:noGrow"/>
-                    <rowspec value="top:35px:noGrow"/>
+                    <rowspec value="center:65px:noGrow"/>
                     <colspec value="fill:265px:noGrow"/>
-                    <colspec value="fill:658px:noGrow"/>
+                    <colspec value="fill:658px:grow"/>
                     <colspec value="left:4dlu:noGrow"/>
                     <colspec value="fill:90px:noGrow"/>
                     <constraints>
-                      <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                       <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
                     </constraints>
                     <properties/>
@@ -270,7 +254,9 @@
                           </grid>
                           <forms defaultalign-horz="false" defaultalign-vert="false"/>
                         </constraints>
-                        <properties/>
+                        <properties>
+                          <text value=""/>
+                        </properties>
                       </component>
                       <component id="e0e48" class="javax.swing.JButton" binding="btnCompareTemplateBrowse">
                         <constraints>
@@ -290,26 +276,6 @@
                           <text value="Please enter full path to template file:"/>
                         </properties>
                       </component>
-                      <component id="6ba2c" class="javax.swing.JTextField" binding="txtCompareTemplateSheet">
-                        <constraints>
-                          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-                            <preferred-size width="150" height="-1"/>
-                          </grid>
-                          <forms defaultalign-horz="false"/>
-                        </constraints>
-                        <properties>
-                          <autoscrolls value="true"/>
-                        </properties>
-                      </component>
-                      <component id="9a5f8" class="javax.swing.JLabel" binding="lblCompareTemplateSheet">
-                        <constraints>
-                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                          <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Please enter template sheet name:"/>
-                        </properties>
-                      </component>
                       <component id="cea33" class="javax.swing.JLabel" binding="lblCompareTemplateProperties">
                         <constraints>
                           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
@@ -324,8 +290,8 @@
                   </grid>
                   <component id="74b16" class="javax.swing.JButton" binding="btnCompareColumns">
                     <constraints>
-                      <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-                      <forms defaultalign-horz="false"/>
+                      <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                      <forms top="0" left="0" bottom="10" right="0" defaultalign-horz="false"/>
                     </constraints>
                     <properties>
                       <label value="Begin"/>
@@ -337,44 +303,324 @@
                   </component>
                 </children>
               </grid>
-              <grid id="25d61" binding="pnlSieve" layout-manager="FormLayout">
-                <rowspec value="center:d:grow"/>
-                <colspec value="fill:d:grow"/>
+              <scrollpane id="613f" binding="sievePane">
                 <constraints>
                   <tabbedpane title="Sieve Columns"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
-                <children/>
-              </grid>
+                <children>
+                  <grid id="d62ef" binding="pnlSieve" layout-manager="FormLayout">
+                    <rowspec value="center:59px:noGrow"/>
+                    <rowspec value="top:d:noGrow"/>
+                    <rowspec value="center:d:noGrow"/>
+                    <rowspec value="top:4dlu:noGrow"/>
+                    <rowspec value="top:p:noGrow"/>
+                    <rowspec value="top:4dlu:noGrow"/>
+                    <rowspec value="center:p:noGrow"/>
+                    <rowspec value="top:4dlu:noGrow"/>
+                    <rowspec value="center:p:noGrow"/>
+                    <rowspec value="top:4dlu:noGrow"/>
+                    <rowspec value="center:max(p;4px):noGrow"/>
+                    <colspec value="fill:d:grow"/>
+                    <constraints/>
+                    <properties>
+                      <autoscrolls value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="b80ee" class="javax.swing.JLabel" binding="lblSieve">
+                        <constraints>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                          <forms top="20" left="10" bottom="10" right="0" defaultalign-vert="false"/>
+                        </constraints>
+                        <properties>
+                          <font size="20"/>
+                          <text value="The Sieve Columns feature allows you to output a new file after relocating all fields to the correct index."/>
+                        </properties>
+                      </component>
+                      <grid id="73ecb" binding="pnlSieveFileType" layout-manager="FormLayout">
+                        <rowspec value="center:36px:noGrow"/>
+                        <rowspec value="center:43px:noGrow"/>
+                        <colspec value="fill:d:grow"/>
+                        <constraints>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                          <forms top="0" left="10" bottom="0" right="10" defaultalign-vert="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="b0bb1" class="javax.swing.JLabel" binding="lblSieveFileType">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms top="10" left="10" bottom="10" right="10"/>
+                            </constraints>
+                            <properties>
+                              <text value="Please select from one of the supported file types:"/>
+                            </properties>
+                          </component>
+                          <grid id="4fa00" binding="pnlSieveFileTypeGroup" layout-manager="FormLayout">
+                            <rowspec value="center:23px:grow"/>
+                            <colspec value="fill:d:grow"/>
+                            <colspec value="left:4dlu:noGrow"/>
+                            <colspec value="fill:max(d;4px):grow"/>
+                            <colspec value="left:4dlu:noGrow"/>
+                            <colspec value="fill:max(d;4px):grow"/>
+                            <colspec value="left:4dlu:noGrow"/>
+                            <colspec value="fill:max(d;4px):grow"/>
+                            <constraints>
+                              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                              <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties/>
+                            <border type="none"/>
+                            <children>
+                              <component id="2e452" class="javax.swing.JRadioButton" binding="rdoSieveXLS">
+                                <constraints>
+                                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <forms defaultalign-horz="false"/>
+                                </constraints>
+                                <properties>
+                                  <text value="Excel 97/2003 (XLS)"/>
+                                </properties>
+                              </component>
+                              <component id="3936a" class="javax.swing.JRadioButton" binding="rdoSieveXLSX">
+                                <constraints>
+                                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <forms defaultalign-horz="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <text value="Excel (XLSX)"/>
+                                </properties>
+                              </component>
+                              <component id="d1d80" class="javax.swing.JRadioButton" binding="rdoSieveCSV">
+                                <constraints>
+                                  <grid row="0" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <forms defaultalign-horz="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <text value="Comma Separated (CSV)"/>
+                                </properties>
+                              </component>
+                              <component id="1a693" class="javax.swing.JRadioButton" binding="rdoSieveTXT">
+                                <constraints>
+                                  <grid row="0" column="6" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                                  <forms defaultalign-horz="false"/>
+                                </constraints>
+                                <properties>
+                                  <enabled value="false"/>
+                                  <text value="Tab Delimited (TXT)"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="7d434" binding="pnlSieveInputProperties" layout-manager="FormLayout">
+                        <rowspec value="center:43px:noGrow"/>
+                        <rowspec value="top:4dlu:noGrow"/>
+                        <rowspec value="center:73px:noGrow"/>
+                        <colspec value="fill:233px:noGrow"/>
+                        <colspec value="fill:691px:grow"/>
+                        <colspec value="left:4dlu:noGrow"/>
+                        <colspec value="fill:90px:noGrow"/>
+                        <constraints>
+                          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <forms top="10" left="10" bottom="10" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="6f319" class="javax.swing.JTextField" binding="txtSieveInput">
+                            <constraints>
+                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="-1"/>
+                              </grid>
+                              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                          <component id="ed1d0" class="javax.swing.JButton" binding="txtSieveInputBrowse">
+                            <constraints>
+                              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                              <forms top="0" left="0" bottom="0" right="10" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Browse"/>
+                            </properties>
+                          </component>
+                          <component id="af018" class="javax.swing.JLabel" binding="lblSieveInput">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Please enter full path to input file:"/>
+                            </properties>
+                          </component>
+                          <component id="7173" class="javax.swing.JLabel" binding="lblSieveInputProperties">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                              <text value="Input File Properties"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="d26b6" binding="pnlSieveTemplateProperties" layout-manager="FormLayout">
+                        <rowspec value="center:43px:noGrow"/>
+                        <rowspec value="top:4dlu:noGrow"/>
+                        <rowspec value="center:65px:noGrow"/>
+                        <colspec value="fill:265px:noGrow"/>
+                        <colspec value="fill:658px:grow"/>
+                        <colspec value="left:4dlu:noGrow"/>
+                        <colspec value="fill:90px:noGrow"/>
+                        <constraints>
+                          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="4527f" class="javax.swing.JTextField" binding="txtSieveTemplate">
+                            <constraints>
+                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="-1"/>
+                              </grid>
+                              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                          <component id="a8c9f" class="javax.swing.JButton" binding="btnSieveTemplateBrowse">
+                            <constraints>
+                              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                              <forms top="0" left="0" bottom="0" right="10" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Browse"/>
+                            </properties>
+                          </component>
+                          <component id="dac24" class="javax.swing.JLabel" binding="lblSieveTemplate">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Please enter full path to template file:"/>
+                            </properties>
+                          </component>
+                          <component id="559fc" class="javax.swing.JLabel" binding="lblSieveTemplateProperties">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                              <text value="Template File Properties"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                      <component id="4c6a1" class="javax.swing.JButton" binding="btnSieveColumns">
+                        <constraints>
+                          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                          <forms top="0" left="0" bottom="10" right="0" defaultalign-horz="false"/>
+                        </constraints>
+                        <properties>
+                          <label value="Begin"/>
+                          <maximumSize width="200" height="37"/>
+                          <minimumSize width="200" height="37"/>
+                          <preferredSize width="200" height="37"/>
+                          <text value="Begin"/>
+                        </properties>
+                      </component>
+                      <grid id="ff295" binding="pnlSieveOutputProperties" layout-manager="FormLayout">
+                        <rowspec value="center:43px:noGrow"/>
+                        <rowspec value="top:4dlu:noGrow"/>
+                        <rowspec value="center:65px:noGrow"/>
+                        <colspec value="fill:265px:noGrow"/>
+                        <colspec value="fill:658px:grow"/>
+                        <colspec value="left:4dlu:noGrow"/>
+                        <colspec value="fill:90px:noGrow"/>
+                        <constraints>
+                          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                          <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
+                        </constraints>
+                        <properties/>
+                        <border type="none"/>
+                        <children>
+                          <component id="a6b21" class="javax.swing.JTextField" binding="txtSieveOutput">
+                            <constraints>
+                              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+                                <preferred-size width="150" height="-1"/>
+                              </grid>
+                              <forms defaultalign-horz="false" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value=""/>
+                            </properties>
+                          </component>
+                          <component id="3c31f" class="javax.swing.JLabel" binding="lblSieveOutput">
+                            <constraints>
+                              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="5" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms top="0" left="0" bottom="0" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Please enter full path to template file:"/>
+                            </properties>
+                          </component>
+                          <component id="b769c" class="javax.swing.JLabel" binding="txtSieveOutputProperties">
+                            <constraints>
+                              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+                              <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <font size="18"/>
+                              <text value="Output File Properties"/>
+                            </properties>
+                          </component>
+                          <component id="ffe35" class="javax.swing.JButton" binding="btnSieveOutSave">
+                            <constraints>
+                              <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+                              <forms top="0" left="0" bottom="0" right="10" defaultalign-vert="false"/>
+                            </constraints>
+                            <properties>
+                              <text value="Save"/>
+                            </properties>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
+              </scrollpane>
             </children>
           </tabbedpane>
         </children>
       </grid>
       <grid id="6628a" binding="pnlBot" layout-manager="FormLayout">
         <rowspec value="center:32px:noGrow"/>
-        <rowspec value="top:247px:noGrow"/>
+        <rowspec value="top:4dlu:noGrow"/>
+        <rowspec value="center:d:grow"/>
         <colspec value="fill:d:grow"/>
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
-        <properties/>
+        <properties>
+          <autoscrolls value="true"/>
+        </properties>
         <border type="none"/>
         <children>
-          <component id="654d" class="javax.swing.JTextArea" binding="txtConsole">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="150" height="50"/>
-              </grid>
-              <forms top="10" left="10" bottom="10" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
-            </constraints>
-            <properties>
-              <background color="-14473945"/>
-              <editable value="false"/>
-              <foreground color="-1"/>
-            </properties>
-          </component>
           <component id="264ae" class="javax.swing.JLabel" binding="lblConsole">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="10" fill="0" indent="0" use-parent-layout="false"/>
@@ -385,8 +631,42 @@
               <text value="Console"/>
             </properties>
           </component>
+          <scrollpane id="64328">
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+              <forms top="10" left="10" bottom="10" right="10" defaultalign-horz="false" defaultalign-vert="false"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children>
+              <component id="654d" class="javax.swing.JTextArea" binding="txtConsole">
+                <constraints/>
+                <properties>
+                  <background color="-14473945"/>
+                  <editable value="false"/>
+                  <foreground color="-1"/>
+                </properties>
+              </component>
+            </children>
+          </scrollpane>
         </children>
       </grid>
     </children>
   </grid>
+  <buttonGroups>
+    <group name="grpCompareFileType">
+      <member id="9ed5e"/>
+      <member id="9ed5e"/>
+      <member id="aefc0"/>
+      <member id="c4889"/>
+      <member id="fdea"/>
+    </group>
+    <group name="grpSieveColumns">
+      <member id="ede2a"/>
+      <member id="ede2a"/>
+      <member id="234b"/>
+      <member id="40c33"/>
+      <member id="fdcd8"/>
+    </group>
+  </buttonGroups>
 </form>

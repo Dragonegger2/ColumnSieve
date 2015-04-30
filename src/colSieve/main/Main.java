@@ -52,7 +52,7 @@ public class Main {
                             try {
                                 XLSFileCommands fileCommand = new XLSFileCommands();
                                 me.setConsoleInFile(args[0]);
-                                me.setConsoleInSheet(args[1]);
+                                me.setConsoleInSheet();
                                 me.setConsoleTemplateFile(args[2]);
                                 me.setConsoleFileCommand("compareHeader");
                                 fileCommand.setHeaderRows(me);
@@ -105,7 +105,7 @@ public class Main {
                         if(cmdFileType.toLowerCase().equals(".xls")){                   // <---- XLS Files
                             XLSFileCommands fileCommand = new XLSFileCommands();
                             me.setConsoleInFile(args[0]);
-                            me.setConsoleInSheet(args[1]);
+                            me.setConsoleInSheet();
                             me.setConsoleTemplateFile(args[2]);
                             me.setConsoleOutFile(args[3]);
                             me.setConsoleFileCommand("mapColumnData");
@@ -147,7 +147,7 @@ public class Main {
                     me.setConsoleFileType("NaN");
                     me.setConsoleFileCommand("NaN");
                     me.setConsoleInFile("NaN");
-                    me.setConsoleInSheet("NaN");
+                    me.setConsoleInSheet();
                     me.setConsoleTemplateFile("NaN");
                     me.setConsoleOutFile("NaN");
                     me.run(me);
