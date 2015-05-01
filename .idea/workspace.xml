@@ -7,12 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eff5a39f-e168-4d6a-a1e2-1a07c17693e0" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\ctangney\data\WORKING\~CODE\columnSieve\out\run.bat" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/ColSieve.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/ColSieve.java" />
+      <change type="DELETED" beforePath="C:\Users\ctangney\data\WORKING\~CODE\columnSieve\production\colSieve\GUI.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/logic/ColSieve.class" afterPath="$PROJECT_DIR$/production/colSieve/logic/ColSieve.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/main/Main.class" afterPath="$PROJECT_DIR$/production/colSieve/main/Main.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/logic/XLSFileCommands.class" afterPath="$PROJECT_DIR$/production/colSieve/logic/XLSFileCommands.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/colSieve/logic/XLSXFileCommands.class" afterPath="$PROJECT_DIR$/production/colSieve/logic/XLSXFileCommands.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/columnSieve.jar" afterPath="$PROJECT_DIR$/out/columnSieve.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/ColumnSieve.form" afterPath="$PROJECT_DIR$/src/colSieve/ColumnSieve.form" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/ColumnSieve.java" afterPath="$PROJECT_DIR$/src/colSieve/ColumnSieve.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/main/Main.java" afterPath="$PROJECT_DIR$/src/colSieve/main/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/production/META-INF/MANIFEST.MF" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
@@ -48,37 +51,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="XLSFileCommands.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="768" max-vertical-offset="1394">
-              <caret line="325" column="0" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#39271#0" expanded="true" />
-                <element signature="imports" expanded="true" />
-                <element signature="e#559#575#0" expanded="true" />
-                <element signature="e#655#671#0" expanded="true" />
-                <element signature="e#755#771#0" expanded="true" />
-                <element signature="e#854#870#0" expanded="true" />
-                <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="e#29451#29467#0" expanded="true" />
-                <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="ColSieve.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/colSieve/logic/ColSieve.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="579" max-vertical-offset="1802">
-              <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1826" max-vertical-offset="2890">
+              <caret line="649" column="0" selection-start-line="649" selection-start-column="0" selection-end-line="649" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#setRunFlag#0;class#ColSieve#0" expanded="false" />
@@ -107,7 +84,6 @@
                 <element signature="method#sieveColumns#0;class#ColSieve#0" expanded="false" />
                 <element signature="method#fileType#0;class#ColSieve#0" expanded="false" />
                 <element signature="method#execute#0;class#ColSieve#0" expanded="false" />
-                <element signature="method#execute#1;class#ColSieve#0" expanded="false" />
                 <element signature="method#unknownField#0;class#ColSieve#0" expanded="false" />
                 <element signature="method#newTemplateInfo#0;class#ColSieve#0" expanded="false" />
                 <element signature="method#newFieldDefinition#0;class#ColSieve#0" expanded="false" />
@@ -117,17 +93,45 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="XLSFileCommands.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9945355" vertical-offset="1215" max-vertical-offset="4352">
+              <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#39137#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#559#575#0" expanded="true" />
+                <element signature="e#655#671#0" expanded="true" />
+                <element signature="e#755#771#0" expanded="true" />
+                <element signature="e#854#870#0" expanded="true" />
+                <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="e#29317#29333#0" expanded="true" />
+                <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+                <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="XLSXFileCommands.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1312" max-vertical-offset="3842">
+              <caret line="231" column="84" selection-start-line="231" selection-start-column="84" selection-end-line="231" selection-end-column="84" />
               <folding>
+                <element signature="e#0#16597#0" expanded="true" />
+                <element signature="imports" expanded="true" />
                 <element signature="method#sheetExists#0;class#XLSXFileCommands#0" expanded="false" />
                 <element signature="method#compareHeader#0;class#XLSXFileCommands#0" expanded="false" />
                 <element signature="method#getInputSheetName#0;class#XLSXFileCommands#0" expanded="false" />
                 <element signature="method#getTemplateSheetName#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
                 <element signature="method#mapUnknownColumnToEOF#0;class#XLSXFileCommands#0" expanded="false" />
                 <element signature="method#addDefinition#0;class#XLSXFileCommands#0" expanded="false" />
                 <element signature="method#deleteColumn#0;class#XLSXFileCommands#0" expanded="false" />
@@ -140,19 +144,19 @@
       <file leaf-file-name="ColumnSieve.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2141" max-vertical-offset="4386">
-              <caret line="140" column="37" selection-start-line="140" selection-start-column="37" selection-end-line="140" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="759" max-vertical-offset="5916">
+              <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#setGui#0;class#ColumnSieve#0" expanded="false" />
                 <element signature="method#showGui#0;class#ColumnSieve#0" expanded="false" />
-                <element signature="method#setConsole#0;class#ColumnSieve#0" expanded="false" />
                 <element signature="method#main#0;class#ColumnSieve#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ColumnSieve.form" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ColumnSieve.form" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
           <provider selected="true" editor-type-id="ui-designer">
             <state />
@@ -192,10 +196,10 @@
         <option value="$PROJECT_DIR$/src/colSieve/GUI.form" />
         <option value="$PROJECT_DIR$/src/colSieve/GUI.java" />
         <option value="$PROJECT_DIR$/src/colSieve/main/Main.java" />
-        <option value="$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java" />
-        <option value="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" />
         <option value="$PROJECT_DIR$/src/colSieve/logic/ColSieve.java" />
         <option value="$PROJECT_DIR$/src/colSieve/ColumnSieve.java" />
+        <option value="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" />
+        <option value="$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java" />
         <option value="$PROJECT_DIR$/src/colSieve/ColumnSieve.form" />
       </list>
     </option>
@@ -730,7 +734,13 @@
       <option name="project" value="LOCAL" />
       <updated>1430340450042</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="GUI -&gt; &#10;&#10;Updates to gui; implemented Compare Columns function to gui">
+      <created>1430426515960</created>
+      <option name="number" value="00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1430426515960</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -738,18 +748,18 @@
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.08342246" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.08342246" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3407173" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6624473" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.35970464" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34599155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14973262" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -758,7 +768,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-967" y="-69" width="617" height="948" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2637131" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6624473" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -791,13 +801,32 @@
     <MESSAGE value="XLSFileCommands -&gt; &#10;&#10;Template file can now be successfully expanded" />
     <MESSAGE value="XLSFileCommands -&gt; &#10;&#10;Error handling for unknown sheet name" />
     <MESSAGE value="GUI -&gt; &#10;&#10;Re-worked the GUI; still working on setting up all panels" />
-    <option name="LAST_COMMIT_MESSAGE" value="GUI -&gt; &#10;&#10;Re-worked the GUI; still working on setting up all panels" />
+    <MESSAGE value="GUI -&gt; &#10;&#10;Updates to gui; implemented Compare Columns function to gui" />
+    <option name="LAST_COMMIT_MESSAGE" value="GUI -&gt; &#10;&#10;Updates to gui; implemented Compare Columns function to gui" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="473" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/colSieve/logic/ColSieve.java</url>
+          <line>649</line>
+          <properties />
+          <option name="timeStamp" value="495" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java</url>
+          <line>511</line>
+          <properties />
+          <option name="timeStamp" value="498" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="500" />
     </breakpoint-manager>
-    <watches-manager />
+    <watches-manager>
+      <configuration name="Application">
+        <watch expression="result" />
+      </configuration>
+    </watches-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -816,7 +845,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="307" max-vertical-offset="3179">
           <caret line="142" column="38" selection-start-line="142" selection-start-column="38" selection-end-line="142" selection-end-column="38" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -825,10 +854,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -847,7 +877,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4522">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -856,10 +886,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -878,7 +909,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4522">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -887,10 +918,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -909,7 +941,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="4321" max-vertical-offset="5236">
           <caret line="373" column="54" selection-start-line="373" selection-start-column="54" selection-end-line="373" selection-end-column="54" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -918,10 +950,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -940,7 +973,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3128">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -949,10 +982,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -971,7 +1005,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3179">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -980,10 +1014,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -1002,7 +1037,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="527">
           <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -1011,10 +1046,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -1026,7 +1062,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -1035,10 +1071,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -1050,7 +1087,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
           <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -1059,10 +1096,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -1074,7 +1112,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
           <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
+            <element signature="e#0#39137#0" expanded="true" />
             <element signature="imports" expanded="true" />
             <element signature="e#559#575#0" expanded="true" />
             <element signature="e#655#671#0" expanded="true" />
@@ -1083,10 +1121,11 @@
             <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
+            <element signature="e#29317#29333#0" expanded="true" />
             <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
             <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
           </folding>
@@ -1146,13 +1185,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3470483" vertical-offset="146" max-vertical-offset="833">
           <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/POIDocument.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1254,14 +1286,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-forms.jar!/com/jgoodies/forms/layout/FormLayout.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="5740" max-vertical-offset="13175">
-          <caret line="393" column="16" selection-start-line="393" selection-start-column="16" selection-end-line="393" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/main/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5169399" vertical-offset="1856" max-vertical-offset="2771">
@@ -1292,6 +1316,25 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-forms.jar!/com/jgoodies/forms/layout/FormLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8" vertical-offset="5753" max-vertical-offset="13209">
+          <caret line="389" column="16" selection-start-line="389" selection-start-column="16" selection-end-line="389" selection-end-column="16" />
+          <folding>
+            <element signature="e#15038#15039#0" expanded="true" />
+            <element signature="e#15077#15078#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/POIDocument.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFWorkbook.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.84" vertical-offset="4393" max-vertical-offset="18428">
@@ -1300,34 +1343,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="768" max-vertical-offset="1394">
-          <caret line="325" column="0" selection-start-line="325" selection-start-column="0" selection-end-line="325" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="759" max-vertical-offset="5916">
+          <caret line="151" column="0" selection-start-line="151" selection-start-column="0" selection-end-line="151" selection-end-column="0" />
           <folding>
-            <element signature="e#0#39271#0" expanded="true" />
             <element signature="imports" expanded="true" />
-            <element signature="e#559#575#0" expanded="true" />
-            <element signature="e#655#671#0" expanded="true" />
-            <element signature="e#755#771#0" expanded="true" />
-            <element signature="e#854#870#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="e#29451#29467#0" expanded="true" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#setGui#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#showGui#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#main#0;class#ColumnSieve#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/logic/ColSieve.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="724" max-vertical-offset="2312">
-          <caret line="138" column="41" selection-start-line="138" selection-start-column="41" selection-end-line="138" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1826" max-vertical-offset="2890">
+          <caret line="649" column="0" selection-start-line="649" selection-start-column="0" selection-end-line="649" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#setRunFlag#0;class#ColSieve#0" expanded="false" />
@@ -1356,7 +1388,6 @@
             <element signature="method#sieveColumns#0;class#ColSieve#0" expanded="false" />
             <element signature="method#fileType#0;class#ColSieve#0" expanded="false" />
             <element signature="method#execute#0;class#ColSieve#0" expanded="false" />
-            <element signature="method#execute#1;class#ColSieve#0" expanded="false" />
             <element signature="method#unknownField#0;class#ColSieve#0" expanded="false" />
             <element signature="method#newTemplateInfo#0;class#ColSieve#0" expanded="false" />
             <element signature="method#newFieldDefinition#0;class#ColSieve#0" expanded="false" />
@@ -1367,14 +1398,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="544">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1312" max-vertical-offset="3842">
+          <caret line="231" column="84" selection-start-line="231" selection-start-column="84" selection-end-line="231" selection-end-column="84" />
           <folding>
+            <element signature="e#0#16597#0" expanded="true" />
+            <element signature="imports" expanded="true" />
             <element signature="method#sheetExists#0;class#XLSXFileCommands#0" expanded="false" />
             <element signature="method#compareHeader#0;class#XLSXFileCommands#0" expanded="false" />
             <element signature="method#getInputSheetName#0;class#XLSXFileCommands#0" expanded="false" />
             <element signature="method#getTemplateSheetName#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
             <element signature="method#mapUnknownColumnToEOF#0;class#XLSXFileCommands#0" expanded="false" />
             <element signature="method#addDefinition#0;class#XLSXFileCommands#0" expanded="false" />
             <element signature="method#deleteColumn#0;class#XLSXFileCommands#0" expanded="false" />
@@ -1383,22 +1415,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2141" max-vertical-offset="4386">
-          <caret line="140" column="37" selection-start-line="140" selection-start-column="37" selection-end-line="140" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#showGui#0;class#ColumnSieve#0" expanded="false" />
-            <element signature="method#setConsole#0;class#ColumnSieve#0" expanded="false" />
-            <element signature="method#main#0;class#ColumnSieve#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
       <provider selected="true" editor-type-id="ui-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9945355" vertical-offset="1215" max-vertical-offset="4352">
+          <caret line="410" column="0" selection-start-line="410" selection-start-column="0" selection-end-line="410" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39137#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#559#575#0" expanded="true" />
+            <element signature="e#655#671#0" expanded="true" />
+            <element signature="e#755#771#0" expanded="true" />
+            <element signature="e#854#870#0" expanded="true" />
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="e#29317#29333#0" expanded="true" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

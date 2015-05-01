@@ -126,7 +126,7 @@ public class XLSFileCommands {
                 if(userInput.getConsoleFileCommand().equals("compareHeader")){
                     result = compareHeader(userInput, result);
                 }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
-                    mapColumnData(userInput, result);
+                    result = mapColumnData(userInput, result);
                 }
             }
         } catch(FileNotFoundException e){
@@ -335,7 +335,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public void mapColumnData(ColSieve userInput, String result){
+    public String mapColumnData(ColSieve userInput, String result){
         try{
             //if the headers have not been compared
             if(unknownCommand.equals("")) {
@@ -388,8 +388,7 @@ public class XLSFileCommands {
                         System.exit(-1);
                         //If the program is running in operator mode, the program will return to the main
                     } else {
-                        System.out.println("! The output file type does not match the input file type.");
-                        System.out.println("! Please ensure that all your file types match before trying again.\n");
+                        result += "\n! The output file type does not match the input file type.\n! Please ensure that all your file types match before trying again.\n";
                     }
                 } else {
                     //Create file objects to confirm output path / file existence
@@ -399,17 +398,15 @@ public class XLSFileCommands {
                     //Make sure output directory exists
                     //If it does not, create it
                     if (!myPath.exists()) {
-                        System.out.println("\t! Output directory \"" + outPath + "\" has not been found.");
+                        result += "\n\t! Output directory \"" + outPath + "\" has not been found.\n\t> Directory \"" + outPath + "\" has been successfully created.\n";
                         new File(outPath).mkdirs();
-                        System.out.println("\t> Directory \"" + outPath + "\" has been successfully created.\n");
                     }
 
                     //Make sure the output file creates
                     //If it does not, create it
                     if (!myFile.exists()) {
-                        System.out.println("\t! Output file \"" + outFileName + "\" has not been found.");
+                        result += "\n\t! Output file \"" + outFileName + "\" has not been found.\n\t> File \"" + userInput.getConsoleOutFile() + "\" has been successfully created.\n";
                         myFile.createNewFile();
-                        System.out.println("\t> File \"" + userInput.getConsoleOutFile() + "\" has been successfully created.\n");
                     }
 
                     //Output workbook
@@ -503,7 +500,7 @@ public class XLSFileCommands {
                     //Write output file
                     try {
                         outBook.write(outFile);
-                        System.out.println("> A new file has been created at the location: " + userInput.getConsoleOutFile() + "\n");
+                        result += "\n> A new file has been created at the location: " + userInput.getConsoleOutFile() + "\n\n";
                     } catch (Throwable e) {
                         System.out.println("! The system encountered an error while trying to create the output file: " + userInput.getConsoleOutFile());
                         System.out.println("! Application terminated abnormally");
@@ -525,6 +522,7 @@ public class XLSFileCommands {
             System.out.println("! Application terminated abnormally");
             System.exit(-1);
         }
+        return result;
     }
 
     public void mapUnknownColumnToEOF(ColSieve userInput){

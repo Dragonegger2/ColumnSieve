@@ -221,7 +221,7 @@ public class XLSXFileCommands {
             }
 
             FileOutputStream outFile = new FileOutputStream(output);
-            Sheet outSheet = outBook.createSheet(inputSheet);
+            Sheet outSheet = outBook.createSheet(userInput.getConsoleTemplateSheet());
             Row outHeader = outSheet.createRow(0);
 
             //Empty Excel objects

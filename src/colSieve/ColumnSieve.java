@@ -4,57 +4,36 @@ import colSieve.logic.ColSieve;
 
 import javax.swing.*;
 import javax.swing.border.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by ctangney on 4/29/2015.
  */
 public class ColumnSieve extends JFrame implements ActionListener{
     //form items
-    private JPanel wrapper, pnlTop, pnlBot, pnlHome, pnlCompare, pnlNewTemplate, pnlCompareFileType, pnlCompareFileTypeGroup, pnlCompareInputFile, pnlCompareTemplateFile;
-    private JLabel lblWelcome, lblConsole, lblDesc, lblCompare, lblCompareFileType, lblCompareInput, lblCompareInputProperties, lblCompareTemplateFile, lblCompareTemplateSheet, lblCompareTemplateProperties;
+    private JPanel wrapper,pnlTop,pnlBot,pnlHome,pnlCompare,pnlNewTemplate,pnlCompareFileType,pnlCompareFileTypeGroup,pnlCompareInputFile,pnlCompareTemplateFile,pnlSieveFileType,pnlSieveInputProperties,pnlSieveTemplateProperties,pnlSieveOutputProperties,pnlSieve,pnlSieveFileTypeGroup;
+    private JLabel lblWelcome,lblConsole,lblDesc,lblCompare,lblCompareFileType,lblCompareInput,lblCompareInputProperties,lblCompareTemplateFile,lblCompareTemplateSheet,lblCompareTemplateProperties,lblSieve,lblSieveFileType,lblSieveInput,lblSieveInputProperties,lblSieveTemplate,lblSieveTemplateProperties,lblSieveOutput,lblSieveOutputProperties;
     private JTabbedPane tabOptions;
     private JTextArea txtConsole;
-    private ButtonGroup grpCompareFileType, grpSieveColumns;
-    private JRadioButton rdoCompareXLS, rdoCompareXLSX, rdoCompareCSV, rdoCompareTXT;
-    private JTextField txtCompareInput, txtCompareTemplate;
-    private JButton btnCompareInputBrowse, btnCompareTemplateBrowse, btnCompareColumns;
-    private JPanel pnlSieveFileType;
-    private JPanel pnlSieveInputProperties;
-    private JPanel pnlSieveTemplateProperties;
-    private JPanel pnlSieveOutputProperties;
-    private JRadioButton rdoSieveXLS;
-    private JRadioButton rdoSieveXLSX;
-    private JRadioButton rdoSieveCSV;
-    private JRadioButton rdoSieveTXT;
-    private JPanel pnlSieve;
-    private JLabel lblSieve;
-    private JLabel lblSieveFileType;
-    private JPanel pnlSieveFileTypeGroup;
-    private JTextField txtSieveInput;
-    private JButton txtSieveInputBrowse;
-    private JLabel lblSieveInput;
-    private JLabel lblSieveInputProperties;
-    private JTextField txtSieveTemplate;
-    private JButton btnSieveTemplateBrowse;
-    private JLabel lblSieveTemplate;
-    private JLabel lblSieveTemplateProperties;
-    private JButton btnSieveColumns;
-    private JTextField txtSieveOutput;
-    private JLabel lblSieveOutput;
-    private JLabel txtSieveOutputProperties;
-    private JButton btnSieveOutSave;
+    private ButtonGroup grpCompareFileType,grpSieveColumns;
+    private JRadioButton rdoCompareXLS,rdoCompareXLSX,rdoCompareCSV,rdoCompareTXT,rdoSieveXLS,rdoSieveXLSX,rdoSieveCSV,rdoSieveTXT;
+    private JTextField txtCompareInput,txtCompareTemplate,txtSieveInput,txtSieveTemplate,txtSieveOutput;
+    private JButton btnCompareInputBrowse,btnCompareTemplateBrowse,btnCompareColumns,btnSieveInputBrowse,btnSieveTemplateBrowse,btnSieveColumns,btnSieveOutSave;
     private JScrollPane sievePane;
     private JMenuBar menuBar;
     private JMenu menuFile, menuMore;
     private JMenuItem menuFile_EXIT, menuMore_ABOUT;
 
     //private variables
-    private String input, template, output, inputSheet, templateSheet, outputSheet;
+    private String input, template, output;
     private File inFile, templateFile, outputFile;
     private int confirmResult;
 
@@ -62,15 +41,6 @@ public class ColumnSieve extends JFrame implements ActionListener{
     private ColSieve passInput = new ColSieve();
 
     public void setGui(){
-        //set the initial elements to visible
-        wrapper.setVisible(true);
-        pnlTop.setVisible(true);
-        pnlBot.setVisible(true);
-        pnlHome.setVisible(true);
-        tabOptions.setVisible(true);
-        lblWelcome.setVisible(true);
-        lblDesc.setVisible(true);
-
         //set up the menu bar
         menuBar = new JMenuBar();
         menuFile = new JMenu("File");
@@ -134,6 +104,30 @@ public class ColumnSieve extends JFrame implements ActionListener{
         btnCompareColumns.addActionListener(this);
         btnCompareInputBrowse.addActionListener(this);
         btnCompareTemplateBrowse.addActionListener(this);
+        rdoCompareXLS.addActionListener(this);
+        rdoCompareXLSX.addActionListener(this);
+        rdoCompareCSV.addActionListener(this);
+        rdoCompareTXT.addActionListener(this);
+        btnSieveColumns.addActionListener(this);
+        btnSieveInputBrowse.addActionListener(this);
+        btnSieveTemplateBrowse.addActionListener(this);
+        btnSieveOutSave.addActionListener(this);
+        rdoSieveXLS.addActionListener(this);
+        rdoSieveXLSX.addActionListener(this);
+        rdoSieveCSV.addActionListener(this);
+        rdoSieveTXT.addActionListener(this);
+
+        //items disabled on window load
+        txtCompareInput.setEnabled(false);
+        btnCompareInputBrowse.setEnabled(false);
+        txtCompareTemplate.setEnabled(false);
+        btnCompareTemplateBrowse.setEnabled(false);
+        txtSieveInput.setEnabled(false);
+        btnSieveInputBrowse.setEnabled(false);
+        txtSieveTemplate.setEnabled(false);
+        btnSieveTemplateBrowse.setEnabled(false);
+        txtSieveOutput.setEnabled(false);
+        btnSieveOutSave.setEnabled(false);
 
         //window behavior
         this.setContentPane(wrapper);
@@ -192,6 +186,38 @@ public class ColumnSieve extends JFrame implements ActionListener{
         if(e.getSource() == menuFile_EXIT){
             //file menu > exit clicked
             System.exit(0);
+        }else if(e.getSource() == rdoCompareXLS) {
+            //one of the compare radio buttons was clicked
+            txtCompareInput.setEnabled(true);
+            btnCompareInputBrowse.setEnabled(true);
+            txtCompareTemplate.setEnabled(true);
+            btnCompareTemplateBrowse.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("XLS");
+        }else if(e.getSource() == rdoCompareXLSX) {
+            //one of the compare radio buttons was clicked
+            txtCompareInput.setEnabled(true);
+            btnCompareInputBrowse.setEnabled(true);
+            txtCompareTemplate.setEnabled(true);
+            btnCompareTemplateBrowse.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("XLSX");
+        }else if(e.getSource() == rdoCompareCSV) {
+            //one of the compare radio buttons was clicked
+            txtCompareInput.setEnabled(true);
+            btnCompareInputBrowse.setEnabled(true);
+            txtCompareTemplate.setEnabled(true);
+            btnCompareTemplateBrowse.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("CSV");
+        }else if(e.getSource() == rdoCompareTXT) {
+            //one of the compare radio buttons was clicked
+            txtCompareInput.setEnabled(true);
+            btnCompareInputBrowse.setEnabled(true);
+            txtCompareTemplate.setEnabled(true);
+            btnCompareTemplateBrowse.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("TXT");
         }else if(e.getSource() == btnCompareColumns){
             //execute compare columns button clicked
             //set the file command
@@ -208,17 +234,6 @@ public class ColumnSieve extends JFrame implements ActionListener{
                     //make sure the user has entered files
                     JOptionPane.showMessageDialog(null, "Please select an input and template file before proceeding.");
                 } else {
-                    //set the file type
-                    if (rdoCompareXLS.isSelected()) {
-                        passInput.setConsoleFileType("XLS");
-                    } else if (rdoCompareXLSX.isSelected()) {
-                        passInput.setConsoleFileType("XLSX");
-                    } else if (rdoCompareCSV.isSelected()) {
-                        passInput.setConsoleFileType("CSV");
-                    } else if (rdoCompareTXT.isSelected()) {
-                        passInput.setConsoleFileType("TXT");
-                    }
-
                     //check that input file exists
                     if (new File(txtCompareInput.getText()).exists()) {
                         //if the input file exists
@@ -265,6 +280,8 @@ public class ColumnSieve extends JFrame implements ActionListener{
         }else if(e.getSource() == btnCompareInputBrowse){
             //compare columns browse for input file clicked
             final JFileChooser fc = new JFileChooser("Please select an input file");
+            String fileFilter = passInput.getConsoleFileType().toLowerCase();
+            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
             if(returnVal == JFileChooser.APPROVE_OPTION){
@@ -274,11 +291,174 @@ public class ColumnSieve extends JFrame implements ActionListener{
         }else if(e.getSource() == btnCompareTemplateBrowse){
             //compare columns browse for template file clicked
             final JFileChooser fc = new JFileChooser("Please select a template file");
+            String fileFilter = passInput.getConsoleFileType().toLowerCase();
+            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
             if(returnVal == JFileChooser.APPROVE_OPTION){
                 templateFile = fc.getSelectedFile();
                 txtCompareTemplate.setText(templateFile.getAbsolutePath());
+            }
+        }else if(e.getSource() == rdoSieveXLS) {
+            //one of the compare radio buttons was clicked
+            txtSieveInput.setEnabled(true);
+            btnSieveInputBrowse.setEnabled(true);
+            txtSieveTemplate.setEnabled(true);
+            btnSieveTemplateBrowse.setEnabled(true);
+            txtSieveOutput.setEnabled(true);
+            btnSieveOutSave.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("XLS");
+        }else if(e.getSource() == rdoSieveXLSX) {
+            //one of the compare radio buttons was clicked
+            txtSieveInput.setEnabled(true);
+            btnSieveInputBrowse.setEnabled(true);
+            txtSieveTemplate.setEnabled(true);
+            btnSieveTemplateBrowse.setEnabled(true);
+            txtSieveOutput.setEnabled(true);
+            btnSieveOutSave.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("XLSX");
+        }else if(e.getSource() == rdoSieveCSV) {
+            //one of the compare radio buttons was clicked
+            txtSieveInput.setEnabled(true);
+            btnSieveInputBrowse.setEnabled(true);
+            txtSieveTemplate.setEnabled(true);
+            btnSieveTemplateBrowse.setEnabled(true);
+            txtSieveOutput.setEnabled(true);
+            btnSieveOutSave.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("CSV");
+        }else if(e.getSource() == rdoSieveTXT) {
+            //one of the compare radio buttons was clicked
+            txtSieveInput.setEnabled(true);
+            btnSieveInputBrowse.setEnabled(true);
+            txtSieveTemplate.setEnabled(true);
+            btnSieveTemplateBrowse.setEnabled(true);
+            txtSieveOutput.setEnabled(true);
+            btnSieveOutSave.setEnabled(true);
+            //set fileType
+            passInput.setConsoleFileType("TXT");
+        }else if(e.getSource() == btnSieveColumns){
+            //execute sieve columns button pushed
+            passInput.setConsoleFileCommand("mapColumnData");
+
+            //if the user has not selected a file type
+            if(grpSieveColumns.getSelection() == null){
+                //make sure the user has entered files
+                JOptionPane.showMessageDialog(null,"Please select a file type before proceeding.");
+            }else {
+
+                //if the user has not entered file properties
+                if (txtSieveInput.getText().equals("") || txtSieveTemplate.getText().equals("")) {
+                    //make sure the user has entered files
+                    JOptionPane.showMessageDialog(null, "Please select an input file, template file, and choose a save location before proceeding.");
+                } else {
+                    //check that input file exists
+                    if (new File(txtSieveInput.getText()).exists()) {
+                        //if the input file exists
+                        inputExists = true;
+                        inFile = new File(txtSieveInput.getText());
+                        passInput.setConsoleInFile(inFile.getAbsolutePath());
+                    }
+
+                    //check that the template file exists
+                    if (new File(txtSieveTemplate.getText()).exists()) {
+                        //if the template file exists
+                        templateExists = true;
+                        templateFile = new File(txtSieveTemplate.getText());
+                        passInput.setConsoleTemplateFile(templateFile.getAbsolutePath());
+                    }
+
+                    //if the files exist, set the ColSieve information
+                    if (inputExists && templateExists && !(txtSieveInput.getText().equals("")) && !(txtSieveTemplate.getText().equals("")) && !(txtSieveOutput.getText().equals(""))) {
+                        passInput.setConsoleInSheet();
+                        passInput.setConsoleTemplateSheet();
+                        passInput.setConsoleOutFile(txtSieveOutput.getText());
+
+                        if (passInput.checkSheets()) {
+                            //if the sheets exist
+                            sheetsExist = true;
+                        } else {
+                            //sheets are missing
+                            JOptionPane.showMessageDialog(null, "The tool is unable to open one or more of the sheets you have specified.\nPlease double check that you have entered both sheet names correctly before proceeding.");
+                        }
+                        if (sheetsExist) {
+                            //If the sheets exist, then all other checks have been completed.
+                            //Update the console, make a call to the compareHeader function
+                            txtConsole.append("\n> The tool will now attempt to sieve the columns from your input file.\n> Please wait...\n");
+                            passInput.execute(passInput.getConsoleFileType(), this);
+                        }
+                    } else if (inputExists && templateExists && !(txtSieveInput.getText().equals("")) && !(txtSieveTemplate.getText().equals("")) && txtSieveOutput.getText().equals("")){
+                        final JOptionPane defaultSaveWarning = new JOptionPane();
+                        int returnVal = defaultSaveWarning.showOptionDialog(null, "The tool has not detected a save location.\nBy default, the tool will create a new file on the desktop.", "Warning.",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,null,null);
+                        if(returnVal == JOptionPane.YES_OPTION){
+                            passInput.setConsoleInSheet();
+                            passInput.setConsoleTemplateSheet();
+                            Date currentDate = new Date();
+                            DateFormat format = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss");
+                            passInput.setConsoleOutFile("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xls");
+
+                            if (passInput.checkSheets()) {
+                                //if the sheets exist
+                                sheetsExist = true;
+                            } else {
+                                //sheets are missing
+                                JOptionPane.showMessageDialog(null, "The tool is unable to open one or more of the sheets you have specified.\nPlease double check that you have entered both sheet names correctly before proceeding.");
+                            }
+                            if (sheetsExist) {
+                                //If the sheets exist, then all other checks have been completed.
+                                //Update the console, make a call to the compareHeader function
+                                txtConsole.append("\n> The tool will now attempt to sieve the columns from your input file.\n> Please wait...\n");
+                                passInput.execute(passInput.getConsoleFileType(), this);
+                            }
+                        }
+
+                    } else if ((!inputExists) && (!templateExists)) {
+                        JOptionPane.showMessageDialog(null, "The tool is unable to locate one or more of the files you have entered.\nPlease confirm the location of the file before proceeding.");
+                    } else if (!inputExists) {
+                        JOptionPane.showMessageDialog(null, "The tool is unable to locate the input file you have selected.\nPlease confirm the location of the file before proceeding.");
+                    } else if (!templateExists) {
+                        JOptionPane.showMessageDialog(null, "The tool is unable to locate the template file you have selected.\nPlease confirm the location of the file before proceeding.");
+                    }
+                }
+            }
+        }else if(e.getSource() == btnSieveInputBrowse){
+            //sieve columns browse for input file
+            final JFileChooser fc = new JFileChooser("Please select an input file");
+            String fileFilter = passInput.getConsoleFileType().toLowerCase();
+            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            int returnVal = fc.showOpenDialog(ColumnSieve.this);
+
+            if(returnVal == JFileChooser.APPROVE_OPTION){
+                inFile = fc.getSelectedFile();
+                txtSieveInput.setText(inFile.getAbsolutePath());
+            }
+        }else if(e.getSource() == btnSieveTemplateBrowse){
+            //sieve columns browse for template file
+            final JFileChooser fc = new JFileChooser("Please select a template file");
+            String fileFilter = passInput.getConsoleFileType().toLowerCase();
+            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            int returnVal = fc.showOpenDialog(ColumnSieve.this);
+
+            if(returnVal == JFileChooser.APPROVE_OPTION){
+                templateFile = fc.getSelectedFile();
+                txtSieveTemplate.setText(templateFile.getAbsolutePath());
+            }
+        }else if(e.getSource() == btnSieveOutSave){
+            //sieve columns save button for output file
+            final JFileChooser fc = new JFileChooser("Please select a location to save your new list.");
+            String fileFilter = passInput.getConsoleFileType().toLowerCase();
+            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            int returnVal = fc.showSaveDialog(ColumnSieve.this);
+
+            if(returnVal == JFileChooser.APPROVE_OPTION){
+                outputFile = fc.getSelectedFile();
+                if(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls")){
+                    txtSieveOutput.setText(outputFile.getAbsolutePath());
+                }else if(!(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls"))){
+                    txtSieveOutput.setText(outputFile.getAbsolutePath() + (fc.getFileFilter().getDescription()));
+                }
             }
         }
     }

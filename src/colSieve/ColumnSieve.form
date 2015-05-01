@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="colSieve.ColumnSieve">
   <grid id="27dc6" binding="wrapper" layout-manager="FormLayout">
-    <rowspec value="top:p:noGrow"/>
-    <rowspec value="top:4dlu:noGrow"/>
+    <rowspec value="top:497px:noGrow"/>
     <rowspec value="top:280px:grow"/>
     <colspec value="fill:d:grow"/>
     <constraints>
@@ -14,7 +13,7 @@
     <border type="none"/>
     <children>
       <grid id="72957" binding="pnlTop" layout-manager="FormLayout">
-        <rowspec value="center:553px:noGrow"/>
+        <rowspec value="center:487px:noGrow"/>
         <colspec value="fill:d:grow"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false">
@@ -444,7 +443,7 @@
                               <text value=""/>
                             </properties>
                           </component>
-                          <component id="ed1d0" class="javax.swing.JButton" binding="txtSieveInputBrowse">
+                          <component id="ed1d0" class="javax.swing.JButton" binding="btnSieveInputBrowse">
                             <constraints>
                               <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
                               <forms top="0" left="0" bottom="0" right="10" defaultalign-vert="false"/>
@@ -578,7 +577,7 @@
                               <text value="Please enter full path to template file:"/>
                             </properties>
                           </component>
-                          <component id="b769c" class="javax.swing.JLabel" binding="txtSieveOutputProperties">
+                          <component id="b769c" class="javax.swing.JLabel" binding="lblSieveOutputProperties">
                             <constraints>
                               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
                               <forms top="10" left="10" bottom="10" right="10" defaultalign-vert="false"/>
@@ -613,7 +612,7 @@
         <rowspec value="center:d:grow"/>
         <colspec value="fill:d:grow"/>
         <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
           <forms defaultalign-vert="false"/>
         </constraints>
         <properties>
