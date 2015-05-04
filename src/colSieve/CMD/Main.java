@@ -3,7 +3,7 @@ Author: Connor Tangney
 Published: 2015
 */
 
-package colSieve.main;
+package colSieve.CMD;
 
 import colSieve.logic.ColSieve;
 import colSieve.logic.XLSFileCommands;
@@ -11,10 +11,6 @@ import colSieve.logic.XLSXFileCommands;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.UnsupportedFileFormatException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 
 public class Main {
 
