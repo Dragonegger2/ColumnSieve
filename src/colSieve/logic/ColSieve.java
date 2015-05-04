@@ -305,7 +305,7 @@ public class ColSieve {
 
     public void run(ColSieve me) {
         /* ***
-        Called from main to initialize the tool
+        Called from CMD to initialize the tool
         @PARAM - <COLSIEVE>
             -> @1 - A new UserInput object which contains information pertaining
                     to the current file.
@@ -371,7 +371,7 @@ public class ColSieve {
         @RETURN -
 
         @EXIT -
-            -> @1 - Return to main
+            -> @1 - Return to CMD
         @THROWS -
             -> @1 - IOException; terminates program
         *** */
@@ -573,7 +573,7 @@ public class ColSieve {
 
         @EXIT -
             -> @1 - If an unsupported file type, call ColSieve.fileType()
-            -> @2 - Return to main
+            -> @2 - Return to CMD
         @THROWS -
             -> @1 - POIXMLException / OfficeXmlFileException; calls ColSieve.run()
         *** */
@@ -639,7 +639,7 @@ public class ColSieve {
 
         @EXIT -
             -> @1 - If an unsupported file type, call ColSieve.fileType()
-            -> @2 - Return to main
+            -> @2 - Return to CMD
         @THROWS -
             -> @1 - POIXMLException / OfficeXmlFileException; calls ColSieve.run()
         *** */

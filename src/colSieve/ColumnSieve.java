@@ -151,7 +151,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
         txtConsole.setCaretPosition(txtConsole.getDocument().getLength());
     }
 
-    //main method
+    //CMD method
     public static void main(String args[]) {
         //set the look and feel of the UI to the current system theme
         try {

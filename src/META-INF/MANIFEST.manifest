@@ -1,3 +1,3 @@
 Manifest-Version: 1.0
-Main-Class: colSieve.main.ColSieve
+Main-Class: colSieve.CMD.ColSieve
 
