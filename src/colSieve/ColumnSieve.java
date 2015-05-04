@@ -222,6 +222,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
             //execute compare columns button clicked
             //set the file command
             passInput.setConsoleFileCommand("compareHeader");
+            passInput.setRunMode(true);
 
             //if the user has not selected a file type
             if(grpCompareFileType.getSelection() == null){
@@ -342,6 +343,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
         }else if(e.getSource() == btnSieveColumns){
             //execute sieve columns button pushed
             passInput.setConsoleFileCommand("mapColumnData");
+            passInput.setRunMode(true);
 
             //if the user has not selected a file type
             if(grpSieveColumns.getSelection() == null){
@@ -457,7 +459,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
                 if(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls")){
                     txtSieveOutput.setText(outputFile.getAbsolutePath());
                 }else if(!(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls"))){
-                    txtSieveOutput.setText(outputFile.getAbsolutePath() + (fc.getFileFilter().getDescription()));
+                    txtSieveOutput.setText(outputFile.getAbsolutePath() + ".xls");
                 }
             }
         }

@@ -346,7 +346,7 @@ public class XLSFileCommands {
             //if the compare result returns -1, an unknown column was found;
             //call the unknownField function to determine how to proceed
             if(compareResult.equals("-1") && userInput.getRunMode() && unknownCommand.equals("")){
-                userInput.unknownField();
+                result += userInput.unknownField(result);
             }else {
 
                 FileInputStream inputFile = new FileInputStream(userInput.getConsoleInFile());
@@ -525,10 +525,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public void mapUnknownColumnToEOF(ColSieve userInput){
-        //new result string
-        String result = "";
-
+    public String mapUnknownColumnToEOF(ColSieve userInput, String result){
         //make sure that all null-values in the template are at the end of the list
         for(int i = 0; i < templateHeaderVal.size(); i++){
             //if the current templateHeaderVal is null...
@@ -575,69 +572,36 @@ public class XLSFileCommands {
         //set the unknownCommand; this prevents the tool from trying to compare the columns again
         unknownCommand = "moveToEOF";
         //send updated information back to mapColumnData
-        mapColumnData(userInput, result);
+        result = mapColumnData(userInput, result);
+        return result;
     }
 
-    public void addDefinition(ColSieve userInput) throws IOException, InterruptedException{
-        //hash map to store indexes of the new definitions
-        LinkedHashMap<Integer, String> newDefinitionVal = new LinkedHashMap<Integer,String>();
+    public String addDefinition(ColSieve userInput, String result, LinkedHashMap<Integer, String> newDefinitionVal) throws IOException, InterruptedException{
+        //check to make sure excel has closed
+        Process tasks = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\tasklist.exe");
 
-        System.out.println("\t> Please wait while the tool opens your template file...\n");
-        Desktop.getDesktop().open(new File(userInput.getConsoleTemplateFile()));
-        System.out.println("\t> For each of the unknown items, please make a note of which column index you would like to add the definition to.\n");
-        System.out.println("\t> PLEASE NOTE: Columns and Rows in the Excel file are zero-indexed.");
-        System.out.println("\t> For example, cell A1 would be located at [0, 0] in a zero-indexed grid.\n");
-
-        //get Windows task list information to make sure excel has not yet closed
-        String line, pidInfo = "";
-        Process p;
-        p = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\"+"tasklist.exe");
-        BufferedReader processes;
-        processes = new BufferedReader(new InputStreamReader(p.getInputStream()));
+        String line = "";
+        Boolean excelOpen = true;
+        BufferedReader taskList = new BufferedReader(new InputStreamReader(tasks.getInputStream()));
+        //while excel is open
+        while(excelOpen) {
+            //and while there is still an element in the task list
+            while (taskList.readLine() != null) {
+                //add the current task to a string dump
+                line += taskList.readLine();
+            }
+            //if the ID name EXCEL is not in the list, the program has been closed
+            if(!(line.contains("EXCEL.exe"))){
+                excelOpen = false;
+            }else{
+                Runtime.getRuntime().exec("taskkill /im EXCEL.exe");
+                excelOpen = true;
+            }
+        }
+        tasks.destroy();
 
         //miscellaneous variables
         int newLastRow;
-
-        //loop through all the tasks in the task list
-        while((line = processes.readLine()) != null){
-            pidInfo += line;
-        }
-
-        //while the Excel file is open, pause the program
-        System.out.print("\t> Process will resume when the template file has been closed..");
-        while(pidInfo.contains("EXCEL.EXE")){
-            System.out.print("..");
-            //if excel is still open, sleep, otherwise break
-            if(pidInfo.contains("EXCEL.EXE")) {
-                TimeUnit.SECONDS.sleep(2);
-            }else{
-                break;
-            }
-            //get the task list
-            p = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\"+"tasklist.exe");
-            processes = new BufferedReader(new InputStreamReader(p.getInputStream()));
-
-            //reset the pidInfo
-            pidInfo = "";
-            while((line = processes.readLine()) != null){
-                pidInfo += line;
-            }
-        }
-
-        //close the task list and input stream reader
-        processes.close();
-        p.destroy();
-        System.out.println("\n");
-
-        //loop through all the unknownHeader values
-        for(int i = 0; i < templateHeaderVal.size(); i++){
-            //make sure the current entry is not null
-            if(unknownHeaderVal.get(i) != null) {
-                System.out.print("\t> Please enter the column index for field definition [" + unknownHeaderVal.get(i) + "]: ");
-                //put the new index / definition into the newDefinitionVal list
-                newDefinitionVal.put(userInput.newFieldDefinition(), unknownHeaderVal.get(i));
-            }
-        }
 
         //Re-open the template file
         FileInputStream currentTemplate = new FileInputStream(userInput.getConsoleTemplateFile());
@@ -697,12 +661,11 @@ public class XLSFileCommands {
         //Close the file
         newTemplate.close();
 
-        System.out.println("\n\t> The tool has successfully added the definitions to the template file.\n");
+        result += "\n\n\t> The tool has successfully added the definitions to the template file.\n";
+        return result;
     }
 
-    public void deleteColumn(ColSieve userInput){
-        //new result string
-        String result = "";
+    public String deleteColumn(ColSieve userInput, String result){
 
         //make sure that all null-values in the template are at the end of the list
         for(int i = 0; i < templateHeaderVal.size(); i++){
@@ -737,7 +700,8 @@ public class XLSFileCommands {
         //set the unknownCommand; this prevents the tool from trying to compare the columns again
         unknownCommand = "delete";
         //send updated information back to mapColumnData
-        mapColumnData(userInput, result);
+        result = mapColumnData(userInput, result);
+        return result;
 
     }
 
@@ -804,6 +768,14 @@ public class XLSFileCommands {
         outBook.write(outFile);
         outFile.close();
         inFile.close();
+    }
+
+    public LinkedHashMap<Integer, String> getUnknownHeaderVal(){
+        return unknownHeaderVal;
+    }
+
+    public int getLastCol(){
+        return lastCol;
     }
 
 }

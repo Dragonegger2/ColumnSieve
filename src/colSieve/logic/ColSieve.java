@@ -14,13 +14,18 @@ package colSieve.logic;
 import colSieve.ColumnSieve;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
+import sun.awt.image.ImageWatched;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.LinkedHashMap;
 
 public class ColSieve {
 
@@ -689,7 +694,7 @@ public class ColSieve {
         }
     }
 
-    public void unknownField(){
+    public String unknownField(String result){
         /* ***
         Called from a File Command object when an
         unknown field description has been detected
@@ -702,45 +707,85 @@ public class ColSieve {
             -> @1 - IOException
         *** */
         try {
-            System.out.println("> How would you like to proceed?");
-            System.out.println(">");
-            System.out.println(">\t 1. Abort");
-            System.out.println(">\t 2. Add additional field definition(s)");
-            System.out.println(">\t 3. Delete unknown field(s)");
-            System.out.println(">\t 4. Create a new template file");
-            System.out.println(">\t 5. Move field(s) to end of file and continue");
-            System.out.print("\t> ");
-            String unknownCommand = br.readLine();
+            String[] options = {"Abort current attempt","Add definition(s) to current template","Delete unknown definition(s)","Create a new template","Move unknown fields to end of file"};
+            String unknownCommand = (String)JOptionPane.showInputDialog(null,"The tool has detected an unknown field definition.\nHow would you like to proceed?\n\n","Unknown Field Definition",JOptionPane.PLAIN_MESSAGE,null,options,"Select an option");
 
-            if(unknownCommand.equals("1")){
-                System.out.println("\n> You have opted to abort the current attempt to sieve the input columns.\n");
-            }else if(unknownCommand.equals("2")){
-                System.out.println("\n> You have opted to add the unknown field(s) to the template file.\n");
-                if(consoleFileType.equals("XLS")){
-                    xlsFileCommands.addDefinition(this);
-                }else if(consoleFileType.equals("XLSX")){
-                    xlsxFileCommands.addDefinition(this);
+            if(unknownCommand != null) {
+                if (unknownCommand.equals("1") || unknownCommand.equals("Abort current attempt")) {
+                    result += "\n\n> You have opted to abort the current attempt to sieve the input columns.\n";
+                } else if (unknownCommand.equals("2") || unknownCommand.equals("Add definition(s) to current template")) {
+                    result += "\n\n> You have opted to add the unknown field(s) to the template file.\n";
+                    if (consoleFileType.equals("XLS")) {
+                        JOptionPane.showMessageDialog(null,"In a moment, the Column Sieve Tool will open your template file." +
+                                "\nYou will then be prompted to enter the column index you would like your " +
+                                "\nnew definition(s) to appear in." +
+                                "\n\nIMPORTANT: Rows and columns in Excel files are zero-indexed!" +
+                                "\nThis means that cell A1 would be represented by " +
+                                "\ncoordinates [0, 0] -- Column 0, Row 0.");
+                        File templateFile = new File(getConsoleTemplateFile());
+                        Desktop.getDesktop().open(templateFile);
+                        //existing unknown values
+                        LinkedHashMap<Integer, String> unknownHeaderVal = xlsFileCommands.getUnknownHeaderVal();
+                        //new locations for unknown values
+                        LinkedHashMap<Integer, String> newDefinitionVal = new LinkedHashMap<Integer,String>();
+                        for(int i = 0; i < xlsFileCommands.getLastCol(); i++) {
+                            if (unknownHeaderVal.get(i) != null) {
+                                newDefinitionVal.put(Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter a column index for definition [" + unknownHeaderVal.get(i) + "]: \n")), unknownHeaderVal.get(i));
+                            }
+                        }
+                        Runtime kill = Runtime.getRuntime();
+                        Process p = kill.exec("taskkill /im EXCEL.exe");
+                        p.waitFor();
+                        p.destroy();
+
+                        //get the windows tasklist
+                        Process tasks = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\tasklist.exe");
+
+                        String line = "";
+                        Boolean excelOpen = true;
+                        BufferedReader taskList = new BufferedReader(new InputStreamReader(tasks.getInputStream()));
+                        //while excel is open
+                        while(excelOpen) {
+                            //and while there is still an element in the task list
+                            while (taskList.readLine() != null) {
+                                //add the current task to a string dump
+                                line += taskList.readLine();
+                            }
+                            //if the ID name EXCEL is not in the list, the program has been closed
+                            if(!(line.contains("EXCEL.exe"))){
+                                excelOpen = false;
+                            }
+                        }
+                        //only add fields to the template if the file is closed.
+                        if(!excelOpen) {
+                            result = xlsFileCommands.addDefinition(this, result, newDefinitionVal);
+                        }
+                    } else if (consoleFileType.equals("XLSX")) {
+                        xlsxFileCommands.addDefinition(this);
+                    }
+                } else if (unknownCommand.equals("3") || unknownCommand.equals("Delete unknown definition(s)")) {
+                    result += "\n\n> You have opted to delete the unknown field(s).\n";
+                    if (consoleFileType.equals("XLS")) {
+                        result = xlsFileCommands.deleteColumn(this, result);
+                    } else if (consoleFileType.equals("XLSX")) {
+                        xlsxFileCommands.deleteColumn(this);
+                    }
+                } else if (unknownCommand.equals("4") || unknownCommand.equals("Create a new template")) {
+                    result += "\n\n> You have opted to create a new template file containing the unknown field(s).\n";
+                    newTemplateInfo();
+                } else if (unknownCommand.equals("5") || unknownCommand.equals("Move unknown fields to end of file")) {
+                    result += "\n\n> You have opted to move all field(s) to the end of the current input file.\n";
+                    if (consoleFileType.equals("XLS")) {
+                        result = xlsFileCommands.mapUnknownColumnToEOF(this, result);
+                    } else if (consoleFileType.equals("XLSX")) {
+                        xlsxFileCommands.mapUnknownColumnToEOF(this);
+                    }
+                } else {
+                    System.out.println("\n> Please select an item from the list.\n");
+                    unknownField(result);
                 }
-            }else if(unknownCommand.equals("3")){
-                System.out.println("\n> You have opted to delete the unknown field(s).\n");
-                if(consoleFileType.equals("XLS")){
-                    xlsFileCommands.deleteColumn(this);
-                }else if(consoleFileType.equals("XLSX")){
-                    xlsxFileCommands.deleteColumn(this);
-                }
-            }else if(unknownCommand.equals("4")){
-                System.out.println("\n> You have opted to create a new template file containing the unknown field(s).\n");
-                newTemplateInfo();
-            }else if(unknownCommand.equals("5")){
-                System.out.println("\n> You have opted to move all field(s) to the end of the current input file.\n");
-                if(consoleFileType.equals("XLS")){
-                    xlsFileCommands.mapUnknownColumnToEOF(this);
-                }else if(consoleFileType.equals("XLSX")){
-                    xlsxFileCommands.mapUnknownColumnToEOF(this);
-                }
-            }else{
-                System.out.println("\n> Please select an item from the list.\n");
-                unknownField();
+            } else {
+                result += "\n\n> You have opted to abort the current attempt to sieve the input columns.\n";
             }
 
         }catch(IOException e){
@@ -752,6 +797,8 @@ public class ColSieve {
             System.out.println("! Application terminated abnormally.\n");
             System.exit(-1);
         }
+
+        return result;
     }
 
     public void newTemplateInfo(){
