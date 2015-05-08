@@ -20,7 +20,7 @@ import java.util.LinkedHashMap;
 public class XLSXFileCommands {
     private String compareResult = "";
 
-    public Boolean sheetExists(ColSieve userInput){
+    public Boolean sheetExists(UserInput userInput){
         //returns true if both sheets exist
         //returns false if either sheet is missing
         Boolean result;
@@ -145,19 +145,19 @@ public class XLSXFileCommands {
         return compareResult;
     }
 
-    public String getInputSheetName(ColSieve userInput){
+    public String getInputSheetName(UserInput userInput){
         String result = "";
         XSSFWorkbook inputBook = new XSSFWorkbook();
         return result;
     }
 
-    public String getTemplateSheetName(ColSieve userInput){
+    public String getTemplateSheetName(UserInput userInput){
         String result = "";
         XSSFWorkbook inputBook = new XSSFWorkbook();
         return result;
     }
 
-    public void mapColumnData(String input, String inputSheet, String template, String output, Boolean runMode, ColSieve userInput){
+    public void mapColumnData(String input, String inputSheet, String template, String output, Boolean runMode, UserInput userInput){
         try{
             //Create input streams
             FileInputStream inFile = new FileInputStream(input);
@@ -340,19 +340,19 @@ public class XLSXFileCommands {
         }
     }
 
-    public void mapUnknownColumnToEOF(ColSieve userInput){
+    public void mapUnknownColumnToEOF(UserInput userInput){
 
     }
 
-    public void addDefinition(ColSieve userInput){
+    public void addDefinition(UserInput userInput){
 
     }
 
-    public void deleteColumn(ColSieve userInput){
+    public void deleteColumn(UserInput userInput){
 
     }
 
-    public void createTemplate(String newName, ColSieve userInput) throws IOException{
+    public void createTemplate(String newName, UserInput userInput) throws IOException{
 
     }
 }

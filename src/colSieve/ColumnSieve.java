@@ -1,6 +1,6 @@
 package colSieve;
 
-import colSieve.logic.ColSieve;
+import colSieve.logic.UserInput;
 
 import javax.swing.*;
 import javax.swing.border.*;
@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.File;
+import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,8 +38,11 @@ public class ColumnSieve extends JFrame implements ActionListener{
     private File inFile, templateFile, outputFile;
     private int confirmResult;
 
-    //A ColSieve object to pass input to the FileCommand objects
-    private ColSieve passInput = new ColSieve();
+    //A UserInput object to pass input to the FileCommand objects
+    private UserInput passInput = new UserInput();
+
+    //File chooser to get files
+    private JFileChooser fc = new JFileChooser();
 
     public void setGui(){
         //set up the menu bar
@@ -134,6 +138,9 @@ public class ColumnSieve extends JFrame implements ActionListener{
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(new Dimension(1200, 915));
         this.setMinimumSize(new Dimension(1200, 915));
+        URL iconURL = getClass().getResource("res/bars.png");
+        ImageIcon icon = new ImageIcon(iconURL);
+        this.setIconImage(icon.getImage());
     }
 
     public void showGui(){
@@ -141,7 +148,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
         setConsole("> Welcome to the Column Sieve Tool!\n\n> Waiting for input...\n");
 
         //set the title and show the frame
-        this.setTitle("Column Sieve 1.0");
+        this.setTitle("Column Sieve");
         this.setVisible(true);
     }
 
@@ -151,7 +158,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
         txtConsole.setCaretPosition(txtConsole.getDocument().getLength());
     }
 
-    //CMD method
+    //main method
     public static void main(String args[]) {
         //set the look and feel of the UI to the current system theme
         try {
@@ -251,7 +258,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
                         passInput.setConsoleTemplateFile(templateFile.getAbsolutePath());
                     }
 
-                    //if the files exist, set the ColSieve information
+                    //if the files exist, set the UserInput information
                     if (inputExists && templateExists && !(txtCompareInput.getText().equals("")) && !(txtCompareTemplate.getText().equals(""))) {
                         passInput.setConsoleInSheet();
                         passInput.setConsoleTemplateSheet();
@@ -280,24 +287,28 @@ public class ColumnSieve extends JFrame implements ActionListener{
             }
         }else if(e.getSource() == btnCompareInputBrowse){
             //compare columns browse for input file clicked
-            final JFileChooser fc = new JFileChooser("Please select an input file");
+            fc.setDialogTitle("Please select an input file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
             fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
             if(returnVal == JFileChooser.APPROVE_OPTION){
                 inFile = fc.getSelectedFile();
+                fc.setCurrentDirectory(inFile);
                 txtCompareInput.setText(inFile.getAbsolutePath());
             }
         }else if(e.getSource() == btnCompareTemplateBrowse){
             //compare columns browse for template file clicked
-            final JFileChooser fc = new JFileChooser("Please select a template file");
+            fc.setDialogTitle("Please select a template file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
             fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
             if(returnVal == JFileChooser.APPROVE_OPTION){
                 templateFile = fc.getSelectedFile();
+                fc.setCurrentDirectory(templateFile);
                 txtCompareTemplate.setText(templateFile.getAbsolutePath());
             }
         }else if(e.getSource() == rdoSieveXLS) {
@@ -372,7 +383,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
                         passInput.setConsoleTemplateFile(templateFile.getAbsolutePath());
                     }
 
-                    //if the files exist, set the ColSieve information
+                    //if the files exist, set the UserInput information
                     if (inputExists && templateExists && !(txtSieveInput.getText().equals("")) && !(txtSieveTemplate.getText().equals("")) && !(txtSieveOutput.getText().equals(""))) {
                         passInput.setConsoleInSheet();
                         passInput.setConsoleTemplateSheet();
@@ -427,40 +438,48 @@ public class ColumnSieve extends JFrame implements ActionListener{
             }
         }else if(e.getSource() == btnSieveInputBrowse){
             //sieve columns browse for input file
-            final JFileChooser fc = new JFileChooser("Please select an input file");
+            fc.setDialogTitle("Please select an input file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
             fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
             if(returnVal == JFileChooser.APPROVE_OPTION){
                 inFile = fc.getSelectedFile();
+                fc.setCurrentDirectory(inFile);
                 txtSieveInput.setText(inFile.getAbsolutePath());
             }
         }else if(e.getSource() == btnSieveTemplateBrowse){
             //sieve columns browse for template file
-            final JFileChooser fc = new JFileChooser("Please select a template file");
+            fc.setDialogTitle("Please select a template file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
             fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
             if(returnVal == JFileChooser.APPROVE_OPTION){
                 templateFile = fc.getSelectedFile();
+                fc.setCurrentDirectory(templateFile);
                 txtSieveTemplate.setText(templateFile.getAbsolutePath());
             }
         }else if(e.getSource() == btnSieveOutSave){
             //sieve columns save button for output file
-            final JFileChooser fc = new JFileChooser("Please select a location to save your new list.");
+            fc.setDialogTitle("Please select a location to save your new list.");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
             fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            fc.getCurrentDirectory();
             int returnVal = fc.showSaveDialog(ColumnSieve.this);
 
             if(returnVal == JFileChooser.APPROVE_OPTION){
                 outputFile = fc.getSelectedFile();
                 if(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls")){
                     txtSieveOutput.setText(outputFile.getAbsolutePath());
+                    outputFile = new File(outputFile.getAbsolutePath());
                 }else if(!(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls"))){
                     txtSieveOutput.setText(outputFile.getAbsolutePath() + ".xls");
+                    outputFile = new File(outputFile.getAbsolutePath() + ".xls");
                 }
+                fc.setCurrentDirectory(outputFile);
             }
         }
     }

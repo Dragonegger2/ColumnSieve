@@ -5,7 +5,7 @@ Published: 2015
 
 package colSieve.CMD;
 
-import colSieve.logic.ColSieve;
+import colSieve.logic.UserInput;
 import colSieve.logic.XLSFileCommands;
 import colSieve.logic.XLSXFileCommands;
 import org.apache.poi.POIXMLException;
@@ -20,8 +20,8 @@ public class Main {
             System.out.println("\n>> Welcome to the Column Sieve tool!");
             System.out.println();
 
-            //Initialize ColSieve object / runFlag
-            ColSieve me = new ColSieve();
+            //Initialize UserInput object / runFlag
+            UserInput me = new UserInput();
             me.setRunFlag("TRUE");
 
             //While the runFlag is true

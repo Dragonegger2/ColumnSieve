@@ -11,10 +11,8 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 
-import java.awt.*;
 import java.io.*;
 import java.util.LinkedHashMap;
-import java.util.concurrent.TimeUnit;
 
 public class XLSFileCommands {
     //Declare storage maps for header values
@@ -40,7 +38,7 @@ public class XLSFileCommands {
     private String inFileName, templateFileName, outFileName;
     private int lastCol, lastRow, lastTemplateCol, lastTemplateRow;
 
-    public String setHeaderRows(ColSieve userInput){
+    public String setHeaderRows(UserInput userInput){
         //return string
         String result = "";
 
@@ -76,17 +74,17 @@ public class XLSFileCommands {
                 templateFileName = userInput.getConsoleTemplateFile();
 
                 while (inFileName.contains("/") || inFileName.contains("\\")) {
-                    if (inFileName.indexOf("\\") == -1) {
+                    if (!inFileName.contains("\\")) {
                         inFileName = inFileName.substring(inFileName.indexOf("/") + 1);
-                    } else if (inFileName.indexOf("/") == -1) {
+                    } else if (!inFileName.contains("/")) {
                         inFileName = inFileName.substring(inFileName.indexOf("\\") + 1);
                     }
                 }
 
                 while (templateFileName.contains("/") || templateFileName.contains("\\")) {
-                    if (templateFileName.indexOf("\\") == -1) {
+                    if (!templateFileName.contains("\\")) {
                         templateFileName = templateFileName.substring(templateFileName.indexOf("/") + 1);
-                    } else if (templateFileName.indexOf("/") == -1) {
+                    } else if (!templateFileName.contains("/")) {
                         templateFileName = templateFileName.substring(templateFileName.indexOf("\\") + 1);
                     }
                 }
@@ -124,7 +122,7 @@ public class XLSFileCommands {
 
                 //Get the current console command to determine the next step
                 if(userInput.getConsoleFileCommand().equals("compareHeader")){
-                    result = compareHeader(userInput, result);
+                    result = compareHeader(result);
                 }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
                     result = mapColumnData(userInput, result);
                 }
@@ -147,7 +145,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public Boolean sheetExists(ColSieve userInput) throws IOException{
+    public Boolean sheetExists(UserInput userInput) throws IOException{
         //returns true if both sheets exist
         //returns false if either sheet is missing
         Boolean result;
@@ -174,7 +172,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public String compareHeader(ColSieve userInput, String result){
+    public String compareHeader(String result){
         //initialize the badHeaderVal list
         badHeaderVal  = new LinkedHashMap<Integer,String>();
 
@@ -317,7 +315,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public String getInputSheetName(ColSieve userInput) throws IOException{
+    public String getInputSheetName(UserInput userInput) throws IOException{
         String result = "";
         FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
         HSSFWorkbook inputBook = new HSSFWorkbook(inFile);
@@ -326,7 +324,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public String getTemplateSheetName(ColSieve userInput) throws IOException{
+    public String getTemplateSheetName(UserInput userInput) throws IOException{
         String result = "";
         FileInputStream inFile = new FileInputStream(userInput.getConsoleTemplateFile());
         HSSFWorkbook templateBook = new HSSFWorkbook(inFile);
@@ -335,12 +333,12 @@ public class XLSFileCommands {
         return result;
     }
 
-    public String mapColumnData(ColSieve userInput, String result){
+    public String mapColumnData(UserInput userInput, String result){
         try{
             //if the headers have not been compared
             if(unknownCommand.equals("")) {
                 //Compare header values
-                compareHeader(userInput, result);
+                compareHeader(result);
             }
 
             //if the compare result returns -1, an unknown column was found;
@@ -368,9 +366,9 @@ public class XLSFileCommands {
                 outFileName = userInput.getConsoleOutFile();
 
                 while (outFileName.contains("\\") || outFileName.contains("/")) {
-                    if (outFileName.indexOf("\\") != -1) {
+                    if (outFileName.contains("\\")) {
                         outFileName = outFileName.substring(outFileName.indexOf("\\") + 1);
-                    } else if (outFileName.indexOf("/") != -1) {
+                    } else if (outFileName.contains("/")) {
                         outFileName = outFileName.substring(outFileName.indexOf("/") + 1);
                     }
 
@@ -461,12 +459,8 @@ public class XLSFileCommands {
                             for (int k = 0; k < myHeaderVal.size(); k++) {
                                 currentCell = myHeader.getCell(k);
                                 if (currentCell.getStringCellValue().equals(templateCellVal)) {
-                                    //Store the correct column index
-                                    int inCol = k;
-                                    int outCol = i;
-
                                     //Write header to file
-                                    headerValue = outHeader.createCell(outCol);
+                                    headerValue = outHeader.createCell(i);
                                     headerValue.setCellValue(currentCell.getStringCellValue());
 
                                     //Loop through all the input rows
@@ -474,7 +468,7 @@ public class XLSFileCommands {
                                         //Get the row data from the input file
                                         Row currentRow = mySheet.getRow(j);
                                         //Get the current cell from the row data
-                                        currentCell = currentRow.getCell(inCol);
+                                        currentCell = currentRow.getCell(k);
                                         //Check to make sure current cell is not null
                                         if (currentCell != null) {
                                             //Set the current cell to type: STRING
@@ -525,7 +519,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public String mapUnknownColumnToEOF(ColSieve userInput, String result){
+    public String mapUnknownColumnToEOF(UserInput userInput, String result){
         //make sure that all null-values in the template are at the end of the list
         for(int i = 0; i < templateHeaderVal.size(); i++){
             //if the current templateHeaderVal is null...
@@ -576,7 +570,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public String addDefinition(ColSieve userInput, String result, LinkedHashMap<Integer, String> newDefinitionVal) throws IOException, InterruptedException{
+    public String addDefinition(UserInput userInput, String result, LinkedHashMap<Integer, String> newDefinitionVal) throws IOException, InterruptedException{
         //check to make sure excel has closed
         Process tasks = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\tasklist.exe");
 
@@ -665,7 +659,7 @@ public class XLSFileCommands {
         return result;
     }
 
-    public String deleteColumn(ColSieve userInput, String result){
+    public String deleteColumn(UserInput userInput, String result){
 
         //make sure that all null-values in the template are at the end of the list
         for(int i = 0; i < templateHeaderVal.size(); i++){
@@ -705,7 +699,7 @@ public class XLSFileCommands {
 
     }
 
-    public void createTemplate(String newName, ColSieve userInput) throws IOException{
+    public void createTemplate(String newName, UserInput userInput) throws IOException{
         //Empty existing myHeaderVal data
         myHeaderVal = new LinkedHashMap<Integer, String>();
 

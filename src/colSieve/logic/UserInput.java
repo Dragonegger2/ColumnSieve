@@ -14,7 +14,6 @@ package colSieve.logic;
 import colSieve.ColumnSieve;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
-import sun.awt.image.ImageWatched;
 
 import javax.swing.*;
 import java.awt.*;
@@ -27,7 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
 
-public class ColSieve {
+public class UserInput {
 
     //BufferedReader for user input
     private BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -303,7 +302,7 @@ public class ColSieve {
         return this.helpCommand;
     }
 
-    public void run(ColSieve me) {
+    public void run(UserInput me) {
         /* ***
         Called from CMD to initialize the tool
         @PARAM - <COLSIEVE>
@@ -365,7 +364,7 @@ public class ColSieve {
 
     public void help(){
         /* ***
-        Called from UserInput.run(<ColSieve> <BufferedReader>) in order to initialize
+        Called from UserInput.run(<UserInput> <BufferedReader>) in order to initialize
         the help module.
         @PARAM -
         @RETURN -
@@ -511,8 +510,8 @@ public class ColSieve {
 
     public void fileType() {
         /* ***
-        Called from ColSieve.compareDataLayout() or
-        ColSieve.sieveColumns() in order to determine the
+        Called from UserInput.compareDataLayout() or
+        UserInput.sieveColumns() in order to determine the
         file type the system should be using.
         the help module.
         @PARAM -
@@ -565,17 +564,17 @@ public class ColSieve {
 
     public void execute(String fileType) {
         /* ***
-        Called from ColSieve.fileType() to create the correct
+        Called from UserInput.fileType() to create the correct
         FileCommand object and call for the data list.
         @PARAM - <STRING>
             -> @1 - String which represents file type.
         @RETURN -
 
         @EXIT -
-            -> @1 - If an unsupported file type, call ColSieve.fileType()
+            -> @1 - If an unsupported file type, call UserInput.fileType()
             -> @2 - Return to CMD
         @THROWS -
-            -> @1 - POIXMLException / OfficeXmlFileException; calls ColSieve.run()
+            -> @1 - POIXMLException / OfficeXmlFileException; calls UserInput.run()
         *** */
 
         try {
@@ -630,7 +629,7 @@ public class ColSieve {
 
     public void execute(String fileType, ColumnSieve gui) {
         /* ***
-        Called from ColSieve.GUI to create the correct
+        Called from UserInput.GUI to create the correct
         FileCommand object and call for the data list.
         @PARAM - <STRING>
             -> @1 - String which represents file type.
@@ -638,10 +637,10 @@ public class ColSieve {
         @RETURN -
 
         @EXIT -
-            -> @1 - If an unsupported file type, call ColSieve.fileType()
+            -> @1 - If an unsupported file type, call UserInput.fileType()
             -> @2 - Return to CMD
         @THROWS -
-            -> @1 - POIXMLException / OfficeXmlFileException; calls ColSieve.run()
+            -> @1 - POIXMLException / OfficeXmlFileException; calls UserInput.run()
         *** */
 
         String resultString;
