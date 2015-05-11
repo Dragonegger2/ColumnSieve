@@ -12,6 +12,7 @@ Published: 2015
 package colSieve.logic;
 
 import colSieve.ColumnSieve;
+import com.sun.deploy.panel.JreFindDialog;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
 
@@ -25,6 +26,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.LinkedHashMap;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class UserInput {
 
@@ -594,15 +597,8 @@ public class UserInput {
                 System.out.println("\t> new XLSXFileCommands object created");
                 System.out.println();
 
-                //Determine the proper file command
-                if (this.consoleFileCommand.equals("compareHeader")) {
-                    xlsxFileCommands.compareHeader(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.runMode);
-                } else if (this.consoleFileCommand.equals("mapColumnData")) {
-                    xlsxFileCommands.mapColumnData(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.consoleOutFile, this.runMode, this);
-                } else {
-                    System.out.println("! An unknown error has occurred.");
-                    System.out.println("! Application terminated abnormally.");
-                }
+                xlsxFileCommands.setHeaderRows(this);
+
                 //CSV Files
             } else if (fileType.equals("CSV")) {
                 System.out.println();
@@ -657,18 +653,9 @@ public class UserInput {
             } else if (fileType.equals("XLSX")) {
                 System.out.println();
                 xlsxFileCommands = new XLSXFileCommands();
-                System.out.println("\t> new XLSXFileCommands object created");
-                System.out.println();
-
-                //Determine the proper file command
-                if (this.consoleFileCommand.equals("compareHeader")) {
-                    xlsxFileCommands.compareHeader(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.runMode);
-                } else if (this.consoleFileCommand.equals("mapColumnData")) {
-                    xlsxFileCommands.mapColumnData(this.consoleInFile, this.consoleInSheet, this.consoleTemplateFile, this.consoleOutFile, this.runMode, this);
-                } else {
-                    System.out.println("! An unknown error has occurred.");
-                    System.out.println("! Application terminated abnormally.");
-                }
+                gui.setConsole("\n\t> new XLSXFileCommands object created\n\n");
+                resultString = xlsxFileCommands.setHeaderRows(this) + "\n\n> Waiting for input...\n";
+                gui.setConsole(resultString);
                 //CSV Files
             } else if (fileType.equals("CSV")) {
                 System.out.println();
@@ -727,13 +714,36 @@ public class UserInput {
                         LinkedHashMap<Integer, String> unknownHeaderVal = xlsFileCommands.getUnknownHeaderVal();
                         //new locations for unknown values
                         LinkedHashMap<Integer, String> newDefinitionVal = new LinkedHashMap<Integer,String>();
+                        //new column index
+                        String newColumn;
+                        //empty frame / option pane
+                        JFrame empty;
                         for(int i = 0; i < xlsFileCommands.getLastCol(); i++) {
                             if (unknownHeaderVal.get(i) != null) {
-                                newDefinitionVal.put(Integer.parseInt(JOptionPane.showInputDialog(null, "Please enter a column index for definition [" + unknownHeaderVal.get(i) + "]: \n")), unknownHeaderVal.get(i));
+                                empty = new JFrame();
+                                empty.setLocation(-1,-1);
+                                empty.setAlwaysOnTop(true);
+                                newColumn = JOptionPane.showInputDialog(empty, "Please enter a column index for definition [" + unknownHeaderVal.get(i) + "]: \n");
+                                if(newColumn != null){
+                                    Pattern textKey = Pattern.compile("\\D+");
+                                    Matcher m = textKey.matcher(newColumn);
+                                    if(!m.find()) {
+                                        newDefinitionVal.put(Integer.parseInt(newColumn), unknownHeaderVal.get(i));
+                                    }else{
+                                        JOptionPane.showMessageDialog(empty, "The tool has determined that a non-numerical index has been entered.\nPlease ensure only numerical values are entered for indexes.");
+                                        break;
+                                    }
+                                }else{
+                                    result = "\t> You have opted to cancel adding new field definitions to the template file.";
+                                    break;
+                                }
+                            }
+                            if(i == xlsFileCommands.getLastCol()-1){
+                                result += "\n\t> The tool has successfully added all new definitions to the template file.\n";
                             }
                         }
                         Runtime kill = Runtime.getRuntime();
-                        Process p = kill.exec("taskkill /im EXCEL.exe");
+                        Process p = kill.exec("taskkill /f /im EXCEL.exe");
                         p.waitFor();
                         p.destroy();
 
@@ -758,16 +768,87 @@ public class UserInput {
                         //only add fields to the template if the file is closed.
                         if(!excelOpen) {
                             result = xlsFileCommands.addDefinition(this, result, newDefinitionVal);
+                            result += "\n\n\t> The tool has successfully closed your template file.\n";
                         }
                     } else if (consoleFileType.equals("XLSX")) {
-                        xlsxFileCommands.addDefinition(this);
+                        JOptionPane.showMessageDialog(null,"In a moment, the Column Sieve Tool will open your template file." +
+                                "\nYou will then be prompted to enter the column index you would like your " +
+                                "\nnew definition(s) to appear in." +
+                                "\n\nIMPORTANT: Rows and columns in Excel files are zero-indexed!" +
+                                "\nThis means that cell A1 would be represented by " +
+                                "\ncoordinates [0, 0] -- Column 0, Row 0.");
+                        File templateFile = new File(getConsoleTemplateFile());
+                        Desktop.getDesktop().open(templateFile);
+                        //existing unknown values
+                        LinkedHashMap<Integer, String> unknownHeaderVal = xlsxFileCommands.getUnknownHeaderVal();
+                        //new locations for unknown values
+                        LinkedHashMap<Integer, String> newDefinitionVal = new LinkedHashMap<Integer,String>();
+                        //new column index
+                        String newColumn;
+                        //empty frame / option pane
+                        JFrame empty;
+                        for(int i = 0; i < xlsxFileCommands.getLastCol(); i++) {
+                            if (unknownHeaderVal.get(i) != null) {
+                                empty = new JFrame();
+                                empty.setLocation(-1,-1);
+                                empty.setAlwaysOnTop(true);
+                                newColumn = JOptionPane.showInputDialog(empty, "Please enter a column index for definition [" + unknownHeaderVal.get(i) + "]: \n");
+                                if(newColumn != null){
+                                    Pattern textKey = Pattern.compile("\\D+");
+                                    Matcher m = textKey.matcher(newColumn);
+                                    if(!m.find()) {
+                                        newDefinitionVal.put(Integer.parseInt(newColumn), unknownHeaderVal.get(i));
+                                    }else{
+                                        JOptionPane.showMessageDialog(empty, "The tool has determined that a non-numerical index has been entered.\nPlease ensure only numerical values are entered for indexes.");
+                                        break;
+                                    }
+                                }else{
+                                    result = "\t> You have opted to cancel adding new field definitions to the template file.";
+                                    break;
+                                }
+                            }
+                            if(i == xlsxFileCommands.getLastCol()-1){
+                                result += "\n\t> The tool has successfully added all new definitions to the template file.\n";
+                            }
+                        }
+                        Runtime kill = Runtime.getRuntime();
+                        Process p = kill.exec("taskkill /f /im EXCEL.exe");
+                        p.waitFor();
+                        p.destroy();
+
+                        //get the windows tasklist
+                        Process tasks = Runtime.getRuntime().exec(System.getenv("windir") + "\\system32\\tasklist.exe");
+
+                        String line;
+                        Boolean excelOpen = true;
+                        BufferedReader taskList;
+                        //while excel is open
+                        do{
+                            line = "";
+                            taskList = new BufferedReader(new InputStreamReader(tasks.getInputStream()));
+                            //and while there is still an element in the task list
+                            while (taskList.readLine() != null) {
+                                //add the current task to a string dump
+                                line += taskList.readLine();
+                            }
+                            //if the ID name EXCEL is not in the list, the program has been closed
+                            if(!(line.contains("EXCEL.EXE"))){
+                                excelOpen = false;
+                            }
+                            taskList.close();
+                        }while(excelOpen);
+                        //only add fields to the template if the file is closed.
+                        if(!excelOpen) {
+                            result = xlsxFileCommands.addDefinition(this, result, newDefinitionVal);
+                            result += "\n\n\t> The tool has successfully closed your template file.\n";
+                        }
                     }
                 } else if (unknownCommand.equals("3") || unknownCommand.equals("Delete unknown definition(s)")) {
                     result += "\n\n> You have opted to delete the unknown field(s).\n";
                     if (consoleFileType.equals("XLS")) {
                         result = xlsFileCommands.deleteColumn(this, result);
                     } else if (consoleFileType.equals("XLSX")) {
-                        xlsxFileCommands.deleteColumn(this);
+                        result = xlsxFileCommands.deleteColumn(this, result);
                     }
                 } else if (unknownCommand.equals("4") || unknownCommand.equals("Create a new template")) {
                     result += "\n\n> You have opted to create a new template file containing the unknown field(s).\n";
@@ -777,7 +858,7 @@ public class UserInput {
                     if (consoleFileType.equals("XLS")) {
                         result = xlsFileCommands.mapUnknownColumnToEOF(this, result);
                     } else if (consoleFileType.equals("XLSX")) {
-                        xlsxFileCommands.mapUnknownColumnToEOF(this);
+                        result = xlsxFileCommands.mapUnknownColumnToEOF(this, result);
                     }
                 } else {
                     System.out.println("\n> Please select an item from the list.\n");
@@ -861,6 +942,35 @@ public class UserInput {
         }catch (IOException e){
             e.printStackTrace();
         }
+        return result;
+    }
+
+    public void smallInFile(){
+
+        JOptionPane.showMessageDialog(null, "The input file contains fewer fields than are present in the template file\nyou have selected. It is likely that your input file is missing\none or more of the necessary fields. Please inspect\nboth your template and input file before proceeding.");
+
+    }
+
+    public String longInFile(String result){
+
+        int msg = JOptionPane.showOptionDialog(null, "The input file contains more fields than are present in the template file\nyou have selected. It is likely that you will encounter unknown\nfield definitions.\n\nWould you like to continue?", "Warning",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,null,null);
+
+        if(msg == JOptionPane.YES_OPTION){
+            if(consoleFileType.equals("XLS")) {
+                if (consoleFileCommand.equals("compareHeader")) {
+                    result = xlsFileCommands.compareHeader(result);
+                } else if (consoleFileCommand.equals("mapColumnData")) {
+                    result = xlsFileCommands.mapColumnData(this, result);
+                }
+            }else if(consoleFileType.equals("XLSX")){
+                if (consoleFileCommand.equals("compareHeader")) {
+                    result = xlsxFileCommands.compareHeader(result);
+                } else if (consoleFileCommand.equals("mapColumnData")) {
+                    result = xlsxFileCommands.mapColumnData(this, result);
+                }
+            }
+        }
+
         return result;
     }
 

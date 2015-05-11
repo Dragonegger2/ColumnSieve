@@ -36,7 +36,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
     //private variables
     private String input, template, output;
     private File inFile, templateFile, outputFile;
-    private int confirmResult;
+    private Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
     //A UserInput object to pass input to the FileCommand objects
     private UserInput passInput = new UserInput();
@@ -141,6 +141,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
         URL iconURL = getClass().getResource("res/bars.png");
         ImageIcon icon = new ImageIcon(iconURL);
         this.setIconImage(icon.getImage());
+        this.setLocation(screenSize.width/2-this.getSize().width/2, screenSize.height/2-this.getSize().height/2);
     }
 
     public void showGui(){
@@ -410,7 +411,14 @@ public class ColumnSieve extends JFrame implements ActionListener{
                             passInput.setConsoleTemplateSheet();
                             Date currentDate = new Date();
                             DateFormat format = new SimpleDateFormat("yyyy.MM.dd_HH.mm.ss");
-                            passInput.setConsoleOutFile("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xls");
+
+                            if(passInput.getConsoleFileType().equals("XLS")) {
+                                txtSieveOutput.setText("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xls");
+                                passInput.setConsoleOutFile("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xls");
+                            }else if(passInput.getConsoleFileType().equals("XLSX")) {
+                                txtSieveOutput.setText("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xlsx");
+                                passInput.setConsoleOutFile("C:\\Users\\" + System.getProperty("user.name") + "\\Desktop\\Column_Sieve_OUT_" + format.format(currentDate) + ".xlsx");
+                            }
 
                             if (passInput.checkSheets()) {
                                 //if the sheets exist
@@ -470,7 +478,7 @@ public class ColumnSieve extends JFrame implements ActionListener{
             fc.getCurrentDirectory();
             int returnVal = fc.showSaveDialog(ColumnSieve.this);
 
-            if(returnVal == JFileChooser.APPROVE_OPTION){
+            if(returnVal == JFileChooser.APPROVE_OPTION && passInput.getConsoleFileType().equals("XLS")){
                 outputFile = fc.getSelectedFile();
                 if(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls")){
                     txtSieveOutput.setText(outputFile.getAbsolutePath());
@@ -478,6 +486,16 @@ public class ColumnSieve extends JFrame implements ActionListener{
                 }else if(!(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-4).equals(".xls"))){
                     txtSieveOutput.setText(outputFile.getAbsolutePath() + ".xls");
                     outputFile = new File(outputFile.getAbsolutePath() + ".xls");
+                }
+                fc.setCurrentDirectory(outputFile);
+            }else if(returnVal == JFileChooser.APPROVE_OPTION && passInput.getConsoleFileType().equals("XLSX")){
+                outputFile = fc.getSelectedFile();
+                if(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-5).equals(".xlsx")){
+                    txtSieveOutput.setText(outputFile.getAbsolutePath());
+                    outputFile = new File(outputFile.getAbsolutePath());
+                }else if(!(outputFile.getAbsolutePath().substring(outputFile.getAbsolutePath().length()-5).equals(".xlsx"))){
+                    txtSieveOutput.setText(outputFile.getAbsolutePath() + ".xlsx");
+                    outputFile = new File(outputFile.getAbsolutePath() + ".xlsx");
                 }
                 fc.setCurrentDirectory(outputFile);
             }

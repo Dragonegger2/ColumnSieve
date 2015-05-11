@@ -66,7 +66,11 @@ public class Main {
                         } else if(cmdFileType.toLowerCase().equals("xlsx")){            // <---- XLSX Files
                             try {
                                 XLSXFileCommands fileCommand = new XLSXFileCommands();
-                                fileCommand.compareHeader(args[0], args[1], args[2], me.getRunMode());
+                                me.setConsoleInFile(args[0]);
+                                me.setConsoleInSheet();
+                                me.setConsoleTemplateFile(args[2]);
+                                me.setConsoleFileCommand("compareHeader");
+                                fileCommand.setHeaderRows(me);
                             }catch(POIXMLException e){
                                 System.out.println("! One or more of the files supplied was not in the expected file type.");
                                 System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
@@ -108,7 +112,12 @@ public class Main {
                             fileCommand.setHeaderRows(me);
                         } else if(cmdFileType.toLowerCase().equals("xlsx")){            // <---- XLSX Files
                             XLSXFileCommands fileCommand = new XLSXFileCommands();
-                            fileCommand.mapColumnData(args[0], args[1], args[2], args[3], me.getRunMode(), me);
+                            me.setConsoleInFile(args[0]);
+                            me.setConsoleInSheet();
+                            me.setConsoleTemplateFile(args[2]);
+                            me.setConsoleOutFile(args[3]);
+                            me.setConsoleFileCommand("mapColumnData");
+                            fileCommand.setHeaderRows(me);
                         } else if(cmdFileType.toLowerCase().equals(".csv")){
                             //Initialize CSV file command object
                         } else if(cmdFileType.toLowerCase().equals(".txt")){

@@ -147,7 +147,7 @@
                               <forms defaultalign-horz="false"/>
                             </constraints>
                             <properties>
-                              <enabled value="false"/>
+                              <enabled value="true"/>
                               <text value="Excel (XLSX)"/>
                             </properties>
                           </component>
@@ -389,7 +389,7 @@
                                   <forms defaultalign-horz="false"/>
                                 </constraints>
                                 <properties>
-                                  <enabled value="false"/>
+                                  <enabled value="true"/>
                                   <text value="Excel (XLSX)"/>
                                 </properties>
                               </component>

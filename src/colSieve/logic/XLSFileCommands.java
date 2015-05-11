@@ -120,11 +120,17 @@ public class XLSFileCommands {
                     outHeaderVal.put(i, myHeaderVal.get(i));
                 }
 
-                //Get the current console command to determine the next step
-                if(userInput.getConsoleFileCommand().equals("compareHeader")){
-                    result = compareHeader(result);
-                }else if(userInput.getConsoleFileCommand().equals("mapColumnData")){
-                    result = mapColumnData(userInput, result);
+                if(lastCol == lastTemplateCol) {
+                    //Get the current console command to determine the next step
+                    if (userInput.getConsoleFileCommand().equals("compareHeader")) {
+                        result = compareHeader(result);
+                    } else if (userInput.getConsoleFileCommand().equals("mapColumnData")) {
+                        result = mapColumnData(userInput, result);
+                    }
+                }else if(lastCol < lastTemplateCol) {
+                    userInput.smallInFile();
+                }else if(lastCol > lastTemplateCol) {
+                    result = userInput.longInFile(result);
                 }
             }
         } catch(FileNotFoundException e){
@@ -280,7 +286,7 @@ public class XLSFileCommands {
                     result += ("\t> Column Value: " + badHeaderVal.get(i) + "\n");
                 }
             }
-            System.out.println();
+            result += "\n";
         }else if(badHeaderVal.size()==0){
             //if there is nothing in the badHeaderVal, all fields are in the correct column
             compareResult = "0";
@@ -654,8 +660,6 @@ public class XLSFileCommands {
         templateBook.write(newTemplate);
         //Close the file
         newTemplate.close();
-
-        result += "\n\n\t> The tool has successfully added the definitions to the template file.\n";
         return result;
     }
 
