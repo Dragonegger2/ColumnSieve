@@ -393,7 +393,7 @@ public class XLSXFileCommands {
                         System.out.println("! Please ensure that all your file types match before trying again.");
                         System.out.println("! Application terminated abnormally.\n");
                         System.exit(-1);
-                        //If the program is running in operator mode, the program will return to the CMD
+                        //If the program is running in operator mode, the program will return to the cmd
                     } else {
                         result += "\n! The output file type does not match the input file type.\n! Please ensure that all your file types match before trying again.\n";
                     }
