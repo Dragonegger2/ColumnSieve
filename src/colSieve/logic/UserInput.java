@@ -2,17 +2,14 @@
 Author: Connor Tangney
 Published: 2015
 
-. ColSieve class is responsible for handling all input.
-. Included are things like BufferedReaders, etc. Support
-. for direct input from the GUI will be implemented at a
-. later date.
+. UserInput class is responsible for handling all input.
+. Included are things like BufferedReaders, etc.
 
 */
 
 package colSieve.logic;
 
 import colSieve.ColumnSieve;
-import com.sun.deploy.panel.JreFindDialog;
 import org.apache.poi.POIXMLException;
 import org.apache.poi.poifs.filesystem.OfficeXmlFileException;
 
@@ -60,10 +57,10 @@ public class UserInput {
         @RETURN -
         *** */
 
-        if(val = true){
-            this.runFlag = true;
-        }else if(val = false){
-            this.runFlag = false;
+        if(val){
+            this.runFlag = val;
+        }else if(!val){
+            this.runFlag = val;
         }
     }
 
@@ -301,6 +298,18 @@ public class UserInput {
 
     public String getConsoleBehavior(){
         return this.consoleBehavior;
+    }
+
+    public Integer getCompareResult(){
+        int result = 0;
+
+        if(consoleFileType.equals("XLS")){
+            result = xlsFileCommands.getCompareResult();
+        }else if(consoleFileType.equals("XLSX")){
+            result = xlsxFileCommands.getCompareResult();
+        }
+
+        return result;
     }
 
     public String getHelpCommand() {
@@ -977,27 +986,28 @@ public class UserInput {
     }
 
     public void smallInFile(){
-
-        JOptionPane.showMessageDialog(null, "The input file contains fewer fields than are present in the template file\nyou have selected. It is likely that your input file is missing\none or more of the necessary fields. Please inspect\nboth your template and input file before proceeding.");
-
+        if(!runMode) {
+            JOptionPane.showMessageDialog(null, "The input file contains fewer fields than are present in the template file\nyou have selected. It is likely that your input file is missing\none or more of the necessary fields. Please inspect\nboth your template and input file before proceeding.");
+        }
     }
 
     public String longInFile(String result){
+        if(!runMode) {
+            int msg = JOptionPane.showOptionDialog(null, "The input file contains more fields than are present in the template file\nyou have selected. It is likely that you will encounter unknown\nfield definitions.\n\nWould you like to continue?", "Warning", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE, null, null, null);
 
-        int msg = JOptionPane.showOptionDialog(null, "The input file contains more fields than are present in the template file\nyou have selected. It is likely that you will encounter unknown\nfield definitions.\n\nWould you like to continue?", "Warning",JOptionPane.YES_NO_CANCEL_OPTION,JOptionPane.WARNING_MESSAGE,null,null,null);
-
-        if(msg == JOptionPane.YES_OPTION){
-            if(consoleFileType.equals("XLS")) {
-                if (consoleFileCommand.equals("compareHeader")) {
-                    result = xlsFileCommands.compareHeader(result);
-                } else if (consoleFileCommand.equals("mapColumnData")) {
-                    result = xlsFileCommands.mapColumnData(this, result);
-                }
-            }else if(consoleFileType.equals("XLSX")){
-                if (consoleFileCommand.equals("compareHeader")) {
-                    result = xlsxFileCommands.compareHeader(result);
-                } else if (consoleFileCommand.equals("mapColumnData")) {
-                    result = xlsxFileCommands.mapColumnData(this, result);
+            if (msg == JOptionPane.YES_OPTION) {
+                if (consoleFileType.equals("XLS")) {
+                    if (consoleFileCommand.equals("compareHeader")) {
+                        result = xlsFileCommands.compareHeader(result);
+                    } else if (consoleFileCommand.equals("mapColumnData")) {
+                        result = xlsFileCommands.mapColumnData(this, result);
+                    }
+                } else if (consoleFileType.equals("XLSX")) {
+                    if (consoleFileCommand.equals("compareHeader")) {
+                        result = xlsxFileCommands.compareHeader(result);
+                    } else if (consoleFileCommand.equals("mapColumnData")) {
+                        result = xlsxFileCommands.mapColumnData(this, result);
+                    }
                 }
             }
         }

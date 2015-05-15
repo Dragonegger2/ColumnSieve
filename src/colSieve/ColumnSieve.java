@@ -45,6 +45,8 @@ public class ColumnSieve extends JFrame implements ActionListener{
 
     //File chooser to get files
     private JFileChooser fc = new JFileChooser();
+    private FileNameExtensionFilter xlsFilter = new FileNameExtensionFilter("Excel 97/2003 Workbook (.XLS)","xls");
+    private FileNameExtensionFilter xlsxFilter = new FileNameExtensionFilter("Excel Workbook (.XLSX)","xlsx");
 
     public void setGui(){
         //set up the menu bar
@@ -202,15 +204,13 @@ public class ColumnSieve extends JFrame implements ActionListener{
                         fileType = gui.passInput.getConsoleFileType();
                         if (fileType.equals("XLS")) {
                             gui.rdoCompareXLS.setSelected(true);
-                            gui.txtCompareInput.setEnabled(true);
-                            gui.txtCompareTemplate.setEnabled(true);
-                            gui.btnCompareInputBrowse.setEnabled(true);
-                            gui.btnCompareTemplateBrowse.setEnabled(true);
                         } else if (fileType.equals("XLSX")) {
                             gui.rdoCompareXLSX.setSelected(true);
-                            gui.txtCompareInput.setEnabled(true);
-                            gui.txtCompareTemplate.setEnabled(true);
                         }
+                        gui.txtCompareInput.setEnabled(true);
+                        gui.txtCompareTemplate.setEnabled(true);
+                        gui.btnCompareInputBrowse.setEnabled(true);
+                        gui.btnCompareTemplateBrowse.setEnabled(true);
                     }
 
                     gui.txtCompareInput.setText(gui.txtSieveInput.getText());
@@ -221,21 +221,15 @@ public class ColumnSieve extends JFrame implements ActionListener{
                         fileType = gui.passInput.getConsoleFileType();
                         if (fileType.equals("XLS")) {
                             gui.rdoSieveXLS.setSelected(true);
-                            gui.txtSieveInput.setEnabled(true);
-                            gui.txtSieveTemplate.setEnabled(true);
-                            gui.txtSieveOutput.setEnabled(true);
-                            gui.btnSieveInputBrowse.setEnabled(true);
-                            gui.btnSieveTemplateBrowse.setEnabled(true);
-                            gui.btnSieveOutSave.setEnabled(true);
                         } else if (fileType.equals("XLSX")) {
                             gui.rdoSieveXLSX.setSelected(true);
-                            gui.txtSieveInput.setEnabled(true);
-                            gui.txtSieveTemplate.setEnabled(true);
-                            gui.txtSieveOutput.setEnabled(true);
-                            gui.btnSieveInputBrowse.setEnabled(true);
-                            gui.btnSieveTemplateBrowse.setEnabled(true);
-                            gui.btnSieveOutSave.setEnabled(true);
                         }
+                        gui.txtSieveInput.setEnabled(true);
+                        gui.txtSieveTemplate.setEnabled(true);
+                        gui.txtSieveOutput.setEnabled(true);
+                        gui.btnSieveInputBrowse.setEnabled(true);
+                        gui.btnSieveTemplateBrowse.setEnabled(true);
+                        gui.btnSieveOutSave.setEnabled(true);
                     }
 
                     gui.txtSieveInput.setText(gui.txtCompareInput.getText());
@@ -355,7 +349,11 @@ public class ColumnSieve extends JFrame implements ActionListener{
             //compare columns browse for input file clicked
             fc.setDialogTitle("Please select an input file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
-            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            if(fileFilter.equals("xls")) {
+                fc.setFileFilter(xlsFilter);
+            }else if(fileFilter.equals("xlsx")){
+                fc.setFileFilter(xlsxFilter);
+            }
             fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
@@ -368,7 +366,11 @@ public class ColumnSieve extends JFrame implements ActionListener{
             //compare columns browse for template file clicked
             fc.setDialogTitle("Please select a template file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
-            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            if(fileFilter.equals("xls")) {
+                fc.setFileFilter(xlsFilter);
+            }else if(fileFilter.equals("xlsx")){
+                fc.setFileFilter(xlsxFilter);
+            }
             fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
@@ -513,7 +515,11 @@ public class ColumnSieve extends JFrame implements ActionListener{
             //sieve columns browse for input file
             fc.setDialogTitle("Please select an input file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
-            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            if(fileFilter.equals("xls")) {
+                fc.setFileFilter(xlsFilter);
+            }else if(fileFilter.equals("xlsx")){
+                fc.setFileFilter(xlsxFilter);
+            }
             fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
@@ -526,7 +532,11 @@ public class ColumnSieve extends JFrame implements ActionListener{
             //sieve columns browse for template file
             fc.setDialogTitle("Please select a template file");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
-            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            if(fileFilter.equals("xls")) {
+                fc.setFileFilter(xlsFilter);
+            }else if(fileFilter.equals("xlsx")){
+                fc.setFileFilter(xlsxFilter);
+            }
             fc.getCurrentDirectory();
             int returnVal = fc.showOpenDialog(ColumnSieve.this);
 
@@ -539,7 +549,11 @@ public class ColumnSieve extends JFrame implements ActionListener{
             //sieve columns save button for output file
             fc.setDialogTitle("Please select a location to save your new list.");
             String fileFilter = passInput.getConsoleFileType().toLowerCase();
-            fc.setFileFilter(new FileNameExtensionFilter("Excel 97/2003 (."+fileFilter+")",fileFilter));
+            if(fileFilter.equals("xls")) {
+                fc.setFileFilter(xlsFilter);
+            }else if(fileFilter.equals("xlsx")){
+                fc.setFileFilter(xlsxFilter);
+            }
             fc.getCurrentDirectory();
             int returnVal = fc.showSaveDialog(ColumnSieve.this);
 

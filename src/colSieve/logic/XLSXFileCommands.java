@@ -324,24 +324,6 @@ public class XLSXFileCommands {
         return result;
     }
 
-    public String getInputSheetName(UserInput userInput) throws IOException{
-        String result = "";
-        FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
-        Workbook inputBook = new XSSFWorkbook(inFile);
-        result += inputBook.getSheetName(0);
-        inFile.close();
-        return result;
-    }
-
-    public String getTemplateSheetName(UserInput userInput) throws IOException{
-        String result = "";
-        FileInputStream inFile = new FileInputStream(userInput.getConsoleTemplateFile());
-        XSSFWorkbook templateBook = new XSSFWorkbook(inFile);
-        result += templateBook.getSheetName(0);
-        inFile.close();
-        return result;
-    }
-
     public String mapColumnData(UserInput userInput, String result){
         try{
             //if the headers have not been compared
@@ -777,6 +759,28 @@ public class XLSXFileCommands {
 
     public int getLastCol(){
         return lastCol;
+    }
+
+    public String getInputSheetName(UserInput userInput) throws IOException{
+        String result = "";
+        FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
+        Workbook inputBook = new XSSFWorkbook(inFile);
+        result += inputBook.getSheetName(0);
+        inFile.close();
+        return result;
+    }
+
+    public String getTemplateSheetName(UserInput userInput) throws IOException{
+        String result = "";
+        FileInputStream inFile = new FileInputStream(userInput.getConsoleTemplateFile());
+        XSSFWorkbook templateBook = new XSSFWorkbook(inFile);
+        result += templateBook.getSheetName(0);
+        inFile.close();
+        return result;
+    }
+
+    public int getCompareResult(){
+        return Integer.parseInt(compareResult);
     }
 
 }

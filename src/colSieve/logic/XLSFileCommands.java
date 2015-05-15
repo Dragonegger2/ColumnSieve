@@ -128,9 +128,11 @@ public class XLSFileCommands {
                         result = mapColumnData(userInput, result);
                     }
                 }else if(lastCol < lastTemplateCol) {
+                    compareResult = "2";
                     userInput.smallInFile();
                 }else if(lastCol > lastTemplateCol) {
                     result = userInput.longInFile(result);
+                    compareResult = "-1";
                 }
             }
         } catch(FileNotFoundException e){
@@ -318,24 +320,6 @@ public class XLSFileCommands {
             }
             System.out.println();
         }
-        return result;
-    }
-
-    public String getInputSheetName(UserInput userInput) throws IOException{
-        String result = "";
-        FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
-        HSSFWorkbook inputBook = new HSSFWorkbook(inFile);
-        result += inputBook.getSheetName(0);
-        inFile.close();
-        return result;
-    }
-
-    public String getTemplateSheetName(UserInput userInput) throws IOException{
-        String result = "";
-        FileInputStream inFile = new FileInputStream(userInput.getConsoleTemplateFile());
-        HSSFWorkbook templateBook = new HSSFWorkbook(inFile);
-        result += templateBook.getSheetName(0);
-        inFile.close();
         return result;
     }
 
@@ -774,6 +758,28 @@ public class XLSFileCommands {
 
     public int getLastCol(){
         return lastCol;
+    }
+
+    public String getInputSheetName(UserInput userInput) throws IOException{
+        String result = "";
+        FileInputStream inFile = new FileInputStream(userInput.getConsoleInFile());
+        HSSFWorkbook inputBook = new HSSFWorkbook(inFile);
+        result += inputBook.getSheetName(0);
+        inFile.close();
+        return result;
+    }
+
+    public String getTemplateSheetName(UserInput userInput) throws IOException{
+        String result = "";
+        FileInputStream inFile = new FileInputStream(userInput.getConsoleTemplateFile());
+        HSSFWorkbook templateBook = new HSSFWorkbook(inFile);
+        result += templateBook.getSheetName(0);
+        inFile.close();
+        return result;
+    }
+
+    public int getCompareResult(){
+        return Integer.parseInt(compareResult);
     }
 
 }
