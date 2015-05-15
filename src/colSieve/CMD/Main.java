@@ -27,7 +27,7 @@ public class Main {
             //While the runFlag is true
             while (me.getRunFlag()) {
                 //If statement to check that args is empty
-                if(args.length!=0){
+                if (args.length != 0) {
 
                     /* ***** COMMAND LINE MODE ***** */
                     System.out.println("\n>> Running in command line mode.\n");
@@ -39,52 +39,18 @@ public class Main {
                     me.setRunMode(false);
 
                     //Args length 3 equals call to <compareHeader>
-                    if(args.length==3){
+                    if (args.length == 3 || args.length == 4) {
                         cmdFileType = args[0];
-                        cmdFileType = cmdFileType.substring(cmdFileType.length()-4,cmdFileType.length());
+                        cmdFileType = cmdFileType.substring(cmdFileType.length() - 4, cmdFileType.length());
 
                         //Create the correct File Command object, then call function
-                        if(cmdFileType.toLowerCase().equals(".xls")){                   // <---- XLS Files
-                            try {
-                                XLSFileCommands fileCommand = new XLSFileCommands();
-                                me.setConsoleInFile(args[0]);
-                                me.setConsoleInSheet();
-                                me.setConsoleTemplateFile(args[2]);
-                                me.setConsoleFileCommand("compareHeader");
-                                fileCommand.setHeaderRows(me);
-                            }catch(POIXMLException e){
-                                System.out.println("! One or more of the files supplied was not in the expected file type.");
-                                System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
-                                System.out.println("! Application terminated abnormally.\n");
-                                System.exit(-1);
-                            }catch(OfficeXmlFileException e){
-                                System.out.println("! One or more of the files supplied was not in the expected file type.");
-                                System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
-                                System.out.println("! Application terminated abnormally.\n");
-                                System.exit(-1);
-                            }
-                        } else if(cmdFileType.toLowerCase().equals("xlsx")){            // <---- XLSX Files
-                            try {
-                                XLSXFileCommands fileCommand = new XLSXFileCommands();
-                                me.setConsoleInFile(args[0]);
-                                me.setConsoleInSheet();
-                                me.setConsoleTemplateFile(args[2]);
-                                me.setConsoleFileCommand("compareHeader");
-                                fileCommand.setHeaderRows(me);
-                            }catch(POIXMLException e){
-                                System.out.println("! One or more of the files supplied was not in the expected file type.");
-                                System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
-                                System.out.println("! Application terminated abnormally.\n");
-                                System.exit(-1);
-                            }catch(OfficeXmlFileException e){
-                                System.out.println("! One or more of the files supplied was not in the expected file type.");
-                                System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
-                                System.out.println("! Application terminated abnormally.\n");
-                                System.exit(-1);
-                            }
-                        } else if(cmdFileType.toLowerCase().equals(".csv")){
+                        if (cmdFileType.toLowerCase().equals(".xls")) { // <---- XLS Files
+                            XLSFileCommands fileCommand = initializeXLS(me, args);
+                        } else if (cmdFileType.toLowerCase().equals("xlsx")) { // <---- XLSX Files
+                            XLSXFileCommands fileCommand = initializeXLSX(me, args);
+                        } else if (cmdFileType.toLowerCase().equals(".csv")) {
                             //Initialize CSV file command object
-                        } else if(cmdFileType.toLowerCase().equals(".txt")){
+                        } else if (cmdFileType.toLowerCase().equals(".txt")) {
                             //Initialize TXT file command object
                         } else {
                             System.out.println("! You have entered an unsupported file type.");
@@ -95,42 +61,7 @@ public class Main {
                         //End program
                         me.setRunFlag("FALSE");
 
-
-                    //Args length 4 equals call to <mapColumnData>
-                    } else if(args.length==4){
-                        cmdFileType = args[0];
-                        cmdFileType = cmdFileType.substring(cmdFileType.length()-4,cmdFileType.length());
-
-                        //Create the correct File Command object, then call function
-                        if(cmdFileType.toLowerCase().equals(".xls")){                   // <---- XLS Files
-                            XLSFileCommands fileCommand = new XLSFileCommands();
-                            me.setConsoleInFile(args[0]);
-                            me.setConsoleInSheet();
-                            me.setConsoleTemplateFile(args[2]);
-                            me.setConsoleOutFile(args[3]);
-                            me.setConsoleFileCommand("mapColumnData");
-                            fileCommand.setHeaderRows(me);
-                        } else if(cmdFileType.toLowerCase().equals("xlsx")){            // <---- XLSX Files
-                            XLSXFileCommands fileCommand = new XLSXFileCommands();
-                            me.setConsoleInFile(args[0]);
-                            me.setConsoleInSheet();
-                            me.setConsoleTemplateFile(args[2]);
-                            me.setConsoleOutFile(args[3]);
-                            me.setConsoleFileCommand("mapColumnData");
-                            fileCommand.setHeaderRows(me);
-                        } else if(cmdFileType.toLowerCase().equals(".csv")){
-                            //Initialize CSV file command object
-                        } else if(cmdFileType.toLowerCase().equals(".txt")){
-                            //Initialize TXT file command object
-                        } else {
-                            System.out.println("! You have entered an unsupported file type.");
-                            System.out.println("! Application terminated abnormally.");
-                            System.exit(-1);
-                        }
-
-                        //End program
-                        me.setRunFlag("FALSE");
-                        //Anything else is an improper call
+                        //Args length 4 equals call to <mapColumnData>
                     } else {
                         System.out.println("\n\t! An incorrect number of arguments has been entered.");
                         System.out.println("\t! Please view the help section of the program for more information");
@@ -143,7 +74,6 @@ public class Main {
                         System.exit(-1);
                     }
                 } else {
-
                     /* ***** OPERATOR MODE ***** */
                     System.out.println("\n>> Running in operator mode.\n");
                     //Set runMode to true
@@ -170,5 +100,61 @@ public class Main {
             System.exit(-1);
         }
     }
+    public static XLSFileCommands initializeXLS(UserInput me, String[] args) {
+        try {
+            XLSFileCommands fileCommand = new XLSFileCommands();
+            me.setConsoleInFile(args[0]);
+            me.setConsoleInSheet();
+            me.setConsoleTemplateFile(args[2]);
+            if (args.length == 3)
+                me.setConsoleFileCommand("compareHeader");
+            else if (args.length == 4) {
+                me.setConsoleOutFile(args[3]);
+                me.setConsoleFileCommand("mapColumnData");
+            }
+            fileCommand.setHeaderRows(me);
+            return fileCommand;
+        } catch (POIXMLException e) {
+            printPOIXMLExceptionAndDie();
+        } catch (OfficeXmlFileException e) {
+            printOfficeXmlFileExceptionAndDie();
+        }
+        return null;
+    }
 
+    public static XLSXFileCommands initializeXLSX(UserInput me, String[] args) {
+        try {
+            XLSXFileCommands fileCommand = new XLSXFileCommands();
+            me.setConsoleInFile(args[0]);
+            me.setConsoleInSheet();
+            me.setConsoleTemplateFile(args[2]);
+            if (args.length == 3) {
+                me.setConsoleFileCommand("compareHeader");
+            } else if (args.length == 4) {
+                me.setConsoleOutFile(args[3]);
+                me.setConsoleFileCommand("mapColumnData");
+            }
+            fileCommand.setHeaderRows(me);
+            return fileCommand;
+        } catch (POIXMLException e) {
+            printOfficeXmlFileExceptionAndDie();
+        } catch (OfficeXmlFileException e) {
+            printOfficeXmlFileExceptionAndDie();
+        }
+        return null;
+    }
+
+    private void printOfficeXmlFileExceptionAndDie() {
+        System.out.println("! One or more of the files supplied was not in the expected file type.");
+        System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
+        System.out.println("! Application terminated abnormally.\n");
+        System.exit(-1);
+    }
+
+    private void printPOIXMLExceptionAndDie() {
+        System.out.println("! One or more of the files supplied was not in the expected file type.");
+        System.out.println("! Please ensure all files are of the same format and that the proper file type is selected.");
+        System.out.println("! Application terminated abnormally.\n");
+        System.exit(-1);
+    }
 }

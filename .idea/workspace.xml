@@ -7,12 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eff5a39f-e168-4d6a-a1e2-1a07c17693e0" name="Default" comment="GUI -&gt;&#10;&#10;some usability tweaks; keep text fields between tabs, added reset button, etcetera">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/ColumnSieve.java" afterPath="$PROJECT_DIR$/src/colSieve/ColumnSieve.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/production/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/production/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/UserInput.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/UserInput.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java" afterPath="$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/colSieve/CMD/Main.java" afterPath="$PROJECT_DIR$/src/colSieve/CMD/Main.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="`columnShift.iws" />
@@ -37,142 +33,12 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="DaemonCodeAnalyzer">
-    <disable_hints />
-  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="`columnShift" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/colSieve/cmd/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.74108815" vertical-offset="30" max-vertical-offset="1853">
-              <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserInput.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/colSieve/logic/UserInput.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="2091">
-              <caret line="993" column="43" selection-start-line="993" selection-start-column="43" selection-end-line="993" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#setRunFlag#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setRunMode#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleFileType#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleFileCommand#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleInFile#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleInSheet#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleTemplateFile#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleTemplateSheet#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleOutFile#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setConsoleBehavior#0;class#UserInput#0" expanded="false" />
-                <element signature="method#setHelpCommand#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getRunFlag#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getRunMode#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getConsoleFileType#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getConsoleFileCommand#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getConsoleInFile#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getConsoleInSheet#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getConsoleTemplateFile#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getConsoleTemplateSheet#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getConsoleOutFile#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getCompareResult#0;class#UserInput#0" expanded="false" />
-                <element signature="method#getHelpCommand#0;class#UserInput#0" expanded="false" />
-                <element signature="method#run#0;class#UserInput#0" expanded="false" />
-                <element signature="method#help#0;class#UserInput#0" expanded="false" />
-                <element signature="method#compareDataLayout#0;class#UserInput#0" expanded="false" />
-                <element signature="method#sieveColumns#0;class#UserInput#0" expanded="false" />
-                <element signature="method#fileType#0;class#UserInput#0" expanded="false" />
-                <element signature="method#execute#0;class#UserInput#0" expanded="false" />
-                <element signature="method#execute#1;class#UserInput#0" expanded="false" />
-                <element signature="method#unknownField#0;class#UserInput#0" expanded="false" />
-                <element signature="method#newTemplateInfo#0;class#UserInput#0" expanded="false" />
-                <element signature="method#newFieldDefinition#0;class#UserInput#0" expanded="false" />
-                <element signature="method#checkSheets#0;class#UserInput#0" expanded="false" />
-                <element signature="method#smallInFile#0;class#UserInput#0" expanded="false" />
-                <element signature="method#longInFile#0;class#UserInput#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XLSFileCommands.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="43" max-vertical-offset="1054">
-              <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
-              <folding>
-                <element signature="e#698#714#0" expanded="true" />
-                <element signature="e#797#813#0" expanded="true" />
-                <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-                <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XLSXFileCommands.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="1054">
-              <caret line="779" column="5" selection-start-line="779" selection-start-column="5" selection-end-line="779" selection-end-column="5" />
-              <folding>
-                <element signature="e#829#845#0" expanded="true" />
-                <element signature="e#928#944#0" expanded="true" />
-                <element signature="method#setHeaderRows#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#sheetExists#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#compareHeader#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#mapUnknownColumnToEOF#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#addDefinition#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#deleteColumn#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#createTemplate#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#getInputSheetName#0;class#XLSXFileCommands#0" expanded="false" />
-                <element signature="method#getTemplateSheetName#0;class#XLSXFileCommands#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColumnSieve.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="2091">
-              <caret line="216" column="81" selection-start-line="216" selection-start-column="81" selection-end-line="216" selection-end-column="81" />
-              <folding>
-                <element signature="docComment;class#ColumnSieve#0" expanded="false" />
-                <element signature="method#setGui#0;class#ColumnSieve#0" expanded="false" />
-                <element signature="method#showGui#0;class#ColumnSieve#0" expanded="false" />
-                <element signature="method#setConsole#0;class#ColumnSieve#0" expanded="false" />
-                <element signature="method#actionPerformed#0;class#ColumnSieve#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ColumnSieve.form" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
-          <provider selected="true" editor-type-id="ui-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -180,6 +46,11 @@
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
     </option>
   </component>
   <component name="IdeDocumentHistory">
@@ -207,7 +78,6 @@
         <option value="$PROJECT_DIR$/src/colSieve/main/Main.java" />
         <option value="$PROJECT_DIR$/src/colSieve/logic/ColSieve.java" />
         <option value="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
-        <option value="$PROJECT_DIR$/src/colSieve/CMD/Main.java" />
         <option value="$PROJECT_DIR$/src/colSieve/ColumnSieve.form" />
         <option value="$PROJECT_DIR$/src/META-INF/CMD.MF" />
         <option value="$PROJECT_DIR$/src/colSieve/ColumnSieve.java" />
@@ -215,17 +85,28 @@
         <option value="$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java" />
         <option value="$PROJECT_DIR$/src/colSieve/logic/UserInput.java" />
         <option value="$PROJECT_DIR$/src/colSieve/cmd/Main.java" />
+        <option value="$PROJECT_DIR$/src/colSieve/CMD/Main.java" />
       </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Bundled (Maven 3)" />
+      </MavenGeneralSettings>
     </option>
   </component>
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
+  <component name="NamedScopeManager">
+    <order />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1929" />
-    <option name="y" value="-199" />
-    <option name="width" value="1938" />
-    <option name="height" value="1098" />
+    <option name="x" value="1912" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -294,34 +175,31 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -335,11 +213,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -353,11 +231,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -375,11 +253,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="columnSieve" />
+              <option name="myItemId" value="ColumnSieve" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -391,12 +269,16 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="cmd" />
+              <option name="myItemId" value="CMD" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane">
+        <subPane />
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -407,7 +289,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/plugin/poi-3.11/poi-scratchpad-3.11-20141221.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.38895282" />
@@ -450,27 +332,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.CMD">
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -512,6 +373,21 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -528,24 +404,30 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
     <configuration default="true" type="JarApplication" factoryName="JAR Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="JAR_PATH" value="$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
       <envs />
       <method />
     </configuration>
@@ -742,36 +624,36 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1929" y="-199" width="1938" height="1098" extended-state="6" />
-    <editor active="true" />
+    <frame x="1912" y="-8" width="1936" height="1096" extended-state="7" />
+    <editor active="false" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0828877" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5801688" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34599155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1657754" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.165625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="-967" y="-69" width="617" height="948" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4029536" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24973261" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4029536" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39978904" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34599155" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32994652" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32911393" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -786,9 +668,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="myTodoPanelSettings">
-      <TodoPanelSettings />
-    </option>
     <MESSAGE value="XLSFileCommands -&gt; compareHeader function -&gt; implementing 'unknown' header value support" />
     <MESSAGE value="XLSFileCommands -&gt; updated compareHeader functionality to support multiple template field names; checks the header row first before checking any other additional data stored in later rows" />
     <MESSAGE value="XLSFileCommands -&gt; working on mapping fields which are contained in extended field data" />
@@ -820,499 +699,23 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+    <entry file="file://$PROJECT_DIR$/src/colSieve/CMD/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4522">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="42" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
           <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="156" max-vertical-offset="2516">
-          <caret line="125" column="5" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4321" max-vertical-offset="5236">
-          <caret line="373" column="54" selection-start-line="373" selection-start-column="54" selection-end-line="373" selection-end-column="54" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="922" max-vertical-offset="2516">
-          <caret line="184" column="75" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3128">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1728" max-vertical-offset="2516">
-          <caret line="214" column="72" selection-start-line="214" selection-start-column="72" selection-end-line="214" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3179">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1728" max-vertical-offset="2516">
-          <caret line="214" column="72" selection-start-line="214" selection-start-column="72" selection-end-line="214" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="374" max-vertical-offset="527">
-          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2329">
-          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="442">
-          <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/java/lang/Class.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3323741" vertical-offset="1877" max-vertical-offset="54553">
-          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/java/util/LinkedHashMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3323741" vertical-offset="5991" max-vertical-offset="7939">
-          <caret line="395" column="0" selection-start-line="395" selection-start-column="0" selection-end-line="395" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/jre/lib/rt.jar!/java/util/ListIterator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="695">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/jre/lib/rt.jar!/sun/misc/Launcher.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.56" vertical-offset="4291" max-vertical-offset="5865">
-          <caret line="307" column="0" selection-start-line="307" selection-start-column="0" selection-end-line="307" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33233532" vertical-offset="4759" max-vertical-offset="36720">
-          <caret line="357" column="0" selection-start-line="357" selection-start-column="0" selection-end-line="357" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/java/net/URLClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33233532" vertical-offset="4895" max-vertical-offset="12257">
-          <caret line="353" column="0" selection-start-line="353" selection-start-column="0" selection-end-line="353" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-ooxml-3.11-20141221.jar!/org/apache/poi/POIXMLDocumentPart.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4046">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/NumberRecord.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3470483" vertical-offset="146" max-vertical-offset="833">
-          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/java/lang/reflect/Method.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33233532" vertical-offset="9230" max-vertical-offset="12393">
-          <caret line="605" column="0" selection-start-line="605" selection-start-column="0" selection-end-line="605" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/CellRecord.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.92" vertical-offset="430" max-vertical-offset="1360">
-          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/LabelSSTRecord.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.92" vertical-offset="158" max-vertical-offset="884">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/util/IntMapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.24" vertical-offset="303" max-vertical-offset="748">
-          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/util/BitField.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.92" vertical-offset="634" max-vertical-offset="1190">
-          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/SSTRecord.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33258426" vertical-offset="634" max-vertical-offset="1938">
-          <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/util/NullLogger.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33258426" vertical-offset="124" max-vertical-offset="1411">
-          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/common/UnicodeString.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.0" vertical-offset="1991" max-vertical-offset="10642">
-          <caret line="150" column="18" selection-start-line="150" selection-start-column="18" selection-end-line="150" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFRichTextString.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.68" vertical-offset="1540" max-vertical-offset="2686">
-          <caret line="110" column="18" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFRow.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.08" vertical-offset="2822" max-vertical-offset="6103">
-          <caret line="203" column="20" selection-start-line="203" selection-start-column="20" selection-end-line="203" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFSheet.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3809524" vertical-offset="3489" max-vertical-offset="20876">
-          <caret line="283" column="19" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFCell.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.08" vertical-offset="6562" max-vertical-offset="13056">
-          <caret line="453" column="18" selection-start-line="453" selection-start-column="18" selection-end-line="453" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/java/awt/event/ActionListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5726257" vertical-offset="237" max-vertical-offset="595">
-          <caret line="49" column="16" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/BoundSheetRecord.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0" vertical-offset="666" max-vertical-offset="1802">
-          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/model/InternalWorkbook.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0" vertical-offset="6718" max-vertical-offset="30651">
-          <caret line="495" column="18" selection-start-line="495" selection-start-column="18" selection-end-line="495" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/POIDocument.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2856">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFWorkbook.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.84" vertical-offset="4393" max-vertical-offset="18428">
-          <caret line="374" column="18" selection-start-line="374" selection-start-column="18" selection-end-line="374" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-forms.jar!/com/jgoodies/forms/layout/FormLayout.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.32" vertical-offset="5774" max-vertical-offset="13175">
-          <caret line="393" column="16" selection-start-line="393" selection-start-column="16" selection-end-line="393" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_71/src.zip!/javax/swing/ImageIcon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33150685" vertical-offset="2582" max-vertical-offset="10676">
-          <caret line="204" column="0" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../DUMP/`CODE REPOS/XO/java/MindFireDBC/bin/WeeklyExportByCustomer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.63968074" vertical-offset="561" max-vertical-offset="7174">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../../DUMP/`CODE REPOS/XO/java/MindFireDBC/src/WeeklyExportByCustomer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.0" vertical-offset="6477" max-vertical-offset="8398">
-          <caret line="411" column="12" selection-start-line="411" selection-start-column="12" selection-end-line="411" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/columnSieve.iml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
-      <provider selected="true" editor-type-id="ui-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.manifest">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.018579235" vertical-offset="0" max-vertical-offset="915">
-          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1155" max-vertical-offset="2091">
-          <caret line="216" column="81" selection-start-line="216" selection-start-column="81" selection-end-line="216" selection-end-column="81" />
-          <folding>
-            <element signature="docComment;class#ColumnSieve#0" expanded="false" />
-            <element signature="method#setGui#0;class#ColumnSieve#0" expanded="false" />
-            <element signature="method#showGui#0;class#ColumnSieve#0" expanded="false" />
-            <element signature="method#setConsole#0;class#ColumnSieve#0" expanded="false" />
-            <element signature="method#actionPerformed#0;class#ColumnSieve#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="381" max-vertical-offset="1054">
-          <caret line="779" column="5" selection-start-line="779" selection-start-column="5" selection-end-line="779" selection-end-column="5" />
-          <folding>
-            <element signature="e#829#845#0" expanded="true" />
-            <element signature="e#928#944#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSXFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSXFileCommands#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="362" max-vertical-offset="1054">
-          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
-          <folding>
-            <element signature="e#698#714#0" expanded="true" />
-            <element signature="e#797#813#0" expanded="true" />
-            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
-            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="e#0#7113#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/colSieve/logic/UserInput.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="159" max-vertical-offset="2091">
+        <state vertical-scroll-proportion="0.0">
           <caret line="993" column="43" selection-start-line="993" selection-start-column="43" selection-end-line="993" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#setRunFlag#0;class#UserInput#0" expanded="false" />
             <element signature="method#setRunMode#0;class#UserInput#0" expanded="false" />
             <element signature="method#setConsoleFileType#0;class#UserInput#0" expanded="false" />
             <element signature="method#setConsoleFileCommand#0;class#UserInput#0" expanded="false" />
@@ -1351,11 +754,554 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/colSieve/cmd/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.74108815" vertical-offset="30" max-vertical-offset="1853">
-          <caret line="37" column="65" selection-start-line="37" selection-start-column="65" selection-end-line="37" selection-end-column="65" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="52" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="779" column="5" selection-start-line="779" selection-start-column="5" selection-end-line="779" selection-end-column="5" />
+          <folding>
+            <element signature="method#compareHeader#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSXFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="216" column="81" selection-start-line="216" selection-start-column="81" selection-end-line="216" selection-end-column="81" />
+          <folding>
+            <element signature="docComment;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#setGui#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#showGui#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#setConsole#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#actionPerformed#0;class#ColumnSieve#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
+      <provider selected="true" editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="125" column="5" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="373" column="54" selection-start-line="373" selection-start-column="54" selection-end-line="373" selection-end-column="54" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="184" column="75" selection-start-line="184" selection-start-column="24" selection-end-line="184" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="214" column="72" selection-start-line="214" selection-start-column="72" selection-end-line="214" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="214" column="72" selection-start-line="214" selection-start-column="72" selection-end-line="214" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="116" column="0" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="20" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="133" column="5" selection-start-line="133" selection-start-column="5" selection-end-line="133" selection-end-column="5" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-ooxml-3.11-20141221.jar!/org/apache/poi/POIXMLDocumentPart.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/NumberRecord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3470483">
+          <caret line="28" column="18" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/CellRecord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.92">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/LabelSSTRecord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.92">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/util/IntMapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.24">
+          <caret line="38" column="13" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/util/BitField.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.92">
+          <caret line="65" column="16" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/SSTRecord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33258426">
+          <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/util/NullLogger.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33258426">
+          <caret line="19" column="19" selection-start-line="19" selection-start-column="19" selection-end-line="19" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/common/UnicodeString.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.0">
+          <caret line="150" column="18" selection-start-line="150" selection-start-column="18" selection-end-line="150" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFRichTextString.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.68">
+          <caret line="110" column="18" selection-start-line="110" selection-start-column="18" selection-end-line="110" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFRow.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.08">
+          <caret line="203" column="20" selection-start-line="203" selection-start-column="20" selection-end-line="203" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFSheet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3809524">
+          <caret line="283" column="19" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFCell.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.08">
+          <caret line="453" column="18" selection-start-line="453" selection-start-column="18" selection-end-line="453" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/record/BoundSheetRecord.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0">
+          <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/model/InternalWorkbook.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.0">
+          <caret line="495" column="18" selection-start-line="495" selection-start-column="18" selection-end-line="495" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/POIDocument.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/plugin/poi-3.11/poi-3.11-20141221.jar!/org/apache/poi/hssf/usermodel/HSSFWorkbook.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.84">
+          <caret line="374" column="18" selection-start-line="374" selection-start-column="18" selection-end-line="374" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/jgoodies-forms.jar!/com/jgoodies/forms/layout/FormLayout.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.32">
+          <caret line="393" column="16" selection-start-line="393" selection-start-column="16" selection-end-line="393" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/columnSieve.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018579235">
+          <caret line="1" column="12" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.manifest">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSXFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.5555556">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+          <folding>
+            <element signature="method#compareHeader#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSXFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSXFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/XLSFileCommands.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.111111">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          <folding>
+            <element signature="method#setHeaderRows#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#sheetExists#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#compareHeader#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapColumnData#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#mapUnknownColumnToEOF#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#addDefinition#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#deleteColumn#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#createTemplate#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getInputSheetName#0;class#XLSFileCommands#0" expanded="false" />
+            <element signature="method#getTemplateSheetName#0;class#XLSFileCommands#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-55.407406">
+          <caret line="216" column="81" selection-start-line="216" selection-start-column="81" selection-end-line="216" selection-end-column="81" />
+          <folding>
+            <element signature="docComment;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#setGui#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#showGui#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#setConsole#0;class#ColumnSieve#0" expanded="false" />
+            <element signature="method#actionPerformed#0;class#ColumnSieve#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/ColumnSieve.form">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="49.787037">
+          <caret line="31" column="50" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ui-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/production/colSieve/logic/XLSFileCommands.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="24.555555">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#29173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/production/colSieve/logic/XLSXFileCommands.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="13.222222">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#29173#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/poi-3.11/LICENSE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugin/poi-3.11/NOTICE">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.30459127">
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/logic/UserInput.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27009645">
+          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#setRunMode#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleFileType#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleFileCommand#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleInFile#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleInSheet#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleTemplateFile#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleTemplateSheet#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleOutFile#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setConsoleBehavior#0;class#UserInput#0" expanded="false" />
+            <element signature="method#setHelpCommand#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getRunFlag#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getRunMode#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getConsoleFileType#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getConsoleFileCommand#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getConsoleInFile#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getConsoleInSheet#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getConsoleTemplateFile#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getConsoleTemplateSheet#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getConsoleOutFile#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getCompareResult#0;class#UserInput#0" expanded="false" />
+            <element signature="method#getHelpCommand#0;class#UserInput#0" expanded="false" />
+            <element signature="method#run#0;class#UserInput#0" expanded="false" />
+            <element signature="method#help#0;class#UserInput#0" expanded="false" />
+            <element signature="method#compareDataLayout#0;class#UserInput#0" expanded="false" />
+            <element signature="method#sieveColumns#0;class#UserInput#0" expanded="false" />
+            <element signature="method#fileType#0;class#UserInput#0" expanded="false" />
+            <element signature="method#execute#0;class#UserInput#0" expanded="false" />
+            <element signature="method#execute#1;class#UserInput#0" expanded="false" />
+            <element signature="method#unknownField#0;class#UserInput#0" expanded="false" />
+            <element signature="method#newTemplateInfo#0;class#UserInput#0" expanded="false" />
+            <element signature="method#newFieldDefinition#0;class#UserInput#0" expanded="false" />
+            <element signature="method#checkSheets#0;class#UserInput#0" expanded="false" />
+            <element signature="method#smallInFile#0;class#UserInput#0" expanded="false" />
+            <element signature="method#longInFile#0;class#UserInput#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/colSieve/CMD/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.27116826">
+          <caret line="55" column="89" selection-start-line="55" selection-start-column="89" selection-end-line="55" selection-end-column="89" />
+          <folding>
+            <element signature="e#0#7113#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1418,6 +1364,17 @@
             <option name="proportions">
               <list>
                 <option value="0.38895282" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
